@@ -1,0 +1,36 @@
+.auth__finishregistration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $white;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  z-index: 33;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: url("/src/assets/images/finishregister.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  .auth__finishregistration-span {
+    background: rgba($color: $black, $alpha: 0.5);
+    margin-top: 50px;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 5px;
+    color: $white;
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .auth__finishregistration {
+    .auth__finishregistration-span {
+      font-size: 32px;
+      line-height: 29px;
+      letter-spacing: 5px;
+      color: $white;
+      padding: 10px;
+    }
+  }
+}

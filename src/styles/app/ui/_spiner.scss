@@ -1,0 +1,19 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $white;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  z-index: 33;
+  position: fixed;
+  top: 0;
+  left: 0;
+  .spinner__span {
+    margin-top: 50px;
+    font-size: 36px;
+    line-height: 20px;
+    letter-spacing: 5px;
+  }
+}

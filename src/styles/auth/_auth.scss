@@ -1,0 +1,230 @@
+.auth__container {
+  background: url("/src/assets/images/00-06_generated.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body > div:nth-child(5) {
+  display: none;
+}
+
+.auth__box-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba($color: $dark-blue, $alpha: 0.4);
+  box-shadow: 4px 4px 10px rgba($color: $black, $alpha: 0.4);
+}
+.auth__box-title {
+  color: $dark-blue;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 15px;
+  display: block;
+  line-height: 32px;
+  font-family: "Dancing Script";
+  margin-right: 5px;
+  i {
+    font-style: italic;
+  }
+}
+
+.auth__box-message {
+  font-size: 25px;
+  font-weight: 200;
+  color: $white;
+  line-height: 32px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.auth__box-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  height: 50%;
+  border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
+  padding-bottom: 40px;
+}
+
+.auth__box-inputGroup {
+  background: $white;
+  display: flex;
+  align-items: baseline;
+  width: 90%;
+  border-radius: 10px;
+  height: 40px;
+  margin: 15px 0px;
+  z-index: 1;
+  position: relative;
+  .auth__box-form-span {
+    position: absolute;
+    top: -30px;
+    left: 10px;
+    margin-bottom: 15px;
+  }
+  i {
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 19px;
+    color: rgba($color: $black, $alpha: 0.5);
+  }
+  .auth__input {
+    margin-bottom: 25px;
+    padding: 10px 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.6s ease all;
+    border: 1px solid transparent;
+    font-size: 17px;
+    font-weight: 200;
+
+    &::placeholder {
+      color: rgba($color: $black, $alpha: 0.5);
+    }
+  }
+
+  .auth__box-inputGroup-button {
+    margin-right: 10px;
+    padding: 0px 5px;
+    border-radius: 7px;
+    margin-bottom: -5px;
+    position: relative;
+    bottom: 3px;
+    transition: 0.3s ease all;
+    border: 1px solid rgba($color: #000000, $alpha: 0.3);
+    font-size: 16px;
+  }
+
+  .repeatPassword {
+    padding-left: 50px;
+  }
+}
+
+.auth__box-btnSubmit {
+  width: 50%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: rgba($color: $dark-blue, $alpha: 0.8);
+  margin-top: 25px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 25px;
+  transition: 0.5s ease all;
+
+  margin-bottom: 15px;
+
+  box-shadow: 2px 2px 3px rgba($color: #000000, $alpha: 0.5);
+
+  &:hover {
+    background: $dark-blue;
+    box-shadow: 1px 1px 2px #000;
+  }
+}
+
+.link {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  span {
+    margin-left: 10px;
+  }
+}
+
+.extra-margin {
+  margin-bottom: 25px;
+}
+
+@keyframes infiniteRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .auth__box-title {
+    font-size: 42px;
+    line-height: 42px;
+  }
+  .auth__box-message {
+    font-size: 35px;
+    line-height: 42px;
+  }
+  .dark-background {
+    margin-top: 45px;
+  }
+
+  .auth__box-inputGroup {
+    height: 50px;
+    .auth__input {
+      padding: 20px 0px;
+      font-size: 22px;
+      &::placeholder {
+        color: rgba($color: $black, $alpha: 0.5);
+      }
+    }
+    .repeatPassword {
+      padding-left: 50px;
+    }
+
+    .auth__box-inputGroup-button {
+      padding: 5px 10px;
+
+      &:hover {
+        border: 1px solid rgba($color: #000000, $alpha: 1);
+      }
+    }
+
+    &:hover {
+      border: 1px solid $black;
+
+      i {
+        color: $black;
+      }
+    }
+
+    &:focus-within {
+      border: 1px solid $dark-blue;
+      i {
+        color: $dark-blue;
+      }
+    }
+  }
+
+  .auth__box-btnSubmit {
+    padding: 10px 15px;
+  }
+
+  .link {
+    margin-top: 25px;
+
+    &:hover {
+      svg {
+        animation-name: infiniteRotation;
+        animation-duration: 2s;
+        animation-iteration-count: initial;
+      }
+    }
+  }
+}

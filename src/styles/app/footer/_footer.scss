@@ -1,0 +1,33 @@
+.footer {
+  height: 50px;
+  padding: 50px;
+  text-align: center;
+  margin-top: 25px;
+  //   position: absolute;
+  //   width: 100%;
+
+  //   bottom: 25px;
+  //   left: 0;
+  span {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 18px;
+    a {
+      color: $primary-color;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    height: 80px;
+    margin-top: 60px;
+
+    span {
+      font-size: 22px;
+      line-height: 22px;
+      display: block;
+      padding: 20px;
+    }
+  }
+}
