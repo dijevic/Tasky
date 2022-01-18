@@ -2,19 +2,19 @@ import moment from 'moment'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { startDeleteTask, startUpdateTask, unSetActiveTask, startCompleteTask } from '../../actions/tasksActions'
+import { startDeleteTask, startUpdateTask, unSetActiveTask, startCompleteTask, startRedoCompleteTask } from '../../actions/tasksActions'
 import { closeModal } from '../../actions/uiActions'
 import { UseForm } from '../../hooks/userForm'
 import { Minimize } from '../icons/Minimize'
 import { Tools } from '../icons/Tools'
 import { Trash } from '../icons/Trash'
 import { Check } from '../icons/Check'
+import { UndoIcon } from '../icons/UndoIcon'
 
 export const Modal = () => {
     const dispatch = useDispatch()
     const { activeTask } = useSelector(state => state.task)
     const date = moment(activeTask.creationDate).add(10, 'days').calendar()
-
     const initialState = {
         description: activeTask.capitalizeDescription
     }
@@ -24,7 +24,7 @@ export const Modal = () => {
     const handleClose = () => {
         setTimeout(() => {
             dispatch(closeModal())
-        }, 300);
+        }, 100);
         dispatch(unSetActiveTask())
     }
 
@@ -34,14 +34,18 @@ export const Modal = () => {
         dispatch(closeModal())
     }
     const handleUpdate = () => {
-        dispatch(startUpdateTask(activeTask.uuid, description))
+        dispatch(startUpdateTask(activeTask.uuid, { description }))
         dispatch(unSetActiveTask())
         dispatch(closeModal())
     }
     const handleCompleteTask = () => {
-        const completed = false
+        if (activeTask.completed) {
+            dispatch(startUpdateTask(activeTask.uuid, { completed: false }))
+        } else {
 
-        dispatch(startCompleteTask(activeTask.uuid))
+            dispatch(startUpdateTask(activeTask.uuid, { completed: true }))
+        }
+
         dispatch(unSetActiveTask())
         dispatch(closeModal())
 
@@ -56,7 +60,7 @@ export const Modal = () => {
 
             setTimeout(() => {
                 dispatch(closeModal())
-            }, 300);
+            }, 100);
             dispatch(unSetActiveTask())
         }
 
@@ -92,7 +96,19 @@ export const Modal = () => {
                     <div className="modal__form-buttonsContainer">
                         <button type="button" onClick={handleUpdate} className="modal__form-button update" >Update</button>
                         <button type="button" onClick={handleCompleteTask} className="modal__form-button Complete" >
-                            <Check />
+                            {
+                                (activeTask.completed)
+                                    ? <>
+                                        <UndoIcon />
+                                        <span>Undo</span>
+                                    </>
+                                    : <>
+                                        <Check />
+                                        <span>Done</span>
+                                    </>
+                            }
+
+
                         </button>
                         <button type="button" onClick={handleDelete} className="modal__form-button delete" >
                             <Trash />

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import moment from 'moment'
 import {
     BrowserRouter as Router,
     Redirect,
-    Route,
     Switch
 
 
@@ -18,17 +18,23 @@ import { Spinner } from '../components/ui/Spinner'
 
 
 export const AppRouter = () => {
+    moment.locale()
 
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [checking, setChecking] = useState(true)
+    const today = moment().format()
+    const tokenDate = moment(JSON.parse(localStorage.getItem('tokenDateStart'))).add(2, 'hours',).format()
+
 
 
     useEffect(() => {
-
-        (localStorage.getItem('token'))
-            ? dispatch(startCheckingToken(setChecking))
-            : setChecking(false)
+        (moment(today).isSameOrAfter(tokenDate))
+            ? localStorage.clear()
+            :
+            (localStorage.getItem('token'))
+                ? dispatch(startCheckingToken(setChecking))
+                : setChecking(false)
 
 
     }, [dispatch])

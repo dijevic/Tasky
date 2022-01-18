@@ -4,6 +4,7 @@
   margin: 0px auto;
   text-align: center;
   margin-top: 35px;
+  height: 95vh;
 
   .todos__title {
     margin-bottom: 75px;
@@ -15,21 +16,19 @@
   }
 
   .todos__inputGroup {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     display: flex;
     justify-content: center;
 
     .todos__input {
       width: 80%;
-      max-width: 500px;
+      max-width: 400px;
       outline: none;
       padding: 20px 25px;
       margin-right: 5px;
       border-bottom: 2px solid rgba(0, 0, 0, 0.5);
       font-size: 16px;
       line-height: 16px;
-      //   box-shadow: 3px 3px 7px $black;
-      //   border-radius: 5px;
 
       &::placeholder {
         font-size: 14px;
@@ -40,7 +39,7 @@
     .todos__inputGroup-button {
       border-radius: 5px;
       transition: 0.6s ease all;
-      background: $dark-blue;
+      background: $primary-color;
 
       padding: 5px 20px;
       color: $white;
@@ -53,8 +52,8 @@
       padding: 8px 15px;
       border-radius: 5px;
       margin-right: 20px;
-      color: $black;
-      background: $white;
+      color: $white;
+      background: rgba($color: $black, $alpha: 0.3);
     }
 
     .Completed,
@@ -64,19 +63,27 @@
       margin-right: 20px;
       //   background: $dark-blue;
     }
+    .selected {
+      background: $dark-blue;
+    }
     .all,
     .uncompleted {
-      width: 80px;
+      width: 73px;
     }
   }
 
   .todos__Grid {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     margin: auto;
     max-width: 1000px;
+    background: url("/src/assets/images/Cute_Astronaut_Character_generated.jpg");
+    background-position-y: -64px;
+    background-position-x: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 
+    height: 500px;
     .todo__grid-todo {
       width: 100%;
       max-width: 600px;
@@ -86,7 +93,10 @@
       align-items: center;
       margin: 10px auto;
       padding: 5px 10px;
-      background: $primary-color;
+      background: $dark-blue;
+      animation-name: fadeInLeft;
+      animation-duration: 0.5s;
+      animation-iteration-count: initial;
 
       border-radius: 5px;
       .todos__grid-todo-description {
@@ -97,8 +107,9 @@
         }
       }
       svg {
-        transform: rotate(90deg);
-        stroke: $white;
+        transform: rotate(30deg);
+        fill: rgba($color: $dark-blue, $alpha: 0.5);
+        stroke: rgba($color: $dark-blue, $alpha: 1);
       }
 
       .dropDown {
@@ -120,11 +131,11 @@
       font-size: 42px;
       line-height: 52px;
       margin-bottom: 90px;
-      margin-top: 70px;
+      margin-top: 30px;
     }
 
     .todos__inputGroup {
-      margin-bottom: 60px;
+      margin-bottom: 70px;
 
       .todos__input {
         margin-right: 30px;
@@ -148,27 +159,27 @@
 
       .todos__inputGroup-button {
         width: 15%;
-        font-size: 16px;
+        font-size: 18px;
         transition: 0.4s ease all;
         border: 1px solid transparent;
         cursor: pointer;
-
-        // &:hover {
-        //   //   background: rgba($color: $dark-blue, $alpha: 0.9);
-        //   border: 1px solid $white;
-        // }
       }
     }
     .todos__filter-container {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       .todos__filter-button {
         font-size: 18px;
         &:hover {
           cursor: pointer;
         }
       }
+      .all,
+      .uncompleted {
+        width: 80px;
+      }
     }
     .todos__Grid {
+      background-position-y: -90px;
       .todo__grid-todo {
         transition: 0.6s ease all;
         margin-top: 30px;
@@ -176,13 +187,15 @@
           font-size: 22px;
           line-height: 22px;
           color: $white;
-          .checkbox {
-            margin-right: 20px;
-          }
         }
+
         &:hover {
           background: rgba($color: $dark-blue, $alpha: 0.9);
           cursor: pointer;
+          svg {
+            fill: $primary-color;
+            stroke: rgba($color: $white, $alpha: 0.7);
+          }
         }
       }
     }

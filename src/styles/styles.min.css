@@ -349,8 +349,8 @@ body > div:nth-child(5) {
   max-width: 1000px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: minmax(100px, 290px);
-      grid-template-columns: minmax(100px, 290px);
+  -ms-grid-columns: minmax(100px, 240px);
+      grid-template-columns: minmax(100px, 240px);
   grid-gap: 25px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -358,8 +358,8 @@ body > div:nth-child(5) {
 }
 
 .tasks__container .tasks__option-container .tasks__dashboard-option {
-  -webkit-box-shadow: 3px 3px 10px #000;
-          box-shadow: 3px 3px 10px #000;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 .tasks__container .tasks__option-container .tasks__dashboard-option a {
@@ -439,10 +439,12 @@ body > div:nth-child(5) {
     margin-top: 50px;
     -ms-grid-columns: minmax(100px, 300px);
         grid-template-columns: minmax(100px, 300px);
+    -ms-grid-rows: minmax(100px, 300px);
+        grid-template-rows: minmax(100px, 300px);
   }
   .tasks__container .tasks__option-container .tasks__dashboard-option {
-    -webkit-transition: 0.8s ease-in-out;
-    transition: 0.8s ease-in-out;
+    -webkit-transition: 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
   }
   .tasks__container .tasks__option-container .tasks__dashboard-option:hover {
     cursor: pointer;
@@ -454,9 +456,6 @@ body > div:nth-child(5) {
     margin-top: 35px;
     font-size: 23px;
     line-height: 23px;
-  }
-  .tasks__container .tasks__option-container .tasks__dashboard-option a:hover {
-    opacity: 0.8;
   }
 }
 
@@ -586,6 +585,7 @@ body > div:nth-child(5) {
   margin: 0px auto;
   text-align: center;
   margin-top: 35px;
+  height: 95vh;
 }
 
 .todos__container .todos__title {
@@ -599,7 +599,7 @@ body > div:nth-child(5) {
 }
 
 .todos__container .todos__inputGroup {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -610,7 +610,7 @@ body > div:nth-child(5) {
 
 .todos__container .todos__inputGroup .todos__input {
   width: 80%;
-  max-width: 500px;
+  max-width: 400px;
   outline: none;
   padding: 20px 25px;
   margin-right: 5px;
@@ -643,7 +643,7 @@ body > div:nth-child(5) {
   border-radius: 5px;
   -webkit-transition: 0.6s ease all;
   transition: 0.6s ease all;
-  background: #1b065e;
+  background: #6e6ece;
   padding: 5px 20px;
   color: #fff;
   -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
@@ -658,8 +658,8 @@ body > div:nth-child(5) {
   padding: 8px 15px;
   border-radius: 5px;
   margin-right: 20px;
-  color: #000;
-  background: #fff;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .todos__container .todos__filter-container .Completed,
@@ -669,24 +669,31 @@ body > div:nth-child(5) {
   margin-right: 20px;
 }
 
+.todos__container .todos__filter-container .selected {
+  background: #1b065e;
+}
+
 .todos__container .todos__filter-container .all,
 .todos__container .todos__filter-container .uncompleted {
-  width: 80px;
+  width: 73px;
 }
 
 .todos__container .todos__Grid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   margin: auto;
   max-width: 1000px;
+  background: url("/src/assets/images/Cute_Astronaut_Character_generated.jpg");
+  background-position-y: -64px;
+  background-position-x: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 500px;
 }
 
 .todos__container .todos__Grid .todo__grid-todo {
@@ -705,7 +712,13 @@ body > div:nth-child(5) {
           align-items: center;
   margin: 10px auto;
   padding: 5px 10px;
-  background: #6e6ece;
+  background: #1b065e;
+  -webkit-animation-name: fadeInLeft;
+          animation-name: fadeInLeft;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
   border-radius: 5px;
 }
 
@@ -719,9 +732,10 @@ body > div:nth-child(5) {
 }
 
 .todos__container .todos__Grid .todo__grid-todo svg {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  stroke: #fff;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+  fill: rgba(27, 6, 94, 0.5);
+  stroke: #1b065e;
 }
 
 .todos__container .todos__Grid .todo__grid-todo .dropDown {
@@ -741,10 +755,10 @@ body > div:nth-child(5) {
     font-size: 42px;
     line-height: 52px;
     margin-bottom: 90px;
-    margin-top: 70px;
+    margin-top: 30px;
   }
   .todos__container .todos__inputGroup {
-    margin-bottom: 60px;
+    margin-bottom: 70px;
   }
   .todos__container .todos__inputGroup .todos__input {
     margin-right: 30px;
@@ -778,20 +792,27 @@ body > div:nth-child(5) {
   }
   .todos__container .todos__inputGroup .todos__inputGroup-button {
     width: 15%;
-    font-size: 16px;
+    font-size: 18px;
     -webkit-transition: 0.4s ease all;
     transition: 0.4s ease all;
     border: 1px solid transparent;
     cursor: pointer;
   }
   .todos__container .todos__filter-container {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   .todos__container .todos__filter-container .todos__filter-button {
     font-size: 18px;
   }
   .todos__container .todos__filter-container .todos__filter-button:hover {
     cursor: pointer;
+  }
+  .todos__container .todos__filter-container .all,
+  .todos__container .todos__filter-container .uncompleted {
+    width: 80px;
+  }
+  .todos__container .todos__Grid {
+    background-position-y: -90px;
   }
   .todos__container .todos__Grid .todo__grid-todo {
     -webkit-transition: 0.6s ease all;
@@ -803,12 +824,13 @@ body > div:nth-child(5) {
     line-height: 22px;
     color: #fff;
   }
-  .todos__container .todos__Grid .todo__grid-todo .todos__grid-todo-description .checkbox {
-    margin-right: 20px;
-  }
   .todos__container .todos__Grid .todo__grid-todo:hover {
     background: rgba(27, 6, 94, 0.9);
     cursor: pointer;
+  }
+  .todos__container .todos__Grid .todo__grid-todo:hover svg {
+    fill: #6e6ece;
+    stroke: rgba(255, 255, 255, 0.7);
   }
 }
 
@@ -1018,8 +1040,8 @@ body > div:nth-child(5) {
           animation-name: modalOpen;
   -webkit-animation-iteration-count: initial;
           animation-iteration-count: initial;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
 }
 
 .closeModal {
@@ -1027,8 +1049,8 @@ body > div:nth-child(5) {
           animation-name: modalClose;
   -webkit-animation-iteration-count: initial;
           animation-iteration-count: initial;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
 }
 
 @media screen and (min-width: 768px) {

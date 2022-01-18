@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { logOut } from '../../actions/authActions'
+import { cleaning } from '../../actions/tasksActions'
 import { LogOut } from '../icons/LogOut'
 import { RockectIcon } from '../icons/RockectIcon'
 import { LinkComponent } from './LinkComponent'
@@ -9,6 +10,7 @@ export const NavBar = () => {
     const dispatch = useDispatch()
     const handleClick = () => {
         dispatch(logOut())
+        dispatch(cleaning())
     }
     return (
         <header className="navbar__header">

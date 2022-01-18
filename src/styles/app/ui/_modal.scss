@@ -91,12 +91,12 @@
 .openModal {
   animation-name: modalOpen;
   animation-iteration-count: initial;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
 }
 .closeModal {
   animation-name: modalClose;
   animation-iteration-count: initial;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
 }
 
 @media screen and (min-width: 768px) {

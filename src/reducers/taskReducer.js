@@ -12,10 +12,13 @@ export const taskReducer = (state = initialState, action) => {
         case types.TaskCreateTask:
             return {
                 ...state,
-                tasks: [...state.tasks, action.payload]
+                tasks: [action.payload, ...state.tasks]
             }
         case types.cleaning:
-            return initialState
+            return {
+                tasks: [],
+                activeTask: false,
+            }
 
         case types.TaskGetTasks:
 
@@ -42,7 +45,9 @@ export const taskReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: state.tasks.map(t => (t.uuid == action.payload.uuid) ? action.payload : t)
+                    .sort((a, b) => (a.completed < b.completed) ? -1 : 1)
             }
+
 
 
         default:

@@ -40,7 +40,7 @@ const getTasksByUser = (tasks) => ({
     type: types.TaskGetTasks,
     payload: tasks
 })
-
+// sort((a,b)=> (a.completed > b.completed) ? -1 : 1)
 
 export const startGetTasksByUser = () => {
 
@@ -52,7 +52,8 @@ export const startGetTasksByUser = () => {
             const data = await resp.json()
 
             if (data.ok) {
-                dispatch(getTasksByUser(data.tasks))
+                const dataSorted = data.tasks.sort((a, b) => (a.completed < b.completed) ? -1 : 1)
+                dispatch(getTasksByUser(dataSorted))
 
             } else {
                 Swal.fire('error', `something went wrong creting the task`, 'error')
@@ -107,17 +108,17 @@ const updateTask = (task) => ({
     payload: task
 })
 
-export const startUpdateTask = (uuid, description) => {
+export const startUpdateTask = (uuid, fills) => {
 
     return async (dispatch) => {
 
+        console.log({ ...fills })
         try {
-            const resp = await updateTasksFetch(`v1/task/${uuid}`, { description })
+            const resp = await updateTasksFetch(`v1/task/${uuid}`, { ...fills })
             const data = await resp.json()
             if (data.ok) {
 
                 dispatch(updateTask(data.task))
-                Swal.fire('Great', 'the task has been updated successfully', 'success')
 
             } else {
                 Swal.fire('error', `something went wrong :(`, 'error')
@@ -130,31 +131,6 @@ export const startUpdateTask = (uuid, description) => {
 
     }
 }
-export const startCompleteTask = (uuid) => {
-
-    return async (dispatch) => {
-
-        try {
-            const resp = await updateTasksFetch(`v1/task/${uuid}`, { completed: true })
-            const data = await resp.json()
-            console.log(data)
-            if (data.ok) {
-
-                dispatch(updateTask(data.task))
-                Swal.fire('Great', 'the task has been updated successfully', 'success')
-
-            } else {
-                Swal.fire('error', `something went wrong :(`, 'error')
-            }
-
-
-        } catch (e) {
-            console.log(e)
-        }
-
-    }
-}
-
 
 
 
@@ -164,4 +140,8 @@ export const setActiveTask = (task) => ({
 })
 export const unSetActiveTask = () => ({
     type: types.UnSetActiveTask,
+})
+
+export const cleaning = () => ({
+    type: types.cleaning
 })

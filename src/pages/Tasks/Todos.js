@@ -8,6 +8,8 @@ import { UseForm } from '../../hooks/userForm'
 import { Modal } from '../../components/ui/Modal'
 
 
+
+
 export const Todos = () => {
 
     const dispatch = useDispatch()
@@ -84,27 +86,36 @@ export const Todos = () => {
                 <div className="todos__filter-container">
                     <button
                         type="button"
-                        className="todos__filter-button all"
+                        className={(filter === 'all')
+                            ? "todos__filter-button all selected"
+                            : "todos__filter-button all"}
                         onClick={handleChangeAllFilter}>
                         All
                     </button>
 
                     <button
                         type="button"
-                        className="todos__filter-button Completed"
+                        className={(filter === 'completed')
+                            ? "todos__filter-button Completed selected"
+                            : "todos__filter-button Completed"}
                         onClick={handleChangeCompletedFilter}>
                         Completed
                     </button>
 
                     <button
                         type="button"
-                        className="todos__filter-button uncompleted"
+                        className={
+                            (filter === 'todo')
+                                ? "todos__filter-button uncompleted selected"
+                                : "todos__filter-button uncompleted"}
                         onClick={handleChangeTodoFilter}>
                         To Do
                     </button>
                 </div>
 
                 <div className="todos__Grid">
+
+
                     {
                         (filter === 'all')
                             ?

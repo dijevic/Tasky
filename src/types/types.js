@@ -11,4 +11,5 @@ export const types = {
     TasksUpdateTask: `[task] update task`,
     SetActiveTask: `[task] active task`,
     UnSetActiveTask: `[task] unset active task`,
+    cleaning: `[clean] app`
 }
