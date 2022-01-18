@@ -1,5 +1,5 @@
 .todos__container {
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
   margin: 0px auto;
   text-align: center;
@@ -47,6 +47,28 @@
       box-shadow: 3px 3px 7px rgba($color: $black, $alpha: 0.5);
     }
   }
+  .todos__filter-container {
+    margin: 40px 0px 20px 0px;
+    .todos__filter-button {
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-right: 20px;
+      color: $black;
+      background: $white;
+    }
+
+    .Completed,
+    .uncompleted {
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-right: 20px;
+      //   background: $dark-blue;
+    }
+    .all,
+    .uncompleted {
+      width: 80px;
+    }
+  }
 
   .todos__Grid {
     display: flex;
@@ -83,6 +105,10 @@
         display: none;
       }
     }
+
+    .todo-completed {
+      text-decoration: line-through $white;
+    }
   }
 }
 
@@ -113,6 +139,7 @@
 
         &:hover {
           border-bottom: 2px solid $dark-blue;
+          cursor: pointer;
         }
         &:focus {
           border-bottom: 2px solid $dark-blue;
@@ -130,6 +157,15 @@
         //   //   background: rgba($color: $dark-blue, $alpha: 0.9);
         //   border: 1px solid $white;
         // }
+      }
+    }
+    .todos__filter-container {
+      margin-bottom: 10px;
+      .todos__filter-button {
+        font-size: 18px;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
     .todos__Grid {

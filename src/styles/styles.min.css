@@ -526,12 +526,18 @@ body > div:nth-child(5) {
 }
 
 @media screen and (min-width: 768px) {
+  .navbar__header {
+    padding: 10px 0px;
+  }
   .navbar__header .container span {
     font-size: 32px;
     line-height: 42px;
   }
   .navbar__header .container span:hover {
     cursor: pointer;
+  }
+  .navbar__header .container .navbar__header-logout {
+    padding: 0px 10px;
   }
   .navbar__header .container .navbar__header-logout .navbar__header-logout-span {
     color: #1b065e;
@@ -575,7 +581,7 @@ body > div:nth-child(5) {
 }
 
 .todos__container {
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
   margin: 0px auto;
   text-align: center;
@@ -644,6 +650,30 @@ body > div:nth-child(5) {
           box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
 }
 
+.todos__container .todos__filter-container {
+  margin: 40px 0px 20px 0px;
+}
+
+.todos__container .todos__filter-container .todos__filter-button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-right: 20px;
+  color: #000;
+  background: #fff;
+}
+
+.todos__container .todos__filter-container .Completed,
+.todos__container .todos__filter-container .uncompleted {
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.todos__container .todos__filter-container .all,
+.todos__container .todos__filter-container .uncompleted {
+  width: 80px;
+}
+
 .todos__container .todos__Grid {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -698,6 +728,11 @@ body > div:nth-child(5) {
   display: none;
 }
 
+.todos__container .todos__Grid .todo-completed {
+  -webkit-text-decoration: line-through #fff;
+          text-decoration: line-through #fff;
+}
+
 @media screen and (min-width: 768px) {
   .todos__container {
     margin-top: 60px;
@@ -736,6 +771,7 @@ body > div:nth-child(5) {
   }
   .todos__container .todos__inputGroup .todos__input:hover {
     border-bottom: 2px solid #1b065e;
+    cursor: pointer;
   }
   .todos__container .todos__inputGroup .todos__input:focus {
     border-bottom: 2px solid #1b065e;
@@ -746,6 +782,15 @@ body > div:nth-child(5) {
     -webkit-transition: 0.4s ease all;
     transition: 0.4s ease all;
     border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .todos__container .todos__filter-container {
+    margin-bottom: 10px;
+  }
+  .todos__container .todos__filter-container .todos__filter-button {
+    font-size: 18px;
+  }
+  .todos__container .todos__filter-container .todos__filter-button:hover {
     cursor: pointer;
   }
   .todos__container .todos__Grid .todo__grid-todo {
@@ -958,6 +1003,11 @@ body > div:nth-child(5) {
   background: rgba(0, 0, 0, 0.1);
 }
 
+.ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .Complete {
+  background: #6e6ece;
+  color: #fff;
+}
+
 .ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .delete {
   background: rgba(255, 0, 0, 0.8);
   color: #fff;
@@ -1034,6 +1084,10 @@ body > div:nth-child(5) {
   .ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .modal__form-button:hover {
     -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+  }
+  .ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .Complete svg {
+    width: 35px;
+    height: 35px;
   }
   .ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .delete svg {
     width: 30px;

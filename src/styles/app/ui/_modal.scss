@@ -76,6 +76,10 @@
           margin-top: 30px;
           background: rgba($color: $black, $alpha: 0.1);
         }
+        .Complete {
+          background: $primary-color;
+          color: $white;
+        }
         .delete {
           background: rgba($color: red, $alpha: 0.8);
           color: $white;
@@ -149,6 +153,12 @@
             margin-top: 40px;
             &:hover {
               box-shadow: 3px 3px 5px rgba($color: $black, $alpha: 0.7);
+            }
+          }
+          .Complete {
+            svg {
+              width: 35px;
+              height: 35px;
             }
           }
           .delete {

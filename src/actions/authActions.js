@@ -32,8 +32,8 @@ export const startLogin = (email, password, setChecking) => {
                     id: data.id,
                     name: data.name
                 }
-                dispatch(login(user))
                 setChecking(false)
+                dispatch(login(user))
 
             } else {
                 setChecking(false)
@@ -59,16 +59,16 @@ export const startCheckingToken = (setChecking) => {
             if (data.ok) {
                 localStorage.setItem('token', data.token)
                 localStorage.setItem('tokenDateStart', new Date().getTime())
+                setChecking(false)
                 const user = {
                     id: data.id,
                     name: data.name
                 }
                 dispatch(login(user))
-                setChecking(false)
 
             } else {
                 setChecking(false)
-                Swal.fire(`Error`, 'something wrong with password or email', 'info')
+                Swal.fire(`Error`, 'something wrong with password or email ', 'info')
             }
 
 
@@ -136,13 +136,12 @@ export const startRegistration = (setLoading, token) => {
     }
 }
 
-export const startResetPassword = (setLoading, token) => {
+export const startResetPassword = (token) => {
 
 
 
     return async (dispatch) => {
 
-        setLoading(true)
         try {
             const resp = await fetchWithResetToken('v1/auth/change-password', token)
             const data = await resp.json()
@@ -154,12 +153,10 @@ export const startResetPassword = (setLoading, token) => {
                     id: data.id,
                     name: data.name
                 }
-                setLoading(false)
-                Swal.fire(`Great`, `you have a new password :D`, 'info')
                 dispatch(login(user))
+                Swal.fire(`Great`, `you have a new password :D`, 'info')
 
             } else {
-                setLoading(false)
                 Swal.fire(`Error`, `something went wrong :(`, 'info')
             }
 

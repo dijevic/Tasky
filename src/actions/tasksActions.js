@@ -130,6 +130,30 @@ export const startUpdateTask = (uuid, description) => {
 
     }
 }
+export const startCompleteTask = (uuid) => {
+
+    return async (dispatch) => {
+
+        try {
+            const resp = await updateTasksFetch(`v1/task/${uuid}`, { completed: true })
+            const data = await resp.json()
+            console.log(data)
+            if (data.ok) {
+
+                dispatch(updateTask(data.task))
+                Swal.fire('Great', 'the task has been updated successfully', 'success')
+
+            } else {
+                Swal.fire('error', `something went wrong :(`, 'error')
+            }
+
+
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+}
 
 
 

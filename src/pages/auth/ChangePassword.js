@@ -23,9 +23,11 @@ export const ChangePassword = () => {
     }, [dispatch])
 
 
-    if (loading) {
-        return (<Spinner color="#6e6ece" />)
-    }
+  
+
+    return (
+        <Spinner color="#6e6ece" />
+    )
 
 
 }

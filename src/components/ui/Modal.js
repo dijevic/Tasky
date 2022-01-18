@@ -2,12 +2,13 @@ import moment from 'moment'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { startDeleteTask, startUpdateTask, unSetActiveTask } from '../../actions/tasksActions'
+import { startDeleteTask, startUpdateTask, unSetActiveTask, startCompleteTask } from '../../actions/tasksActions'
 import { closeModal } from '../../actions/uiActions'
 import { UseForm } from '../../hooks/userForm'
 import { Minimize } from '../icons/Minimize'
 import { Tools } from '../icons/Tools'
 import { Trash } from '../icons/Trash'
+import { Check } from '../icons/Check'
 
 export const Modal = () => {
     const dispatch = useDispatch()
@@ -15,7 +16,7 @@ export const Modal = () => {
     const date = moment(activeTask.creationDate).add(10, 'days').calendar()
 
     const initialState = {
-        description: activeTask.description
+        description: activeTask.capitalizeDescription
     }
     const [formValue, handleInputChange] = UseForm(initialState)
 
@@ -36,6 +37,14 @@ export const Modal = () => {
         dispatch(startUpdateTask(activeTask.uuid, description))
         dispatch(unSetActiveTask())
         dispatch(closeModal())
+    }
+    const handleCompleteTask = () => {
+        const completed = false
+
+        dispatch(startCompleteTask(activeTask.uuid))
+        dispatch(unSetActiveTask())
+        dispatch(closeModal())
+
     }
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -82,6 +91,9 @@ export const Modal = () => {
 
                     <div className="modal__form-buttonsContainer">
                         <button type="button" onClick={handleUpdate} className="modal__form-button update" >Update</button>
+                        <button type="button" onClick={handleCompleteTask} className="modal__form-button Complete" >
+                            <Check />
+                        </button>
                         <button type="button" onClick={handleDelete} className="modal__form-button delete" >
                             <Trash />
                         </button>

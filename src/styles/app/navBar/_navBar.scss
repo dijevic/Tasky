@@ -57,6 +57,7 @@
 
 @media screen and (min-width: 768px) {
   .navbar__header {
+    padding: 10px 0px;
     .container {
       span {
         font-size: 32px;
@@ -66,6 +67,7 @@
         }
       }
       .navbar__header-logout {
+        padding: 0px 10px;
         .navbar__header-logout-span {
           color: $dark-blue;
           font-size: 24px;

@@ -4,27 +4,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setActiveTask } from '../../actions/tasksActions'
 import { openModal } from '../../actions/uiActions'
 import { RockectIcon } from '../icons/RockectIcon'
+import { capitalizeWord } from '../../helpers/capitalize'
 
 
 moment().format("MMM Do YY")
 
-export const Task = ({ description, uuid, creationDate }) => {
+export const Task = ({ description, uuid, creationDate, completed }) => {
 
 
-
+    const capitalizeDescription = capitalizeWord(description)
 
     const dispatch = useDispatch()
     const handleClick = () => {
-        dispatch(setActiveTask({ uuid, description, creationDate }))
+        dispatch(setActiveTask({ uuid, capitalizeDescription, creationDate }))
         dispatch(openModal())
     }
     return (
         <div
             className="todo__grid-todo"
             onClick={handleClick}
-            description={description}
         >
-            <p className="todos__grid-todo-description">{description}</p>
+            <p className={(!completed) ? "todos__grid-todo-description" : "todos__grid-todo-description todo-completed"}>{capitalizeDescription}</p>
 
             <RockectIcon />
         </div>
