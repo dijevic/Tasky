@@ -17,10 +17,11 @@ export const startAddNewTask = (task) => {
         try {
             const resp = await fetchWithToken(task, 'POST', 'v1/task/')
             const data = await resp.json()
-
             if (data.ok) {
                 task.uuid = data.task.uuid;
                 task.creationDate = new Date().getTime();
+                task.completed = false
+                task.task_category = { uuid: task.task_category }
                 dispatch(newTask(task))
 
             } else {

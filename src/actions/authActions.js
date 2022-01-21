@@ -120,7 +120,6 @@ export const startRegistration = (setLoading, token) => {
                     name: data.name
                 }
                 dispatch(login(user))
-                setLoading(false)
 
             } else {
                 setLoading(false)

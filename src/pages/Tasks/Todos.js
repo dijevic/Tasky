@@ -3,24 +3,40 @@ import Swal from 'sweetalert2'
 import validator from 'validator'
 import { useDispatch, useSelector } from 'react-redux'
 import { startAddNewTask, startGetTasksByUser } from '../../actions/tasksActions'
+import { startGetcategorysByUser } from '../../actions/categoryActions'
 import { Task } from '../../components/task/Task'
 import { UseForm } from '../../hooks/userForm'
 import { Modal } from '../../components/ui/Modal'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+import { PlusIcon } from '../../components/icons/PlusIcon'
+import { SettingIcon } from '../../components/icons/SettingIcon'
+
+
 
 
 
 
 export const Todos = () => {
 
+
+
     const dispatch = useDispatch()
     const { tasks } = useSelector(state => state.task)
+    const { categories, activeCategory } = useSelector(state => state.category)
+
     const { modalOpen } = useSelector(state => state.ui)
     const [filter, setFilter] = useState('all')
 
+    const mappedCategories = categories.map(category => {
+        return { value: category.uuid, label: category.name }
+    })
 
     useEffect(() => {
 
         dispatch(startGetTasksByUser())
+        dispatch(startGetcategorysByUser())
+
 
     }, [dispatch])
 
@@ -40,7 +56,7 @@ export const Todos = () => {
             return Swal.fire('Error', 'blank description', 'info')
         }
 
-        dispatch(startAddNewTask({ description }))
+        dispatch(startAddNewTask({ description, task_category: activeCategory.uuid }))
 
         resetValue()
 
@@ -55,13 +71,16 @@ export const Todos = () => {
     const handleChangeAllFilter = () => {
         setFilter('all')
     }
+    const handleOnchange = (e) => {
+        console.log(e)
+    }
 
 
     return (
 
         <>
             {
-                (modalOpen) ? <Modal /> : false
+                (modalOpen) ? <Modal mode="t" /> : false
             }
 
             <div className="todos__container">
@@ -81,8 +100,12 @@ export const Todos = () => {
 
                     />
 
-                    <button className="todos__inputGroup-button">Create</button>
+                    <button
+                        className="todos__inputGroup-button">
+                        <PlusIcon />
+                    </button>
                 </form>
+
                 <div className="todos__filter-container">
                     <button
                         type="button"
@@ -111,6 +134,12 @@ export const Todos = () => {
                         onClick={handleChangeTodoFilter}>
                         To Do
                     </button>
+
+
+                </div>
+                <div className="todos__dropdown-container">
+                    <Dropdown onChange={handleOnchange} options={mappedCategories} placeholder='opciones' />
+                    <SettingIcon />
                 </div>
 
                 <div className="todos__Grid">

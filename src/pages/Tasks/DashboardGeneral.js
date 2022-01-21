@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { capitalizeText } from '../../helpers/capitalize'
 
 
-export const DashboardGeneral = () => {
+export const DashboardGeneral = React.memo(() => {
     const { user } = useSelector(state => state.auth)
     const capitalizedName = capitalizeText(user.name)
 
@@ -26,4 +26,4 @@ export const DashboardGeneral = () => {
 
         </div>
     )
-}
+})

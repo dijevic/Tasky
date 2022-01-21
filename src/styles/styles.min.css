@@ -14,7 +14,7 @@
 body,
 html {
   width: 100%;
-  height: 95vh;
+  height: 100%;
 }
 
 .auth__container {
@@ -314,13 +314,12 @@ body > div:nth-child(5) {
 }
 
 .appContainer {
-  min-height: 100vh;
-  position: relative;
+  min-height: 100%;
 }
 
 .tasks__container {
   width: 100%;
-  min-height: 100vh;
+  height: 95vh;
 }
 
 .tasks__container h2 {
@@ -648,6 +647,38 @@ body > div:nth-child(5) {
   color: #fff;
   -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
           box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+}
+
+.todos__container .todos__inputGroup .todos__inputGroup-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.todos__container .todos__dropdown-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+}
+
+.todos__container .todos__dropdown-container .icon-setting-container {
+  padding: 7px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.todos__container .Dropdown-root {
+  width: 45%;
+  max-width: 180px;
+  margin-right: 5px;
+  font-size: 16px;
 }
 
 .todos__container .todos__filter-container {
@@ -660,6 +691,7 @@ body > div:nth-child(5) {
   margin-right: 20px;
   color: #fff;
   background: rgba(0, 0, 0, 0.3);
+  font-size: 15px;
 }
 
 .todos__container .todos__filter-container .Completed,
@@ -675,7 +707,7 @@ body > div:nth-child(5) {
 
 .todos__container .todos__filter-container .all,
 .todos__container .todos__filter-container .uncompleted {
-  width: 73px;
+  width: 67px;
 }
 
 .todos__container .todos__Grid {
@@ -797,6 +829,21 @@ body > div:nth-child(5) {
     transition: 0.4s ease all;
     border: 1px solid transparent;
     cursor: pointer;
+  }
+  .todos__container .todos__dropdown-container .icon-setting-container {
+    padding: 7px;
+  }
+  .todos__container .todos__dropdown-container .icon-setting-container svg {
+    width: 30px;
+    height: 30px;
+  }
+  .todos__container .todos__dropdown-container .icon-setting-container:hover {
+    -webkit-transition: 0.3s ease all;
+    transition: 0.3s ease all;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .todos__container .Dropdown-root {
+    font-size: 18px;
   }
   .todos__container .todos__filter-container {
     margin-bottom: 5px;
@@ -926,6 +973,7 @@ body > div:nth-child(5) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: scroll;
 }
 
 .ui__modal-container .modal__container {
@@ -938,7 +986,7 @@ body > div:nth-child(5) {
           justify-content: center;
 }
 
-.ui__modal-container .modal__container .modal-form {
+.ui__modal-container .modal__container .modal {
   z-index: 200;
   max-width: 600px;
   width: 100%;
@@ -959,17 +1007,18 @@ body > div:nth-child(5) {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
-  border-top: 10px solid #6e6ece;
-  border-bottom: 10px solid #6e6ece;
+  border-top: 10px solid #1b065e;
+  border-bottom: 10px solid #1b065e;
+  overflow: scroll;
 }
 
-.ui__modal-container .modal__container .modal-form .closeIcon {
+.ui__modal-container .modal__container .modal .closeIcon {
   position: absolute;
   right: 4%;
   top: 5px;
 }
 
-.ui__modal-container .modal__container .modal-form .ui__modal-title {
+.ui__modal-container .modal__container .modal .ui__modal-title {
   font-size: 28px;
   line-height: 28px;
   color: #000;
@@ -980,7 +1029,7 @@ body > div:nth-child(5) {
       -ms-flex-align: center;
           align-items: center;
   margin-left: 15px;
-  color: #6e6ece;
+  color: #1b065e;
   margin-bottom: 10px;
   margin-top: 30px;
   padding: 10px;
@@ -988,7 +1037,7 @@ body > div:nth-child(5) {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.ui__modal-container .modal__container .modal-form .modal__input {
+.ui__modal-container .modal__container .modal .modal__input {
   padding: 10px;
   width: 100%;
   margin: 20px 0px;
@@ -1000,12 +1049,12 @@ body > div:nth-child(5) {
   color: rgba(0, 0, 0, 0.8);
 }
 
-.ui__modal-container .modal__container .modal-form .modal__date {
+.ui__modal-container .modal__container .modal .modal__date {
   font-size: 16px;
   font-weight: 900;
 }
 
-.ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer {
+.ui__modal-container .modal__container .modal .modal-buttonsContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1014,7 +1063,7 @@ body > div:nth-child(5) {
   width: 100%;
 }
 
-.ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .modal__form-button {
+.ui__modal-container .modal__container .modal .modal-buttonsContainer .modal-button {
   padding: 10px 15px;
   color: #000;
   border-radius: 10px;
@@ -1025,14 +1074,52 @@ body > div:nth-child(5) {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .Complete {
-  background: #6e6ece;
+.ui__modal-container .modal__container .modal .modal-buttonsContainer .Complete {
+  background: #1b065e;
   color: #fff;
 }
 
-.ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .delete {
+.ui__modal-container .modal__container .modal .modal-buttonsContainer .delete {
   background: rgba(255, 0, 0, 0.8);
   color: #fff;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category {
+  width: 100%;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan {
+  padding: 10px;
+  border-radius: 80%;
+  background: #6e6ece;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 5px;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan svg {
+  width: 30px;
+  height: 30px;
 }
 
 .openModal {
@@ -1054,66 +1141,81 @@ body > div:nth-child(5) {
 }
 
 @media screen and (min-width: 768px) {
-  .ui__modal-container .modal__container .modal-form {
+  .ui__modal-container .modal__container .modal {
     padding: 40px;
     width: 90%;
   }
-  .ui__modal-container .modal__container .modal-form .ui__modal-title {
+  .ui__modal-container .modal__container .modal .ui__modal-title {
     font-size: 36px;
     line-height: 36px;
     margin-left: 25px;
     padding: 20px;
     margin-bottom: 20px;
   }
-  .ui__modal-container .modal__container .modal-form .ui__modal-title svg {
+  .ui__modal-container .modal__container .modal .ui__modal-title svg {
     width: 45px;
     height: 45px;
     margin-right: 10px;
     stroke: rgba(0, 0, 0, 0.9);
   }
-  .ui__modal-container .modal__container .modal-form .closeIcon {
+  .ui__modal-container .modal__container .modal .closeIcon {
     top: 20px;
     z-index: 200;
   }
-  .ui__modal-container .modal__container .modal-form .closeIcon:hover {
+  .ui__modal-container .modal__container .modal .closeIcon:hover {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
   }
-  .ui__modal-container .modal__container .modal-form .modal__input {
+  .ui__modal-container .modal__container .modal .modal__input {
     padding: 13px;
     margin-bottom: 40px;
     font-size: 22px;
     line-height: 28px;
     margin-top: 45px;
   }
-  .ui__modal-container .modal__container .modal-form .modal__input:hover {
+  .ui__modal-container .modal__container .modal .modal__input:hover {
     border-bottom: 2px solid #6e6ece;
   }
-  .ui__modal-container .modal__container .modal-form .modal__input:focus {
+  .ui__modal-container .modal__container .modal .modal__input:focus {
     border-bottom: 2px solid #6e6ece;
   }
-  .ui__modal-container .modal__container .modal-form .modal__date {
+  .ui__modal-container .modal__container .modal .modal__date {
     font-size: 16px;
     font-weight: 900;
   }
-  .ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .modal__form-button {
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .modal-button {
     padding: 15px 20px;
     -webkit-transition: ease all 0.4s;
     transition: ease all 0.4s;
     font-size: 18px;
     margin-top: 40px;
   }
-  .ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .modal__form-button:hover {
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .modal-button:hover {
     -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
   }
-  .ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .Complete svg {
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .Complete svg {
     width: 35px;
     height: 35px;
   }
-  .ui__modal-container .modal__container .modal-form .modal__form-buttonsContainer .delete svg {
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .delete svg {
     width: 30px;
     height: 30px;
+  }
+  .ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory {
+    margin-top: 20px;
+  }
+  .ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan {
+    padding: 12px;
+    -webkit-transition: 0.3s ease all;
+    transition: 0.3s ease all;
+  }
+  .ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan svg {
+    width: 35px;
+    height: 35px;
+  }
+  .ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan:hover {
+    background: rgba(110, 110, 206, 0.9);
   }
 }
 

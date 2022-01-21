@@ -11,12 +11,12 @@ export const FinishRegistration = () => {
     const history = useHistory()
     const { token } = useParams()
     const [loading, setLoading] = useState(true)
-    console.log(history)
 
     useEffect(() => {
 
         if (validator.isJWT(token)) {
             dispatch(startRegistration(setLoading, token))
+
         } else {
             history.replace('/auth/login')
         }
@@ -26,6 +26,10 @@ export const FinishRegistration = () => {
     if (loading) {
         return (<Spinner color="#6e6ece" />)
     }
+
+    return (
+        <h2>hello</h2>
+    )
 
 
 

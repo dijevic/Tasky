@@ -11,5 +11,16 @@ export const types = {
     TasksUpdateTask: `[task] update task`,
     SetActiveTask: `[task] active task`,
     UnSetActiveTask: `[task] unset active task`,
-    cleaning: `[clean] app`
+    cleaning: `[clean] app`,
+
+
+    // categories
+
+    CategoryCreateCategory: `[category] create category`,
+    CategoryGetCategories: `[category] get categories `,
+    CategoryDeleteCategory: `[category] delete category`,
+    CategoryUpdateCategory: `[category] update category`,
+    CategorySetActive: `[category] set active category`,
+    CategoryUnSetActive: `[category] unset active category`,
+
 }
