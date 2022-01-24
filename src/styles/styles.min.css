@@ -597,58 +597,94 @@ body > div:nth-child(5) {
   color: #6e6ece;
 }
 
-.todos__container .todos__inputGroup {
-  margin-bottom: 60px;
+.todos__container .todos__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0px auto 60px auto;
 }
 
-.todos__container .todos__inputGroup .todos__input {
+.todos__container .todos__form .todos__form-inputGroup {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.todos__container .todos__form .todos__input {
   width: 80%;
   max-width: 400px;
   outline: none;
-  padding: 20px 25px;
-  margin-right: 5px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  padding: 20px 50px 20px 10px;
+  border-bottom: 2px solid rgba(129, 86, 86, 0.5);
   font-size: 16px;
   line-height: 16px;
+  margin-bottom: 10px;
 }
 
-.todos__container .todos__inputGroup .todos__input::-webkit-input-placeholder {
+.todos__container .todos__form .todos__input::-webkit-input-placeholder {
   font-size: 14px;
   line-height: 20px;
 }
 
-.todos__container .todos__inputGroup .todos__input:-ms-input-placeholder {
+.todos__container .todos__form .todos__input:-ms-input-placeholder {
   font-size: 14px;
   line-height: 20px;
 }
 
-.todos__container .todos__inputGroup .todos__input::-ms-input-placeholder {
+.todos__container .todos__form .todos__input::-ms-input-placeholder {
   font-size: 14px;
   line-height: 20px;
 }
 
-.todos__container .todos__inputGroup .todos__input::placeholder {
+.todos__container .todos__form .todos__input::placeholder {
   font-size: 14px;
   line-height: 20px;
 }
 
-.todos__container .todos__inputGroup .todos__inputGroup-button {
+.todos__container .todos__form .todos__dropdown-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.todos__container .todos__form .todos__dropdown-container .Dropdown-root {
+  width: 80%;
+  max-width: 350px;
+  padding: 10px;
+}
+
+.todos__container .todos__form .todos__dropdown-container .Dropdown-root .Dropdown-control {
+  background-color: #1b065e;
   border-radius: 5px;
-  -webkit-transition: 0.6s ease all;
-  transition: 0.6s ease all;
-  background: #6e6ece;
-  padding: 5px 20px;
   color: #fff;
-  border-radius: 100%;
 }
 
-.todos__container .todos__inputGroup .todos__inputGroup-button svg {
+.todos__container .todos__form .todos__form-button {
+  padding: 7px 12px;
+  position: absolute;
+  right: 15px;
+  bottom: 25px;
+  border-radius: 5px;
+}
+
+.todos__container .todos__form .todos__form-button svg {
   width: 28px;
   height: 28px;
 }
@@ -666,7 +702,7 @@ body > div:nth-child(5) {
   margin-top: 20px;
 }
 
-.todos__container .todos__dropdown-container .icon-setting-container {
+.todos__container .todos__dropdown-container .todos__span-icon {
   padding: 7px;
   background: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -719,7 +755,6 @@ body > div:nth-child(5) {
   margin: auto;
   max-width: 1000px;
   background: url("/src/assets/images/Cute_Astronaut_Character_generated.jpg");
-  background-position-y: -64px;
   background-position-x: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -787,67 +822,67 @@ body > div:nth-child(5) {
     margin-bottom: 90px;
     margin-top: 30px;
   }
-  .todos__container .todos__inputGroup {
+  .todos__container .todos__form {
     margin-bottom: 70px;
   }
-  .todos__container .todos__inputGroup .todos__input {
-    margin-right: 30px;
+  .todos__container .todos__form .todos__input {
+    width: 100%;
     font-size: 22px;
     line-height: 22px;
     -webkit-transition: 0.6s ease all;
     transition: 0.6s ease all;
+    margin-bottom: 20px;
   }
-  .todos__container .todos__inputGroup .todos__input::-webkit-input-placeholder {
+  .todos__container .todos__form .todos__input::-webkit-input-placeholder {
     font-size: 22px;
     line-height: 22px;
   }
-  .todos__container .todos__inputGroup .todos__input:-ms-input-placeholder {
+  .todos__container .todos__form .todos__input:-ms-input-placeholder {
     font-size: 22px;
     line-height: 22px;
   }
-  .todos__container .todos__inputGroup .todos__input::-ms-input-placeholder {
+  .todos__container .todos__form .todos__input::-ms-input-placeholder {
     font-size: 22px;
     line-height: 22px;
   }
-  .todos__container .todos__inputGroup .todos__input::placeholder {
+  .todos__container .todos__form .todos__input::placeholder {
     font-size: 22px;
     line-height: 22px;
   }
-  .todos__container .todos__inputGroup .todos__input:hover {
+  .todos__container .todos__form .todos__input:hover {
     border-bottom: 2px solid #1b065e;
     cursor: pointer;
   }
-  .todos__container .todos__inputGroup .todos__input:focus {
+  .todos__container .todos__form .todos__input:focus {
     border-bottom: 2px solid #1b065e;
   }
-  .todos__container .todos__inputGroup .todos__inputGroup-button {
+  .todos__container .todos__form .todos__form-button {
     font-size: 18px;
+    bottom: 35px;
+    right: -25px;
     cursor: pointer;
   }
-  .todos__container .todos__inputGroup .todos__inputGroup-button svg {
+  .todos__container .todos__form .todos__form-button svg {
     width: 35px;
     height: 35px;
   }
-  .todos__container .todos__dropdown-container .icon-setting-container {
-    padding: 7px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+  .todos__container .todos__dropdown-container .todos__span-icon {
+    padding: 5px;
   }
-  .todos__container .todos__dropdown-container .icon-setting-container svg {
+  .todos__container .todos__dropdown-container .todos__span-icon svg {
     width: 30px;
     height: 30px;
   }
-  .todos__container .todos__dropdown-container .icon-setting-container:hover {
+  .todos__container .todos__dropdown-container .todos__span-icon:hover {
     -webkit-transition: 0.3s ease all;
     transition: 0.3s ease all;
     background: rgba(0, 0, 0, 0.3);
   }
   .todos__container .Dropdown-root {
     font-size: 18px;
+  }
+  .todos__container .Dropdown-root:hover {
+    cursor: pointer;
   }
   .todos__container .todos__filter-container {
     margin-bottom: 5px;
@@ -1078,10 +1113,15 @@ body > div:nth-child(5) {
   margin-right: 5px;
 }
 
-.ui__modal-container .modal__container .modal .modal-buttonsContainer .Complete,
+.ui__modal-container .modal__container .modal .modal-buttonsContainer .complete,
 .ui__modal-container .modal__container .modal .modal-buttonsContainer .add {
   background: #1b065e;
   color: #fff;
+}
+
+.ui__modal-container .modal__container .modal .modal-buttonsContainer .add svg {
+  width: 25px;
+  height: 25px;
 }
 
 .ui__modal-container .modal__container .modal .modal-buttonsContainer .delete {
@@ -1101,6 +1141,11 @@ body > div:nth-child(5) {
 
 .ui__modal-container .modal__container .modal .modal__container-category .modal__form-category-name {
   text-align: center;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category .modal__form-category-name .modal__category-nameSelected {
+  font-weight: bold;
+  margin-left: 10px;
 }
 
 .ui__modal-container .modal__container .modal .modal__container-category .modal__form {
@@ -1153,18 +1198,38 @@ body > div:nth-child(5) {
   height: 28px;
 }
 
+.modal-error {
+  background: #1b065e;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 7px;
+  border-radius: 5px;
+  width: 70%;
+  margin: auto;
+  color: #fff;
+  text-align: center;
+  -webkit-animation-name: pulse;
+          animation-name: pulse;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+}
+
+.modal-error svg {
+  margin-right: 7px;
+}
+
 .openModal {
   -webkit-animation-name: modalOpen;
           animation-name: modalOpen;
-  -webkit-animation-iteration-count: initial;
-          animation-iteration-count: initial;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-}
-
-.closeModal {
-  -webkit-animation-name: modalClose;
-          animation-name: modalClose;
   -webkit-animation-iteration-count: initial;
           animation-iteration-count: initial;
   -webkit-animation-duration: 0.5s;
@@ -1232,11 +1297,19 @@ body > div:nth-child(5) {
     width: 28px;
     height: 28px;
   }
-  .ui__modal-container .modal__container .modal .modal-buttonsContainer .Complete svg {
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .complete {
+    background: #1b065e;
+    color: #fff;
+  }
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .complete svg {
     width: 35px;
     height: 35px;
   }
   .ui__modal-container .modal__container .modal .modal-buttonsContainer .delete svg {
+    width: 30px;
+    height: 30px;
+  }
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .add svg {
     width: 30px;
     height: 30px;
   }
@@ -1284,28 +1357,6 @@ body > div:nth-child(5) {
   100% {
     -webkit-transform: scale(1);
             transform: scale(1);
-  }
-}
-
-@-webkit-keyframes modalClose {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-}
-
-@keyframes modalClose {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
   }
 }
 /*# sourceMappingURL=styles.min.css.map */

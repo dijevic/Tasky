@@ -41,7 +41,6 @@ const getTasksByUser = (tasks) => ({
     type: types.TaskGetTasks,
     payload: tasks
 })
-// sort((a,b)=> (a.completed > b.completed) ? -1 : 1)
 
 export const startGetTasksByUser = () => {
 
@@ -51,6 +50,7 @@ export const startGetTasksByUser = () => {
         try {
             const resp = await fetchWithToken(false, 'GET', 'v1/task/user')
             const data = await resp.json()
+            console.log(data)
 
             if (data.ok) {
                 const dataSorted = data.tasks.sort((a, b) => (a.completed < b.completed) ? -1 : 1)
@@ -120,6 +120,7 @@ export const startUpdateTask = (uuid, fills) => {
             if (data.ok) {
 
                 dispatch(updateTask(data.task))
+                Swal.fire('Great', 'the task has been updated', 'success')
 
             } else {
                 Swal.fire('error', `something went wrong :(`, 'error')

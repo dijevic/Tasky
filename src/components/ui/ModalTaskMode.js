@@ -5,12 +5,13 @@ import { useDispatch } from 'react-redux';
 import { startDeleteTask, startUpdateTask, unSetActiveTask } from '../../actions/tasksActions';
 import { closeModal } from '../../actions/uiActions';
 import { Check } from '../icons/Check';
-import { Minimize } from '../icons/Minimize';
-import { Tools } from '../icons/Tools';
+
 import { Trash } from '../icons/Trash';
 import { UndoIcon } from '../icons/UndoIcon';
 import { UseForm } from '../../hooks/userForm';
-import { UpdateIcon } from '../icons/UpdateIcon';
+
+import { ModalButton } from './ModalButton';
+
 
 export const ModalTaskMode = () => {
 
@@ -69,33 +70,27 @@ export const ModalTaskMode = () => {
             <span className="modal__date">{`Created at :${date}`}</span>
 
             <div className="modal-buttonsContainer">
-                <button type="button"
+                <ModalButton
                     onClick={handleUpdate}
-                    className="modal-button update" >
-                    <UpdateIcon />
-                    Update
-                </button>
-                <button type="button"
+                    classes="modal-button update"
+                    text="Update"
+                />
+
+
+                <ModalButton
                     onClick={handleCompleteTask}
-                    className="modal-button Complete" >
-                    {
-                        (activeTask.completed)
-                            ? <>
-                                <UndoIcon />
-                                <span>Undo</span>
-                            </>
-                            : <>
-                                <Check />
-                                <span>Done</span>
-                            </>
-                    }
+                    classes="modal-button complete"
+                    Icon={(activeTask.completed) ? UndoIcon : Check}
+                    text={(activeTask.completed) ? "Undo" : "Done"}
+                />
 
 
-                </button>
-                <button type="button" onClick={handleDelete} className="modal-button delete" >
-                    <Trash />
-                    Delete
-                </button>
+                <ModalButton
+                    onClick={handleDelete}
+                    classes="modal-button delete"
+                    Icon={Trash}
+
+                />
             </div>
         </>
 

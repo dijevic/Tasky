@@ -9,8 +9,7 @@ import { capitalizeWord } from '../../helpers/capitalize'
 
 moment().format("MMM Do YY")
 
-export const Task = React.memo(({ description, uuid, creationDate, completed }) => {
-
+export const Task = React.memo(({ description, uuid, creationDate, completed, task_category }) => {
 
     const capitalizeDescription = capitalizeWord(description)
 

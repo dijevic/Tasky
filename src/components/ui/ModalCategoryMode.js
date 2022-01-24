@@ -4,12 +4,16 @@ import 'react-dropdown/style.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { startAddNewCategory, startDeleteCategory, startUpdateCategory } from '../../actions/categoryActions';
+import { cleanMode, closeModal } from '../../actions/uiActions';
 import { UseForm } from '../../hooks/userForm';
 import { Check } from '../icons/Check';
+import { Info } from '../icons/Info';
 import { LeftArrow } from '../icons/LeftArrow';
 import { PlusIcon } from '../icons/PlusIcon';
 import { Trash } from '../icons/Trash';
 import { UpdateIcon } from '../icons/UpdateIcon';
+import { ModalButton } from './ModalButton';
+
 
 export const ModalCategoryMode = () => {
 
@@ -17,6 +21,7 @@ export const ModalCategoryMode = () => {
     const { categories } = useSelector(state => state.category)
 
     const [showInput, setShowInput] = useState(false)
+    const [showError, setShowError] = useState(false);
     const [currentCategory, setCurrentCategory] = useState({
         label: false,
         value: false
@@ -35,37 +40,66 @@ export const ModalCategoryMode = () => {
     const { name } = formValue
 
 
-    const handleCategoryChange = (e) => {
+    const handleShowInput = (e) => {
 
-        setShowInput(!showInput)
+        if (e.target.className == 'modal-button update' || e.target.className == 'button-text') {
 
-        if (e.target.className == 'modal-button update') {
-            setModeUpdate(true)
+            if (value) {
+                setShowInput(!showInput)
+                setModeUpdate(true)
+            } else {
+                setShowError(true)
+            }
+
         } else if (e.target.className == 'modal-button add') {
+            setShowInput(!showInput)
+            setShowError(false)
             setModeUpdate(false)
+
         } else {
+            setShowInput(!showInput)
+            setCurrentCategory({
+                label: false,
+                value: false
+            })
             reset()
         }
 
     }
 
     const handleNewCategory = () => {
-        console.log(name)
         dispatch(startAddNewCategory({ name }))
 
     }
 
 
     const handleUpdateCategory = () => {
+
         dispatch(startUpdateCategory(value, name))
+        setCurrentCategory({
+            label: false,
+            value: false
+        })
     }
-    const handleChange = (e) => {
+    const handleChangeCurrentCategory = (e) => {
         setCurrentCategory(e)
+        setShowError(false)
+
+
 
     }
 
     const handleDeleteCategory = () => {
-        dispatch(startDeleteCategory(value))
+        if (value) {
+            dispatch(startDeleteCategory(value))
+            setCurrentCategory({
+                label: false,
+                value: false
+            })
+
+        } else {
+            setShowError(true)
+        }
     }
 
 
@@ -77,34 +111,38 @@ export const ModalCategoryMode = () => {
                 (!showInput)
                     ?
                     <>
-                        <Dropdown onChange={handleChange} options={categories} defaultValue={value} placeholder='Select the category' />
+                        <Dropdown onChange={handleChangeCurrentCategory} options={categories} defaultValue={value} placeholder='Select the category' />
+                        {(showError) &&
+                            <p className="modal-error">
+                                <Info />
+                                choose a category
+                            </p>}
                         <div className="modal-buttonsContainer ">
 
-                            <button
-                                type="button"
-                                className="modal-button update"
-                                onClick={handleCategoryChange}
+                            <ModalButton
+                                onClick={handleShowInput}
+                                classes="modal-button update"
+                                text="Update"
+                            />
 
-                            >
-                                <UpdateIcon />
-                                Update
-                            </button>
 
-                            <button
-                                onClick={handleCategoryChange}
-                                type="button"
-                                className="modal-button add" >
-                                <PlusIcon />
-                                Add
-                            </button>
+                            <ModalButton
+                                onClick={handleShowInput}
+                                classes="modal-button add"
+                                Icon={PlusIcon}
 
-                            <button
+                            />
+
+
+                            <ModalButton
                                 onClick={handleDeleteCategory}
-                                type="button"
-                                className="modal-button delete" >
-                                <Trash />
-                                delete
-                            </button>
+                                classes="modal-button delete"
+                                Icon={Trash}
+                            />
+
+
+
+
 
                         </div>
                     </>
@@ -112,8 +150,14 @@ export const ModalCategoryMode = () => {
                     :
 
                     <>
-                        <h2 className="modal__form-category-name">{label}</h2>
-                        <form
+                        {
+                            (modeUpdate) &&
+                            <h2 className="modal__form-category-name">
+                                Category selected :
+                                <span className="modal__category-nameSelected">{label}</span>
+                            </h2>
+                        }
+                        <div
                             onSubmit={handleUpdateCategory}
                             className="modal__form">
                             <input
@@ -134,12 +178,12 @@ export const ModalCategoryMode = () => {
 
                             </button>
                             <span
-                                onClick={handleCategoryChange}
+                                onClick={handleShowInput}
                                 className="modal__goback back">
                                 <LeftArrow />
                                 Go back
                             </span>
-                        </form>
+                        </div>
                     </>
 
             }

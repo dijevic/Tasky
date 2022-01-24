@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import validator from 'validator'
 import { useDispatch, useSelector } from 'react-redux'
 import { startAddNewTask, startGetTasksByUser } from '../../actions/tasksActions'
-import { startGetcategorysByUser } from '../../actions/categoryActions'
+import { setCategoryActive, startGetcategorysByUser } from '../../actions/categoryActions'
 import { Task } from '../../components/task/Task'
 import { UseForm } from '../../hooks/userForm'
 import { Modal } from '../../components/ui/Modal'
@@ -12,6 +12,7 @@ import 'react-dropdown/style.css';
 import { PlusIcon } from '../../components/icons/PlusIcon'
 import { SettingIcon } from '../../components/icons/SettingIcon'
 import { openModal, setCategoryMode } from '../../actions/uiActions'
+import { AddIcon } from '../../components/icons/AddIcon'
 
 
 
@@ -54,8 +55,9 @@ export const Todos = () => {
         if (validator.isEmpty(description.trim())) {
             return Swal.fire('Error', 'blank description', 'info')
         }
+        // console.log(activeCategory)
 
-        dispatch(startAddNewTask({ description, task_category: activeCategory.uuid }))
+        dispatch(startAddNewTask({ description, task_category: activeCategory.value }))
 
         resetValue()
 
@@ -71,11 +73,14 @@ export const Todos = () => {
         setFilter('all')
     }
     const handleOnchange = (e) => {
-        console.log(e)
+        dispatch(setCategoryActive(e))
     }
     const handleChangeModalMode = () => {
         dispatch(openModal())
         dispatch(setCategoryMode())
+    }
+    const handleCategoryChange = (e) => {
+        dispatch(setCategoryActive(e))
     }
 
 
@@ -99,29 +104,29 @@ export const Todos = () => {
                 </h2>
                 <form
                     onSubmit={handleSubmit}
-                    className="todos__inputGroup">
+                    className="todos__form">
 
-                    <input
-                        type="text"
-                        className=" todos__input"
-                        placeholder="Create the next tesla"
-                        autoComplete="off"
-                        name="description"
-                        value={description}
-                        onChange={handleInputChange}
+                    <div className="todos__form-inputGroup">
 
-                    />
+                        <input
+                            type="text"
+                            className=" todos__input"
+                            placeholder="Create the next tesla"
+                            autoComplete="off"
+                            name="description"
+                            value={description}
+                            onChange={handleInputChange}
 
-                    <button
-                        className="todos__inputGroup-button">
-                        <PlusIcon />
-                    </button>
-                </form>
-                <div>
-                    <h2>Choose the task category</h2>
+                        />
+
+                        <button className="todos__form-button" >
+                            Create
+                        </button>
+                    </div>
+
                     <div className="todos__dropdown-container">
 
-                        <Dropdown onChange={handleOnchange} options={categories} placeholder='Category' />
+                        <Dropdown onChange={handleCategoryChange} options={categories} placeholder='Category' />
 
                         <span
                             onClick={handleChangeModalMode}
@@ -129,7 +134,13 @@ export const Todos = () => {
                             <SettingIcon />
                         </span>
                     </div>
-                </div>
+
+
+                </form>
+
+
+
+
 
                 <div className="todos__filter-container">
                     <button
@@ -161,50 +172,117 @@ export const Todos = () => {
                     </button>
 
 
+
+
+                </div>
+                <div className="todos__dropdown-container">
+
+                    <Dropdown onChange={handleOnchange} options={categories} placeholder='Category' />
+
+                    <span
+                        onClick={handleChangeModalMode}
+                        className="todos__span-icon">
+                        <SettingIcon />
+                    </span>
                 </div>
 
 
                 <div className="todos__Grid">
 
                     {
-                        (filter === 'all')
-                            ?
-                            tasks.map(({ uuid, description, creationDate, completed }) => {
-                                return <Task
-                                    key={uuid}
-                                    uuid={uuid}
-                                    description={description}
-                                    creationDate={creationDate}
-                                    completed={completed} />
-                            })
-                            :
-                            (filter === 'todo')
-                                ?
+                        (!activeCategory)
 
-                                tasks.map(({ uuid, description, creationDate, completed }) => {
-                                    return (!completed) ?
-                                        <Task
-                                            key={uuid}
-                                            uuid={uuid}
-                                            description={description}
-                                            creationDate={creationDate}
-                                            completed={completed} />
-                                        : false
+                            ?
+
+                            (filter === 'all')
+                                ?
+                                tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                    return <Task
+                                        key={uuid}
+                                        uuid={uuid}
+                                        description={description}
+                                        creationDate={creationDate}
+                                        completed={completed}
+                                        task_category={task_category}
+                                    />
                                 })
                                 :
-                                (filter === 'completed')
+                                (filter === 'todo')
                                     ?
-                                    tasks.map(({ uuid, description, creationDate, completed }) => {
-                                        return (completed) ?
+
+                                    tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                        return (!completed) ?
                                             <Task
                                                 key={uuid}
                                                 uuid={uuid}
                                                 description={description}
                                                 creationDate={creationDate}
-                                                completed={completed} />
+                                                completed={completed}
+                                                task_category={task_category} />
                                             : false
                                     })
-                                    : false
+                                    :
+                                    (filter === 'completed')
+                                        ?
+                                        tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                            return (completed) ?
+                                                <Task
+                                                    key={uuid}
+                                                    uuid={uuid}
+                                                    description={description}
+                                                    creationDate={creationDate}
+                                                    completed={completed}
+                                                    task_category={task_category} />
+                                                : false
+                                        })
+                                        : false
+
+                            :
+
+                            (filter === 'all')
+                                ?
+                                tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                    return (task_category.uuid === activeCategory.value)
+                                        ?
+                                        <Task
+                                            key={uuid}
+                                            uuid={uuid}
+                                            description={description}
+                                            creationDate={creationDate}
+                                            completed={completed}
+                                            task_category={task_category}
+                                        /> : false
+                                })
+                                :
+                                (filter === 'todo')
+                                    ?
+
+                                    tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                        return (!completed && task_category.uuid === activeCategory.value) ?
+                                            <Task
+                                                key={uuid}
+                                                uuid={uuid}
+                                                description={description}
+                                                creationDate={creationDate}
+                                                completed={completed}
+                                                task_category={task_category} />
+                                            : false
+                                    })
+                                    :
+                                    (filter === 'completed')
+                                        ?
+                                        tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                            return (completed && task_category.uuid === activeCategory.value) ?
+                                                <Task
+                                                    key={uuid}
+                                                    uuid={uuid}
+                                                    description={description}
+                                                    creationDate={creationDate}
+                                                    completed={completed}
+                                                    task_category={task_category} />
+                                                : false
+                                        })
+                                        : false
                     }
 
                 </div>

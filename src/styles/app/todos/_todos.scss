@@ -15,36 +15,59 @@
     }
   }
 
-  .todos__inputGroup {
-    margin-bottom: 60px;
+  .todos__form {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0px auto 60px auto;
+    .todos__form-inputGroup {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+    }
 
     .todos__input {
       width: 80%;
       max-width: 400px;
       outline: none;
-      padding: 20px 25px;
-      margin-right: 5px;
-      border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+      padding: 20px 50px 20px 10px;
+      border-bottom: 2px solid rgba(129, 86, 86, 0.5);
       font-size: 16px;
       line-height: 16px;
+      margin-bottom: 10px;
 
       &::placeholder {
         font-size: 14px;
         line-height: 20px;
       }
     }
+    .todos__dropdown-container {
+      width: 100%;
+      margin-bottom: 20px;
+      .Dropdown-root {
+        width: 80%;
+        max-width: 350px;
+        padding: 10px;
+        .Dropdown-control {
+          background-color: $dark-blue;
+          border-radius: 5px;
+          color: $white;
+        }
+      }
+    }
 
-    .todos__inputGroup-button {
+    .todos__form-button {
+      padding: 7px 12px;
+      position: absolute;
+      right: 15px;
+      bottom: 25px;
       border-radius: 5px;
-      transition: 0.6s ease all;
-      background: $primary-color;
 
-      padding: 5px 20px;
-      color: $white;
-      //   box-shadow: 3px 3px 7px rgba($color: $black, $alpha: 0.5);
-      border-radius: 100%;
       svg {
         width: 28px;
         height: 28px;
@@ -57,7 +80,7 @@
     align-items: center;
     margin-top: 20px;
 
-    .icon-setting-container {
+    .todos__span-icon {
       padding: 7px;
       background: rgba($color: $black, $alpha: 0.1);
       border-radius: 5px;
@@ -102,7 +125,6 @@
     margin: auto;
     max-width: 1000px;
     background: url("/src/assets/images/Cute_Astronaut_Character_generated.jpg");
-    background-position-y: -64px;
     background-position-x: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -158,14 +180,15 @@
       margin-top: 30px;
     }
 
-    .todos__inputGroup {
+    .todos__form {
       margin-bottom: 70px;
 
       .todos__input {
-        margin-right: 30px;
+        width: 100%;
         font-size: 22px;
         line-height: 22px;
         transition: 0.6s ease all;
+        margin-bottom: 20px;
         // border: 1px solid transparent;
         &::placeholder {
           font-size: 22px;
@@ -181,8 +204,10 @@
         }
       }
 
-      .todos__inputGroup-button {
+      .todos__form-button {
         font-size: 18px;
+        bottom: 35px;
+        right: -25px;
         cursor: pointer;
         svg {
           width: 35px;
@@ -190,11 +215,12 @@
         }
       }
     }
+
+    // error en los estilos "mejorar su uso"
     .todos__dropdown-container {
-      .icon-setting-container {
-        padding: 7px;
-        display: flex;
-        justify-content: center;
+      .todos__span-icon {
+        padding: 5px;
+
         svg {
           width: 30px;
           height: 30px;
@@ -207,7 +233,12 @@
     }
     .Dropdown-root {
       font-size: 18px;
+      &:hover {
+        cursor: pointer;
+      }
     }
+    // error en los estilos "mejorar su uso"
+
     .todos__filter-container {
       margin-bottom: 5px;
       .todos__filter-button {

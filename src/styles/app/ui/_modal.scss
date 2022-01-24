@@ -78,25 +78,38 @@
           background: rgba($color: $black, $alpha: 0.1);
           margin-right: 5px;
         }
-        .Complete,
+        .complete,
         .add {
           background: $dark-blue;
           color: $white;
         }
+        .add {
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
+
         .delete {
           background: rgba($color: red, $alpha: 0.8);
           color: $white;
         }
       }
       .modal__container-category {
+        width: 100%;
+
         .Dropdown-root {
           max-width: 400px;
           text-align: center;
           margin: 25px auto;
         }
-        width: 100%;
+
         .modal__form-category-name {
           text-align: center;
+          .modal__category-nameSelected {
+            font-weight: bold;
+            margin-left: 10px;
+          }
         }
         .modal__form {
           display: flex;
@@ -134,13 +147,27 @@
     }
   }
 }
+
+.modal-error {
+  background: $dark-blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 7px;
+  border-radius: 5px;
+  width: 70%;
+  margin: auto;
+  color: $white;
+  text-align: center;
+  animation-name: pulse;
+  animation-duration: 0.6s;
+  animation-iteration-count: initial;
+  svg {
+    margin-right: 7px;
+  }
+}
 .openModal {
   animation-name: modalOpen;
-  animation-iteration-count: initial;
-  animation-duration: 0.5s;
-}
-.closeModal {
-  animation-name: modalClose;
   animation-iteration-count: initial;
   animation-duration: 0.5s;
 }
@@ -208,13 +235,21 @@
               height: 28px;
             }
           }
-          .Complete {
+          .complete {
+            background: $dark-blue;
+            color: $white;
             svg {
               width: 35px;
               height: 35px;
             }
           }
           .delete {
+            svg {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          .add {
             svg {
               width: 30px;
               height: 30px;
@@ -258,13 +293,5 @@
   }
   100% {
     transform: scale(1);
-  }
-}
-@keyframes modalClose {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
   }
 }

@@ -20,10 +20,11 @@ export const startAddNewCategory = (category) => {
             if (data.ok) {
                 const categoryFixed = { value: data.category.uuid, label: category.name }
                 dispatch(newCategory(categoryFixed))
-                console.log(categoryFixed)
+                Swal.fire('Great', `category created !`, 'success')
+
 
             } else {
-                Swal.fire('error', `something went wrong creating the category`, 'error')
+                Swal.fire('error', `something went wrong :(`, 'error')
             }
 
 
@@ -58,7 +59,7 @@ export const startGetcategorysByUser = () => {
                     return { value: category.uuid, label: category.name }
                 })
                 dispatch(getcategorysByUser(mappedCategories))
-                dispatch(setCategoryActive(data.categories[0]))
+
 
             } else {
                 Swal.fire('error', `something went wrong creting the category`, 'error')
