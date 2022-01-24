@@ -1,7 +1,8 @@
 import { types } from "../types/types";
 
 const initialState = {
-    modalOpen: false
+    modalOpen: false,
+    modalMode: false
 
 }
 
@@ -17,6 +18,21 @@ export const uiReducer = (state = initialState, action) => {
             return {
                 ...state,
                 modalOpen: false
+            }
+        case types.modalModeTask:
+            return {
+                ...state,
+                modalMode: 'task'
+            }
+        case types.modalModeCategory:
+            return {
+                ...state,
+                modalMode: 'category'
+            }
+        case types.modalModeClean:
+            return {
+                ...state,
+                modalMode: false
             }
 
 

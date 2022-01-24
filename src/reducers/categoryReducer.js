@@ -12,7 +12,7 @@ export const CategoryReducer = (state = initialState, action) => {
         case types.CategoryCreateCategory:
             return {
                 ...state,
-                categories: [action.payload, ...state.categories]
+                categories: [...state.categories, action.payload]
             }
         case types.CategoryGetCategories:
             return {
@@ -23,6 +23,16 @@ export const CategoryReducer = (state = initialState, action) => {
             return {
                 ...state,
                 activeCategory: action.payload
+            }
+        case types.CategoryUpdateCategory:
+            return {
+                ...state,
+                categories: state.categories.map(c => (c.value == action.payload.value) ? action.payload : c)
+            }
+        case types.CategoryDeleteCategory:
+            return {
+                ...state,
+                categories: state.categories.filter(c => c.value != action.payload)
             }
 
 

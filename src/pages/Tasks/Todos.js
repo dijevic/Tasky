@@ -11,6 +11,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { PlusIcon } from '../../components/icons/PlusIcon'
 import { SettingIcon } from '../../components/icons/SettingIcon'
+import { openModal, setCategoryMode } from '../../actions/uiActions'
 
 
 
@@ -24,13 +25,11 @@ export const Todos = () => {
     const dispatch = useDispatch()
     const { tasks } = useSelector(state => state.task)
     const { categories, activeCategory } = useSelector(state => state.category)
+    const { modalMode } = useSelector(state => state.ui)
 
     const { modalOpen } = useSelector(state => state.ui)
     const [filter, setFilter] = useState('all')
 
-    const mappedCategories = categories.map(category => {
-        return { value: category.uuid, label: category.name }
-    })
 
     useEffect(() => {
 
@@ -74,17 +73,30 @@ export const Todos = () => {
     const handleOnchange = (e) => {
         console.log(e)
     }
+    const handleChangeModalMode = () => {
+        dispatch(openModal())
+        dispatch(setCategoryMode())
+    }
+
 
 
     return (
 
         <>
             {
-                (modalOpen) ? <Modal mode="t" /> : false
+                (modalOpen) ? <Modal mode={modalMode} /> : false
             }
 
             <div className="todos__container">
-                <h2 className="todos__title">Create your tasks , <span className="specialSentence">control your time</span>.</h2>
+                <h2
+                    className="todos__title">
+                    Create your tasks ,
+                    <span
+
+                        className="specialSentence">
+                        control your time
+                    </span>
+                </h2>
                 <form
                     onSubmit={handleSubmit}
                     className="todos__inputGroup">
@@ -105,6 +117,19 @@ export const Todos = () => {
                         <PlusIcon />
                     </button>
                 </form>
+                <div>
+                    <h2>Choose the task category</h2>
+                    <div className="todos__dropdown-container">
+
+                        <Dropdown onChange={handleOnchange} options={categories} placeholder='Category' />
+
+                        <span
+                            onClick={handleChangeModalMode}
+                            className="todos__span-icon">
+                            <SettingIcon />
+                        </span>
+                    </div>
+                </div>
 
                 <div className="todos__filter-container">
                     <button
@@ -137,13 +162,9 @@ export const Todos = () => {
 
 
                 </div>
-                <div className="todos__dropdown-container">
-                    <Dropdown onChange={handleOnchange} options={mappedCategories} placeholder='opciones' />
-                    <SettingIcon />
-                </div>
+
 
                 <div className="todos__Grid">
-
 
                     {
                         (filter === 'all')

@@ -10,6 +10,7 @@ import { Tools } from '../icons/Tools';
 import { Trash } from '../icons/Trash';
 import { UndoIcon } from '../icons/UndoIcon';
 import { UseForm } from '../../hooks/userForm';
+import { UpdateIcon } from '../icons/UpdateIcon';
 
 export const ModalTaskMode = () => {
 
@@ -68,8 +69,15 @@ export const ModalTaskMode = () => {
             <span className="modal__date">{`Created at :${date}`}</span>
 
             <div className="modal-buttonsContainer">
-                <button type="button" onClick={handleUpdate} className="modal-button update" >Update</button>
-                <button type="button" onClick={handleCompleteTask} className="modal-button Complete" >
+                <button type="button"
+                    onClick={handleUpdate}
+                    className="modal-button update" >
+                    <UpdateIcon />
+                    Update
+                </button>
+                <button type="button"
+                    onClick={handleCompleteTask}
+                    className="modal-button Complete" >
                     {
                         (activeTask.completed)
                             ? <>
@@ -86,6 +94,7 @@ export const ModalTaskMode = () => {
                 </button>
                 <button type="button" onClick={handleDelete} className="modal-button delete" >
                     <Trash />
+                    Delete
                 </button>
             </div>
         </>

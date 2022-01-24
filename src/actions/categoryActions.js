@@ -18,8 +18,9 @@ export const startAddNewCategory = (category) => {
             const resp = await fetchWithToken(category, 'POST', 'v1/category/')
             const data = await resp.json()
             if (data.ok) {
-                category.uuid = data.category.uuid;
-                dispatch(newCategory(category))
+                const categoryFixed = { value: data.category.uuid, label: category.name }
+                dispatch(newCategory(categoryFixed))
+                console.log(categoryFixed)
 
             } else {
                 Swal.fire('error', `something went wrong creating the category`, 'error')
@@ -52,7 +53,11 @@ export const startGetcategorysByUser = () => {
             const data = await resp.json()
 
             if (data.ok) {
-                dispatch(getcategorysByUser(data.categories))
+
+                const mappedCategories = data.categories.map(category => {
+                    return { value: category.uuid, label: category.name }
+                })
+                dispatch(getcategorysByUser(mappedCategories))
                 dispatch(setCategoryActive(data.categories[0]))
 
             } else {
@@ -72,6 +77,67 @@ export const setCategoryActive = (category) => ({
     type: types.CategorySetActive,
     payload: category
 })
+
+
+const updateCategory = (category) => ({
+
+    type: types.CategoryUpdateCategory,
+    payload: category
+})
+
+export const startUpdateCategory = (uuid, name) => {
+
+    return async (dispatch) => {
+
+        try {
+            const resp = await fetchWithToken({ name }, 'PUT', `v1/category/${uuid}`,)
+            const data = await resp.json()
+            if (data.ok) {
+                const categoryFixed = { value: data.category.uuid, label: data.category.name }
+                dispatch(updateCategory(categoryFixed))
+                Swal.fire('great', `category updated`, 'success')
+
+            } else {
+                Swal.fire('error', `${data.msg}`, 'error')
+            }
+
+
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+}
+
+const deleteCategory = (uuid) => ({
+
+    type: types.CategoryDeleteCategory,
+    payload: uuid
+})
+
+
+export const startDeleteCategory = (uuid) => {
+
+    return async (dispatch) => {
+
+        try {
+            const resp = await fetchWithToken({}, 'DELETE', `v1/category/${uuid}`,)
+            const data = await resp.json()
+            if (data.ok) {
+                dispatch(deleteCategory(uuid))
+                Swal.fire('great', `category Deleted`, 'success')
+
+            } else {
+                Swal.fire('error', `${data.msg}`, 'error')
+            }
+
+
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+}
 
 
 

@@ -3,7 +3,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { unSetActiveTask } from '../../actions/tasksActions'
-import { closeModal } from '../../actions/uiActions'
+import { cleanMode, closeModal } from '../../actions/uiActions'
+import { ListIcon } from '../icons/ListIcon'
 import { Minimize } from '../icons/Minimize'
 import { Tools } from '../icons/Tools'
 import { ModalCategoryMode } from './ModalCategoryMode'
@@ -15,6 +16,7 @@ export const Modal = ({ mode }) => {
     const dispatch = useDispatch()
 
     const { activeTask } = useSelector(state => state.task)
+    const { modalMode } = useSelector(state => state.ui)
 
     const handleCloseOutSite = ({ target }) => {
 
@@ -31,6 +33,7 @@ export const Modal = ({ mode }) => {
     const handleClose = () => {
         setTimeout(() => {
             dispatch(closeModal())
+            dispatch(cleanMode())
         }, 100);
         dispatch(unSetActiveTask())
     }
@@ -47,13 +50,13 @@ export const Modal = ({ mode }) => {
                 <form
                     onSubmit={handleSubmit}
 
-                    className={(activeTask) ? `modal openModal ` : `modal closeModal `}>
+                    className={(modalMode) ? `modal openModal ` : `modal closeModal `}>
                     <span
                         onClick={handleClose}
                         className="closeIcon">
                         <Minimize />
                     </span>
-                    <ModalTitle title="task " Icon={Tools} />
+                    <ModalTitle title={modalMode} Icon={(modalMode === 'task') ? Tools : ListIcon} />
                     {
                         (mode === 'task')
                             ? <ModalTaskMode />

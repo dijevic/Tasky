@@ -645,8 +645,6 @@ body > div:nth-child(5) {
   background: #6e6ece;
   padding: 5px 20px;
   color: #fff;
-  -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
-          box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
   border-radius: 100%;
 }
 
@@ -823,15 +821,21 @@ body > div:nth-child(5) {
     border-bottom: 2px solid #1b065e;
   }
   .todos__container .todos__inputGroup .todos__inputGroup-button {
-    width: 15%;
     font-size: 18px;
-    -webkit-transition: 0.4s ease all;
-    transition: 0.4s ease all;
-    border: 1px solid transparent;
     cursor: pointer;
+  }
+  .todos__container .todos__inputGroup .todos__inputGroup-button svg {
+    width: 35px;
+    height: 35px;
   }
   .todos__container .todos__dropdown-container .icon-setting-container {
     padding: 7px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .todos__container .todos__dropdown-container .icon-setting-container svg {
     width: 30px;
@@ -973,7 +977,6 @@ body > div:nth-child(5) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  overflow: scroll;
 }
 
 .ui__modal-container .modal__container {
@@ -1009,7 +1012,6 @@ body > div:nth-child(5) {
   position: relative;
   border-top: 10px solid #1b065e;
   border-bottom: 10px solid #1b065e;
-  overflow: scroll;
 }
 
 .ui__modal-container .modal__container .modal .closeIcon {
@@ -1061,20 +1063,23 @@ body > div:nth-child(5) {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   width: 100%;
+  margin-top: 20px;
 }
 
 .ui__modal-container .modal__container .modal .modal-buttonsContainer .modal-button {
   padding: 10px 15px;
   color: #000;
-  border-radius: 10px;
+  border-radius: 5px;
   -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
           box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   font-size: 16px;
   margin-top: 30px;
   background: rgba(0, 0, 0, 0.1);
+  margin-right: 5px;
 }
 
-.ui__modal-container .modal__container .modal .modal-buttonsContainer .Complete {
+.ui__modal-container .modal__container .modal .modal-buttonsContainer .Complete,
+.ui__modal-container .modal__container .modal .modal-buttonsContainer .add {
   background: #1b065e;
   color: #fff;
 }
@@ -1088,7 +1093,17 @@ body > div:nth-child(5) {
   width: 100%;
 }
 
-.ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory {
+.ui__modal-container .modal__container .modal .modal__container-category .Dropdown-root {
+  max-width: 400px;
+  text-align: center;
+  margin: 25px auto;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category .modal__form-category-name {
+  text-align: center;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category .modal__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1099,27 +1114,43 @@ body > div:nth-child(5) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan {
-  padding: 10px;
-  border-radius: 80%;
-  background: #6e6ece;
+.ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__button-updateCategory {
+  padding: 10px 15px;
+  color: #000;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  background: #1b065e;
+  color: #fff;
+  font-size: 16px;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__button-updateCategory svg {
+  width: 30px;
+  height: 30px;
+}
+
+.ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__goback {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-left: 5px;
+  margin-top: 20px;
+  font-size: 16px;
 }
 
-.ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan svg {
-  width: 30px;
-  height: 30px;
+.ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__goback svg {
+  margin-right: 10px;
+  width: 28px;
+  height: 28px;
 }
 
 .openModal {
@@ -1194,6 +1225,13 @@ body > div:nth-child(5) {
     -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
   }
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .update {
+    border-radius: 10px;
+  }
+  .ui__modal-container .modal__container .modal .modal-buttonsContainer .update svg {
+    width: 28px;
+    height: 28px;
+  }
   .ui__modal-container .modal__container .modal .modal-buttonsContainer .Complete svg {
     width: 35px;
     height: 35px;
@@ -1202,20 +1240,28 @@ body > div:nth-child(5) {
     width: 30px;
     height: 30px;
   }
-  .ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory {
+  .ui__modal-container .modal__container .modal .modal__container-category .modal__form {
     margin-top: 20px;
   }
-  .ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan {
-    padding: 12px;
-    -webkit-transition: 0.3s ease all;
-    transition: 0.3s ease all;
+  .ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__button-updateCategory {
+    margin-top: 15px;
   }
-  .ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan svg {
+  .ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__button-updateCategory svg {
     width: 35px;
     height: 35px;
   }
-  .ui__modal-container .modal__container .modal .modal__container-category .modal-container-inputUpdatecategory .modal-iconSpan:hover {
+  .ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__button-updateCategory:hover {
     background: rgba(110, 110, 206, 0.9);
+    cursor: pointer;
+  }
+  .ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__goback {
+    margin-top: 25px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .ui__modal-container .modal__container .modal .modal__container-category .modal__form .modal__goback svg {
+    width: 35px;
+    height: 35px;
   }
 }
 

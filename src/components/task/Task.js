@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { setActiveTask } from '../../actions/tasksActions'
-import { openModal } from '../../actions/uiActions'
+import { openModal, setTaskMode } from '../../actions/uiActions'
 import { RockectIcon } from '../icons/RockectIcon'
 import { capitalizeWord } from '../../helpers/capitalize'
 
@@ -18,6 +18,7 @@ export const Task = React.memo(({ description, uuid, creationDate, completed }) 
     const handleClick = () => {
         dispatch(setActiveTask({ uuid, capitalizeDescription, creationDate, completed }))
         dispatch(openModal())
+        dispatch(setTaskMode())
     }
     return (
         <div
