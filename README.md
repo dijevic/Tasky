@@ -3,7 +3,7 @@
 
  <br/>
 
-<p margin="20px">The project has been done with React & redux for the front-end and node ,express and mysql for the backend</p>
+<p margin="20px">The project has been done with React & redux , React Router , Thunk , Swal </p>
 
   <br/>
 
