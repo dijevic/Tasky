@@ -10,9 +10,11 @@
 <p margin="20px">To start with this project in local :</p>
 
 <p align="center">First step </p>
+
 ```
  git clone https://github.com/dijevic/calendar-front-end.git
 ```
+
 <p align="center">Second step </p>
 
 ```
