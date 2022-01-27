@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import validator from 'validator'
 import { useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
@@ -10,20 +10,19 @@ export const ChangePassword = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { token } = useParams()
-    const [loading, setLoading] = useState(false)
-    console.log(history)
+
 
     useEffect(() => {
 
         if (validator.isJWT(token)) {
-            dispatch(startResetPassword(setLoading, token))
+            dispatch(startResetPassword(token))
         } else {
             history.replace('/auth/login')
         }
-    }, [dispatch])
+    }, [dispatch, history, token])
 
 
-  
+
 
     return (
         <Spinner color="#6e6ece" />

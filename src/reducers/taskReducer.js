@@ -39,12 +39,12 @@ export const taskReducer = (state = initialState, action) => {
         case types.TasksDeleteTask:
             return {
                 ...state,
-                tasks: state.tasks.filter(t => t.uuid != action.payload)
+                tasks: state.tasks.filter(t => t.uuid !== action.payload)
             }
         case types.TasksUpdateTask:
             return {
                 ...state,
-                tasks: state.tasks.map(t => (t.uuid == action.payload.uuid) ? action.payload : t)
+                tasks: state.tasks.map(t => (t.uuid === action.payload.uuid) ? action.payload : t)
                     .sort((a, b) => (a.completed < b.completed) ? -1 : 1)
             }
 

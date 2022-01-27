@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const ModalButton = ({ onClick, classes, Icon, text, type }) => {
+export const ModalButton = ({ onClick, classes, Icon, text }) => {
     return (
         <button
             onClick={onClick}
             type="button"
             className={classes}
-            type={(type) && type}
+            type="submit"
         >
             {Icon && <Icon />}
             {

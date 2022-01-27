@@ -20,7 +20,7 @@ export const FinishRegistration = () => {
         } else {
             history.replace('/auth/login')
         }
-    }, [dispatch])
+    }, [dispatch, history, token])
 
 
     if (loading) {

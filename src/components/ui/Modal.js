@@ -1,9 +1,8 @@
 
-import React, { useState } from 'react'
-import validator from 'validator'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { startAddNewTask, unSetActiveTask } from '../../actions/tasksActions'
+import { unSetActiveTask } from '../../actions/tasksActions'
 import { cleanMode, closeModal, setNewTaskMode } from '../../actions/uiActions'
 import { ListIcon } from '../icons/ListIcon'
 import { Minimize } from '../icons/Minimize'
@@ -19,14 +18,14 @@ export const Modal = ({ mode }) => {
     const dispatch = useDispatch()
 
     const { modalMode } = useSelector(state => state.ui)
-    const [dispatchData, setDispatchData] = useState(false);
+
 
 
 
 
     const handleCloseOutSite = ({ target }) => {
 
-        if (target.className == 'modal__container' || target.className == 'ui__modal-container') {
+        if (target.className === 'modal__container' || target.className === 'ui__modal-container') {
 
             setTimeout(() => {
                 dispatch(closeModal())
@@ -49,7 +48,7 @@ export const Modal = ({ mode }) => {
         e.preventDefault()
     }
     const handleGetBackTaskNewMode = () => {
-        dispatch(setNewTaskMode(dispatchData))
+        dispatch(setNewTaskMode())
     }
 
 
@@ -75,7 +74,7 @@ export const Modal = ({ mode }) => {
                         <span
                             onClick={handleGetBackTaskNewMode}
                             className="goback">
-                            {/* <LeftArrow /> */}
+
                             create task
                         </span>
                     }

@@ -49,7 +49,7 @@ export const ModalCategoryMode = () => {
 
     const handleShowInput = (e) => {
 
-        if (e.target.className == 'modal-button update' || e.target.className == 'button-text') {
+        if (e.target.className === 'modal-button update' || e.target.className === 'button-text') {
 
             if (value) {
                 setShowInput(!showInput)
@@ -58,7 +58,7 @@ export const ModalCategoryMode = () => {
                 alert.error('select a category')
             }
 
-        } else if (e.target.className == 'modal-button add') {
+        } else if (e.target.className === 'modal-button add') {
             setShowInput(!showInput)
             setModeUpdate(false)
 
@@ -77,6 +77,8 @@ export const ModalCategoryMode = () => {
         if (name.trim().length === 0) {
             return alert.error('a description is required')
         }
+        alert.info('Creating...')
+
         await dispatch(startAddNewCategory({ name }, alert))
         ref.current.click()
 
@@ -87,6 +89,8 @@ export const ModalCategoryMode = () => {
         if (name.trim().length === 0) {
             return alert.error('a description is required')
         }
+        alert.info('Updating...')
+
 
         await dispatch(startUpdateCategory(value, name, alert))
         setCurrentCategory({
@@ -101,13 +105,15 @@ export const ModalCategoryMode = () => {
 
     }
 
-    const handleDeleteCategory = () => {
+    const handleDeleteCategory = async () => {
         if (value) {
-            dispatch(startDeleteCategory(value, alert))
+            alert.info('Deleting...')
+            await dispatch(startDeleteCategory(value, alert))
             setCurrentCategory({
                 label: false,
                 value: false
             })
+
 
         } else {
             alert.error('select a category')

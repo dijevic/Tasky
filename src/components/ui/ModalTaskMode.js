@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import moment from 'moment'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';

@@ -4,27 +4,30 @@ export const getArrayLength = (arr = [], filter, activeCategory, setTaskByCatego
     if (filter === 'all' && activeCategory) {
 
         let arrFilered = arr.filter(task => {
-            if (task.task_category.uuid == activeCategory.value) {
+            if (task.task_category.uuid === activeCategory.value) {
                 return task
             }
+            return task
         })
 
         setTaskByCategory(arrFilered.length)
 
     } else if (filter === 'completed' && activeCategory) {
         let arrFilered = arr.filter(task => {
-            if (task.task_category.uuid == activeCategory.value && task.completed) {
+            if (task.task_category.uuid === activeCategory.value && task.completed) {
                 return task
             }
+            return task
         })
 
         setTaskByCategory(arrFilered.length)
 
     } else if (filter === 'todo' && activeCategory) {
         let arrFilered = arr.filter(task => {
-            if (task.task_category.uuid == activeCategory.value && !task.completed) {
+            if (task.task_category.uuid === activeCategory.value && !task.completed) {
                 return task
             }
+            return task
         })
 
         setTaskByCategory(arrFilered.length)

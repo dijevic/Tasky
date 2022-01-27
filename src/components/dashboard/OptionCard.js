@@ -6,7 +6,7 @@ export const OptionCard = ({ text, imgSource, to }) => {
         <div className="tasks__dashboard-option">
             <Link className="anchor" to={to} >
 
-                <img src={imgSource} />
+                <img src={imgSource} alt="image option" />
                 <span>{text}</span>
             </Link>
         </div>

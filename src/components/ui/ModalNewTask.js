@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2'
+import React, { useState } from 'react';
 import { useAlert } from 'react-alert'
 import validator from 'validator'
 import { useDispatch } from 'react-redux';
@@ -10,11 +9,10 @@ import { openModal, setCategoryMode } from '../../actions/uiActions';
 import { SettingIcon } from '../icons/SettingIcon';
 
 import { ModalButton } from './ModalButton';
-import { Info } from '../icons/Info';
 import { startAddNewTask } from '../../actions/tasksActions';
 
 
-export const ModalNewTask = ({ callback }) => {
+export const ModalNewTask = () => {
 
 
     const dispatch = useDispatch()
@@ -31,18 +29,18 @@ export const ModalNewTask = ({ callback }) => {
         label: false
     });
 
-    const { value } = category
+    const { value, label } = category
 
     const { description } = formValues
 
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (value) {
             if (validator.isEmpty(description.trim())) {
                 return alert.info('Task description is required')
             }
-
-            dispatch(startAddNewTask({ description, task_category: value }, alert))
+            alert.info('creating...')
+            await dispatch(startAddNewTask({ description, task_category: value }, alert, label))
             resetValue()
         } else {
             alert.error('category is required')

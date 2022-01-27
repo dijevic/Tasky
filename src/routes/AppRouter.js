@@ -38,7 +38,7 @@ export const AppRouter = () => {
 
 
 
-    }, [dispatch])
+    }, [dispatch, today, tokenDate])
 
     if (checking) {
         return (<Spinner color="#6e6ece" />)

@@ -1,4 +1,3 @@
-import Swal from 'sweetalert2'
 import { deleteTasksFetch, fetchWithToken, updateTasksFetch } from "../services/fetchData";
 import { types } from "../types/types";
 
@@ -8,7 +7,7 @@ export const newTask = (task) => ({
 })
 
 
-export const startAddNewTask = (task, alert) => {
+export const startAddNewTask = (task, alert, label) => {
 
 
 
@@ -22,7 +21,7 @@ export const startAddNewTask = (task, alert) => {
                 task.uuid = data.task.uuid;
                 task.creationDate = new Date().getTime();
                 task.completed = false
-                task.task_category = { uuid: task.task_category }
+                task.task_category = { uuid: task.task_category, name: label }
                 dispatch(newTask(task))
                 alert.success('Task created successfully !')
 
