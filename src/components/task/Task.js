@@ -15,7 +15,7 @@ export const Task = React.memo(({ description, uuid, creationDate, completed, ta
 
     const dispatch = useDispatch()
     const handleClick = () => {
-        dispatch(setActiveTask({ uuid, capitalizeDescription, creationDate, completed }))
+        dispatch(setActiveTask({ uuid, capitalizeDescription, creationDate, completed, task_category }))
         dispatch(openModal())
         dispatch(setTaskMode())
     }

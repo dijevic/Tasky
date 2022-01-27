@@ -24,6 +24,11 @@ export const CategoryReducer = (state = initialState, action) => {
                 ...state,
                 activeCategory: action.payload
             }
+        case types.CategoryUnSetActive:
+            return {
+                ...state,
+                activeCategory: false
+            }
         case types.CategoryUpdateCategory:
             return {
                 ...state,

@@ -19,7 +19,7 @@ export const UseForm = (initialState = {}) => {
 
 
     }
-    return [stateValues, handleInputChange, resetState]
+    return [stateValues, handleInputChange, resetState, setstateValues]
 
 
 

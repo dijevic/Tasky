@@ -18,7 +18,12 @@
       z-index: 200;
       max-width: 600px;
       width: 100%;
-      background: $white;
+      background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(110, 110, 206, 1) 35%,
+        rgba(0, 212, 255, 1) 100%
+      );
       padding: 50px;
       border-radius: 5px;
       display: flex;
@@ -28,10 +33,33 @@
       position: relative;
       border-top: 10px solid $dark-blue;
       border-bottom: 10px solid $dark-blue;
+      min-width: 270px;
+
       .closeIcon {
         position: absolute;
         right: 4%;
         top: 5px;
+        svg {
+          stroke: $white;
+        }
+      }
+      .goback {
+        position: absolute;
+        left: 4%;
+        top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        color: $white;
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        svg {
+          width: 30px;
+          height: 30px;
+          margin-right: 10px;
+        }
       }
       .ui__modal-title {
         font-size: 28px;
@@ -45,22 +73,32 @@
         margin-top: 30px;
         padding: 10px;
         border-radius: 5px;
-        background: rgba($color: $black, $alpha: 0.1);
+        background: $white;
       }
       .modal__input {
         padding: 10px;
         width: 100%;
         margin: 20px 0px;
         outline: none;
-        max-width: 400px;
+        max-width: 500px;
         margin-bottom: 30px;
-        font-size: 18px;
-        border-bottom: solid 2px rgba($color: $black, $alpha: 0.3);
-        color: rgba($color: $black, $alpha: 0.8);
-      }
-      .modal__date {
         font-size: 16px;
+        color: rgba($color: $black, $alpha: 0.8);
+        border-radius: 5px;
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid transparent;
+      }
+      .modal__date,
+      .modal__taskcategory {
+        font-size: 18px;
         font-weight: 900;
+        text-align: center;
       }
 
       .modal-buttonsContainer {
@@ -68,6 +106,7 @@
         justify-content: space-around;
         width: 100%;
         margin-top: 20px;
+        min-width: 235px;
         .modal-button {
           padding: 10px 15px;
           color: $black;
@@ -75,7 +114,7 @@
           box-shadow: 3px 3px 5px rgba($color: $black, $alpha: 0.5);
           font-size: 16px;
           margin-top: 30px;
-          background: rgba($color: $black, $alpha: 0.1);
+          background: $white;
           margin-right: 5px;
         }
         .complete,
@@ -95,13 +134,30 @@
           color: $white;
         }
       }
+
       .modal__container-category {
         width: 100%;
 
         .Dropdown-root {
-          max-width: 400px;
+          box-shadow: 5px 5px 5px rgba($color: $black, $alpha: 0.1);
+          cursor: pointer;
+          width: 90%;
           text-align: center;
           margin: 25px auto;
+          .Dropdown-control {
+            cursor: pointer;
+
+            background-color: $dark-blue;
+            border-radius: 5px;
+            color: $white;
+            font-size: 22px;
+            border: none;
+            .Dropdown-placeholder {
+              cursor: pointer;
+
+              font-size: 18px;
+            }
+          }
         }
 
         .modal__form-category-name {
@@ -136,6 +192,10 @@
             align-items: center;
             margin-top: 20px;
             font-size: 16px;
+            padding: 5px;
+            border-radius: 5px;
+            color: $white;
+
             svg {
               margin-right: 10px;
               width: 28px;
@@ -194,6 +254,17 @@
         .closeIcon {
           top: 20px;
           z-index: 200;
+          cursor: pointer;
+
+          &:hover {
+            background: rgba($color: $black, $alpha: 0.1);
+            border-radius: 5px;
+          }
+        }
+        .goback {
+          top: 35px;
+          z-index: 200;
+          padding: 5px;
           &:hover {
             background: rgba($color: $black, $alpha: 0.1);
             border-radius: 5px;
@@ -205,16 +276,16 @@
           font-size: 22px;
           line-height: 28px;
           margin-top: 45px;
+          cursor: pointer;
 
-          &:hover {
-            border-bottom: 2px solid $primary-color;
-          }
           &:focus {
-            border-bottom: 2px solid $primary-color;
+            border-bottom: 2px solid $dark-blue;
           }
         }
-        .modal__date {
-          font-size: 16px;
+        .modal__date,
+        .modal__taskcategory {
+          font-size: 22px;
+          line-height: 25px;
           font-weight: 900;
         }
 
@@ -224,8 +295,9 @@
             transition: ease all 0.4s;
             font-size: 18px;
             margin-top: 40px;
+            cursor: pointer;
             &:hover {
-              box-shadow: 3px 3px 5px rgba($color: $black, $alpha: 0.7);
+              opacity: 0.9;
             }
           }
           .update {
@@ -261,13 +333,13 @@
             margin-top: 20px;
             .modal__button-updateCategory {
               margin-top: 15px;
-
+              transition: 0.3s ease all;
               svg {
                 width: 35px;
                 height: 35px;
               }
               &:hover {
-                background: rgba($color: $primary-color, $alpha: 0.9);
+                opacity: 0.9;
                 cursor: pointer;
               }
             }
@@ -275,9 +347,15 @@
               margin-top: 25px;
               font-size: 20px;
               cursor: pointer;
+              transition: 0.3s ease all;
+
               svg {
                 width: 35px;
                 height: 35px;
+              }
+
+              &:hover {
+                background: rgba($color: $black, $alpha: 0.1);
               }
             }
           }

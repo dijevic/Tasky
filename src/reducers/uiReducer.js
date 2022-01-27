@@ -24,6 +24,11 @@ export const uiReducer = (state = initialState, action) => {
                 ...state,
                 modalMode: 'task'
             }
+        case types.modalModeNewTask:
+            return {
+                ...state,
+                modalMode: 'new task'
+            }
         case types.modalModeCategory:
             return {
                 ...state,

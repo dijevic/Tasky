@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import Swal from 'sweetalert2'
-import validator from 'validator'
-import { useDispatch, useSelector } from 'react-redux'
-import { startAddNewTask, startGetTasksByUser } from '../../actions/tasksActions'
-import { setCategoryActive, startGetcategorysByUser } from '../../actions/categoryActions'
-import { Task } from '../../components/task/Task'
-import { UseForm } from '../../hooks/userForm'
-import { Modal } from '../../components/ui/Modal'
+
 import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
+import { useDispatch, useSelector } from 'react-redux'
+import { startGetTasksByUser } from '../../actions/tasksActions'
+import { setCategoryActive, startGetcategorysByUser, UnSetCategoryActive } from '../../actions/categoryActions'
+import { Task } from '../../components/task/Task'
+import { Modal } from '../../components/ui/Modal'
 import { PlusIcon } from '../../components/icons/PlusIcon'
-import { SettingIcon } from '../../components/icons/SettingIcon'
-import { openModal, setCategoryMode } from '../../actions/uiActions'
-import { AddIcon } from '../../components/icons/AddIcon'
+import { openModal, setNewTaskMode } from '../../actions/uiActions';
+import { TurnIcon } from '../../components/icons/TurnIcon';
+import { getArrayLength } from '../../helpers/getArryLength'
+import 'react-dropdown/style.css';
+
 
 
 
@@ -22,7 +21,6 @@ import { AddIcon } from '../../components/icons/AddIcon'
 export const Todos = () => {
 
 
-
     const dispatch = useDispatch()
     const { tasks } = useSelector(state => state.task)
     const { categories, activeCategory } = useSelector(state => state.category)
@@ -30,7 +28,7 @@ export const Todos = () => {
 
     const { modalOpen } = useSelector(state => state.ui)
     const [filter, setFilter] = useState('all')
-
+    const [taskByCategory, setTaskByCategory] = useState(0)
 
     useEffect(() => {
 
@@ -40,28 +38,16 @@ export const Todos = () => {
 
     }, [dispatch])
 
-
-    const initialState = {
-        description: ''
-    }
-    const [formValues, handleInputChange, resetValue] = UseForm(initialState)
-
-    const { description } = formValues
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        if (validator.isEmpty(description.trim())) {
-            return Swal.fire('Error', 'blank description', 'info')
-        }
-        // console.log(activeCategory)
-
-        dispatch(startAddNewTask({ description, task_category: activeCategory.value }))
-
-        resetValue()
+    const handleCategoryChange = () => {
+        dispatch(setNewTaskMode())
+        dispatch(openModal())
 
     }
+
+
+
+
+
 
     const handleChangeCompletedFilter = () => {
         setFilter('completed')
@@ -72,22 +58,33 @@ export const Todos = () => {
     const handleChangeAllFilter = () => {
         setFilter('all')
     }
-    const handleOnchange = (e) => {
-        dispatch(setCategoryActive(e))
+    const handleOnchange = async (e) => {
+        await dispatch(setCategoryActive(e))
+
+
+
     }
-    const handleChangeModalMode = () => {
-        dispatch(openModal())
-        dispatch(setCategoryMode())
-    }
-    const handleCategoryChange = (e) => {
-        dispatch(setCategoryActive(e))
+
+    useEffect(() => {
+
+        getArrayLength(tasks, filter, activeCategory, setTaskByCategory)
+
+
+    }, [activeCategory, filter, tasks])
+
+
+
+    const handlesetCategoryActived = () => {
+
+        dispatch(UnSetCategoryActive())
+
     }
 
 
 
     return (
 
-        <>
+        <div className="aaaa">
             {
                 (modalOpen) ? <Modal mode={modalMode} /> : false
             }
@@ -102,44 +99,13 @@ export const Todos = () => {
                         control your time
                     </span>
                 </h2>
-                <form
-                    onSubmit={handleSubmit}
-                    className="todos__form">
 
-                    <div className="todos__form-inputGroup">
-
-                        <input
-                            type="text"
-                            className=" todos__input"
-                            placeholder="Create the next tesla"
-                            autoComplete="off"
-                            name="description"
-                            value={description}
-                            onChange={handleInputChange}
-
-                        />
-
-                        <button className="todos__form-button" >
-                            Create
-                        </button>
-                    </div>
-
-                    <div className="todos__dropdown-container">
-
-                        <Dropdown onChange={handleCategoryChange} options={categories} placeholder='Category' />
-
-                        <span
-                            onClick={handleChangeModalMode}
-                            className="todos__span-icon">
-                            <SettingIcon />
-                        </span>
-                    </div>
-
-
-                </form>
-
-
-
+                <div
+                    onClick={handleCategoryChange}
+                    className="todos__createTask">
+                    <PlusIcon />
+                    <h2 className="todos__createTask-text">Create New task </h2>
+                </div>
 
 
                 <div className="todos__filter-container">
@@ -179,12 +145,29 @@ export const Todos = () => {
 
                     <Dropdown onChange={handleOnchange} options={categories} placeholder='Category' />
 
-                    <span
-                        onClick={handleChangeModalMode}
-                        className="todos__span-icon">
-                        <SettingIcon />
-                    </span>
+
+                    {
+                        (activeCategory) &&
+                        <span
+                            onClick={handlesetCategoryActived}
+                            className="todos__span-icon"
+                        >
+
+                            <TurnIcon />
+                            turn Off
+                        </span>
+                    }
+
                 </div>
+
+
+                <h2
+                    className="todos__category-title">
+                    {(activeCategory) ? `${activeCategory.label}(${taskByCategory})` : `Total ( ${tasks.length} )`}
+                </h2>
+
+
+
 
 
                 <div className="todos__Grid">
@@ -288,6 +271,7 @@ export const Todos = () => {
                 </div>
 
             </div>
-        </>
+
+        </div>
     )
 }

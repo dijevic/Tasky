@@ -7,10 +7,10 @@ import '../src/styles/styles.min.css'
 
 export const TodoApp = () => {
     return (
-        <div>
-            <Provider store={store} >
-                <AppRouter />
-            </Provider>
-        </div>
+
+        <Provider store={store} >
+            <AppRouter />
+        </Provider>
+
     )
 }

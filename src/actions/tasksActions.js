@@ -2,14 +2,15 @@ import Swal from 'sweetalert2'
 import { deleteTasksFetch, fetchWithToken, updateTasksFetch } from "../services/fetchData";
 import { types } from "../types/types";
 
-
 export const newTask = (task) => ({
     type: types.TaskCreateTask,
     payload: task
 })
 
 
-export const startAddNewTask = (task) => {
+export const startAddNewTask = (task, alert) => {
+
+
 
     return async (dispatch) => {
 
@@ -23,9 +24,13 @@ export const startAddNewTask = (task) => {
                 task.completed = false
                 task.task_category = { uuid: task.task_category }
                 dispatch(newTask(task))
+                alert.success('Task created successfully !')
+
+
 
             } else {
-                Swal.fire('error', `something went wrong cretinf the task`, 'error')
+                alert.error('something went wrong, try it again')
+
             }
 
 
@@ -50,14 +55,14 @@ export const startGetTasksByUser = () => {
         try {
             const resp = await fetchWithToken(false, 'GET', 'v1/task/user')
             const data = await resp.json()
-            console.log(data)
 
             if (data.ok) {
                 const dataSorted = data.tasks.sort((a, b) => (a.completed < b.completed) ? -1 : 1)
                 dispatch(getTasksByUser(dataSorted))
 
+
             } else {
-                Swal.fire('error', `something went wrong creting the task`, 'error')
+                alert.error('something went wrong :(')
             }
 
 
@@ -75,7 +80,7 @@ const deleteTask = (uuid) => ({
     payload: uuid
 })
 
-export const startDeleteTask = (uuid) => {
+export const startDeleteTask = (uuid, alert) => {
 
     return async (dispatch) => {
 
@@ -90,10 +95,11 @@ export const startDeleteTask = (uuid) => {
 
             if (data.ok) {
                 dispatch(deleteTask(uuid))
-                Swal.fire('Great', 'the task has been deleted successfully', 'success')
+                alert.success('The task has been deleted successfully')
+
 
             } else {
-                Swal.fire('error', `something went wrong :(`, 'error')
+                alert.error(`something went wrong :(`)
             }
 
 
@@ -109,21 +115,22 @@ const updateTask = (task) => ({
     payload: task
 })
 
-export const startUpdateTask = (uuid, fills) => {
+export const startUpdateTask = (uuid, fills, alert) => {
 
     return async (dispatch) => {
 
-        console.log({ ...fills })
         try {
             const resp = await updateTasksFetch(`v1/task/${uuid}`, { ...fills })
             const data = await resp.json()
+
             if (data.ok) {
 
                 dispatch(updateTask(data.task))
-                Swal.fire('Great', 'the task has been updated', 'success')
+                alert.success('The task has been updated')
 
             } else {
-                Swal.fire('error', `something went wrong :(`, 'error')
+                alert.error(`something went wrong :(`)
+
             }
 
 

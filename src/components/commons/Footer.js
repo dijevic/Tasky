@@ -1,5 +1,4 @@
 import React from 'react'
-import { LinkComponent } from './LinkComponent'
 
 export const Footer = () => {
     return (

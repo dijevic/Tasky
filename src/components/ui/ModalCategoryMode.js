@@ -1,34 +1,37 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { startAddNewCategory, startDeleteCategory, startUpdateCategory } from '../../actions/categoryActions';
-import { cleanMode, closeModal } from '../../actions/uiActions';
+import { useAlert } from 'react-alert'
 import { UseForm } from '../../hooks/userForm';
 import { Check } from '../icons/Check';
-import { Info } from '../icons/Info';
 import { LeftArrow } from '../icons/LeftArrow';
 import { PlusIcon } from '../icons/PlusIcon';
 import { Trash } from '../icons/Trash';
-import { UpdateIcon } from '../icons/UpdateIcon';
 import { ModalButton } from './ModalButton';
+import {
+    startAddNewCategory,
+    startDeleteCategory,
+    startUpdateCategory
+} from '../../actions/categoryActions';
+import 'react-dropdown/style.css';
 
 
 export const ModalCategoryMode = () => {
 
     const dispatch = useDispatch()
+    const ref = useRef(null);
+    const alert = useAlert()
     const { categories } = useSelector(state => state.category)
 
     const [showInput, setShowInput] = useState(false)
-    const [showError, setShowError] = useState(false);
     const [currentCategory, setCurrentCategory] = useState({
         label: false,
         value: false
     })
 
     const { label, value } = currentCategory
-    const [modeUpdate, setModeUpdate] = useState(true)
+    const [modeUpdate, setModeUpdate] = useState(false)
 
     const initialState = {
         name: ''
@@ -40,6 +43,10 @@ export const ModalCategoryMode = () => {
     const { name } = formValue
 
 
+
+
+
+
     const handleShowInput = (e) => {
 
         if (e.target.className == 'modal-button update' || e.target.className == 'button-text') {
@@ -48,12 +55,11 @@ export const ModalCategoryMode = () => {
                 setShowInput(!showInput)
                 setModeUpdate(true)
             } else {
-                setShowError(true)
+                alert.error('select a category')
             }
 
         } else if (e.target.className == 'modal-button add') {
             setShowInput(!showInput)
-            setShowError(false)
             setModeUpdate(false)
 
         } else {
@@ -67,38 +73,44 @@ export const ModalCategoryMode = () => {
 
     }
 
-    const handleNewCategory = () => {
-        dispatch(startAddNewCategory({ name }))
+    const handleNewCategory = async () => {
+        if (name.trim().length === 0) {
+            return alert.error('a description is required')
+        }
+        await dispatch(startAddNewCategory({ name }, alert))
+        ref.current.click()
 
     }
 
 
-    const handleUpdateCategory = () => {
+    const handleUpdateCategory = async () => {
+        if (name.trim().length === 0) {
+            return alert.error('a description is required')
+        }
 
-        dispatch(startUpdateCategory(value, name))
+        await dispatch(startUpdateCategory(value, name, alert))
         setCurrentCategory({
             label: false,
             value: false
         })
+        ref.current.click()
+
     }
     const handleChangeCurrentCategory = (e) => {
         setCurrentCategory(e)
-        setShowError(false)
-
-
 
     }
 
     const handleDeleteCategory = () => {
         if (value) {
-            dispatch(startDeleteCategory(value))
+            dispatch(startDeleteCategory(value, alert))
             setCurrentCategory({
                 label: false,
                 value: false
             })
 
         } else {
-            setShowError(true)
+            alert.error('select a category')
         }
     }
 
@@ -112,11 +124,7 @@ export const ModalCategoryMode = () => {
                     ?
                     <>
                         <Dropdown onChange={handleChangeCurrentCategory} options={categories} defaultValue={value} placeholder='Select the category' />
-                        {(showError) &&
-                            <p className="modal-error">
-                                <Info />
-                                choose a category
-                            </p>}
+
                         <div className="modal-buttonsContainer ">
 
                             <ModalButton
@@ -158,7 +166,6 @@ export const ModalCategoryMode = () => {
                             </h2>
                         }
                         <div
-                            onSubmit={handleUpdateCategory}
                             className="modal__form">
                             <input
                                 type="text"
@@ -170,16 +177,20 @@ export const ModalCategoryMode = () => {
                                 placeholder="New category name" />
 
 
-                            <button
-                                onClick={(modeUpdate) ? handleUpdateCategory : handleNewCategory}
-                                className="modal__button-updateCategory modal-button Complete">
-                                <Check />
-                                Done
+                            <ModalButton
+                                onClick={(modeUpdate)
+                                    ? handleUpdateCategory
+                                    : handleNewCategory}
+                                classes="modal__button-updateCategory modal-button Complete"
+                                Icon={Check}
+                                text="Done"
+                            />
 
-                            </button>
                             <span
                                 onClick={handleShowInput}
-                                className="modal__goback back">
+                                className="modal__goback back"
+                                ref={ref}
+                            >
                                 <LeftArrow />
                                 Go back
                             </span>

@@ -2,6 +2,7 @@ export const types = {
     modalOpen: '[ui modal] modal open',
     modalClose: '[ui modal] modal close',
     modalModeTask: '[ui modal] modal mode task',
+    modalModeNewTask: `[ui modal] modal mode new task`,
     modalModeClean: '[ui modal] modal mode clean',
 
     modalModeCategory: '[ui modal] modal mode category',

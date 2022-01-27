@@ -11,19 +11,22 @@ export const DashboardGeneral = React.memo(() => {
     const capitalizedName = capitalizeText(user.name)
 
     return (
-        <div className="tasks__container">
-            <h2>Welcome  <span className="tasks__dashboard-userName"> {capitalizedName}</span></h2>
+        <>
+            <div className="tasks__container">
+                <h2>Welcome  <span className="tasks__dashboard-userName"> {capitalizedName}</span></h2>
 
-            <div className="tasks__option-container">
-
-
-                <OptionCard text="Go to your personal dashboard" imgSource={astronauta} to="/app/personal" />
-                {/* <OptionCard text="Go to your personal dashboard" imgSource={teamImage} to="/app/team" /> */}
+                <div className="tasks__option-container">
 
 
+                    <OptionCard text="Go to your personal dashboard" imgSource={astronauta} to="/app/personal" />
+                    {/* <OptionCard text="Go to your personal dashboard" imgSource={teamImage} to="/app/team" /> */}
+
+
+
+                </div>
 
             </div>
 
-        </div>
+        </>
     )
 })

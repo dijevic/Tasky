@@ -12,6 +12,9 @@ export const setTaskMode = () => ({
 export const setCategoryMode = () => ({
     type: types.modalModeCategory
 })
+export const setNewTaskMode = () => ({
+    type: types.modalModeNewTask
+})
 export const cleanMode = () => ({
     type: types.modalModeClean
 })
