@@ -1,9 +1,9 @@
-<h1 align="center"> This is my Tasky  App</h1>
+<h1 align="center">  Tasky  App </h1>
 <h3 color="red" align="center">A React app to organize my daily activities</h3>
 
  <br/>
 
-<p margin="20px">The project has been done with React & redux , React Router , Thunk , Swal </p>
+<p margin="20px">The project has been done with React & redux , React Router , Thunk , Swal and react-alert </p>
 
   <br/>
 
@@ -18,7 +18,7 @@
 <p align="center">Second step </p>
 
 ```
- cd calendar-front-end
+ cd Tasky
  code .
 ```
 
