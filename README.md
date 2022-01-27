@@ -12,7 +12,7 @@
 <p align="center">First step </p>
 
 ```
- git clone https://github.com/dijevic/calendar-front-end.git
+ git clone https://github.com/dijevic/Tasky.git
 ```
 
 <p align="center">Second step </p>
