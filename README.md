@@ -22,10 +22,18 @@
  code .
 ```
 
-<p align="center">Finally install all the dependencies to run the project </p>
+<p align="center">Finally install all the dependencies and run the project </p>
 
 ```
  npm istall
+ npm start
+```
+
+- User to test the app
+
+```
+Email    : test@tasky.com
+password : qwerty
 ```
 
 <p align="center">Then you have two ways </p>
