@@ -7,7 +7,7 @@ export const getArrayLength = (arr = [], filter, activeCategory, setTaskByCatego
             if (task.task_category.uuid === activeCategory.value) {
                 return task
             }
-            return task
+
         })
 
         setTaskByCategory(arrFilered.length)
@@ -17,7 +17,7 @@ export const getArrayLength = (arr = [], filter, activeCategory, setTaskByCatego
             if (task.task_category.uuid === activeCategory.value && task.completed) {
                 return task
             }
-            return task
+
         })
 
         setTaskByCategory(arrFilered.length)
@@ -27,7 +27,7 @@ export const getArrayLength = (arr = [], filter, activeCategory, setTaskByCatego
             if (task.task_category.uuid === activeCategory.value && !task.completed) {
                 return task
             }
-            return task
+
         })
 
         setTaskByCategory(arrFilered.length)
