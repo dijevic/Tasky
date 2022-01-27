@@ -4,9 +4,8 @@ export const ModalButton = ({ onClick, classes, Icon, text }) => {
     return (
         <button
             onClick={onClick}
-            type="button"
-            className={classes}
             type="submit"
+            className={classes}
         >
             {Icon && <Icon />}
             {
