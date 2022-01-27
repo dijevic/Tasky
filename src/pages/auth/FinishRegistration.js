@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import validator from 'validator'
 import { useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
@@ -10,12 +10,11 @@ export const FinishRegistration = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { token } = useParams()
-    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
 
         if (validator.isJWT(token)) {
-            dispatch(startRegistration(setLoading, token))
+            dispatch(startRegistration(token))
 
         } else {
             history.replace('/auth/login')
@@ -23,13 +22,9 @@ export const FinishRegistration = () => {
     }, [dispatch, history, token])
 
 
-    if (loading) {
-        return (<Spinner color="#6e6ece" />)
-    }
 
-    return (
-        <h2>hello</h2>
-    )
+
+    return (<Spinner color="#6e6ece" />)
 
 
 

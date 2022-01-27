@@ -14,10 +14,10 @@ import { Spinner } from '../../components/ui/Spinner'
 export const Registration = () => {
 
     const initialState = {
-        name: 'diginhx',
-        email: 'dijevic.developer@gmail.com',
-        password1: '123456789',
-        password2: '123456789'
+        name: '',
+        email: '',
+        password1: '',
+        password2: ''
     }
     const dispatch = useDispatch()
     const [show, setShow] = useState(false)

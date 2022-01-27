@@ -10,8 +10,8 @@ import { UseForm } from '../../hooks/userForm'
 export const ResetPassword = () => {
 
     const initialState = {
-        email: 'dijevic.developer@gmail.com',
-        password: '456321'
+        email: '',
+        password: ''
     }
     const [show, setShow] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -35,7 +35,6 @@ export const ResetPassword = () => {
     return (
         <div className="auth__box-container">
 
-            <h2 className="auth__box-title dark-background"> Houston We have Problems !</h2>
             <p className="auth__box-message ">Reset your Password</p>
 
             <form

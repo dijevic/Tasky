@@ -190,6 +190,7 @@ export const ModalCategoryMode = () => {
                                 classes="modal__button-updateCategory modal-button Complete"
                                 Icon={Check}
                                 text="Done"
+
                             />
 
                             <span

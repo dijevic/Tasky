@@ -25,6 +25,7 @@ export const startLogin = (email, password, setChecking) => {
         try {
             const resp = await fetchWithNotToken({ email, password }, 'POST', 'v1/auth/login')
             const data = await resp.json()
+
             if (data.ok) {
                 localStorage.setItem('token', data.token)
                 localStorage.setItem('tokenDateStart', new Date().getTime())
@@ -52,7 +53,6 @@ export const startCheckingToken = (setChecking) => {
     return async (dispatch) => {
 
         setChecking(true)
-
         try {
             const resp = await fetchWithToken(null, 'GET', 'v1/auth/renew')
             const data = await resp.json()
@@ -70,7 +70,6 @@ export const startCheckingToken = (setChecking) => {
                 setChecking(false)
                 Swal.fire(`Error`, 'something wrong with password or email ', 'info')
             }
-
 
 
 
@@ -105,7 +104,7 @@ export const startEmailVerification = (email, name, password, setLoading) => {
         }
     }
 }
-export const startRegistration = (setLoading, token) => {
+export const startRegistration = (token) => {
     return async (dispatch) => {
 
         try {
@@ -122,7 +121,6 @@ export const startRegistration = (setLoading, token) => {
                 dispatch(login(user))
 
             } else {
-                setLoading(false)
                 Swal.fire(`Error`, `something went wrong :(`, 'info')
             }
 

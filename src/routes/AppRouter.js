@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import moment from 'moment'
 import {
     BrowserRouter as Router,
     Redirect,
@@ -23,22 +22,20 @@ export const AppRouter = () => {
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [checking, setChecking] = useState(true)
-    const today = moment().format()
-    const tokenDate = moment(JSON.parse(localStorage.getItem('tokenDateStart'))).add(2, 'hours').format()
+
 
     useEffect(() => {
 
-        if (moment(today).isSameOrAfter(tokenDate)) {
-            localStorage.clear()
-            setChecking(false)
-        } else if (localStorage.getItem('token')) {
+        if (localStorage.getItem('token')) {
             dispatch(startCheckingToken(setChecking))
+        } else {
+            setChecking(false)
         }
 
 
 
 
-    }, [dispatch, today, tokenDate])
+    }, [dispatch])
 
     if (checking) {
         return (<Spinner color="#6e6ece" />)
