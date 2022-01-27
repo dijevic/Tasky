@@ -35,7 +35,7 @@ export const ResetPassword = () => {
     return (
         <div className="auth__box-container">
 
-            <p className="auth__box-message ">Reset your Password</p>
+            <p className="auth__box-message extrapadding ">Reset your Password</p>
 
             <form
                 onSubmit={handleSubmit}

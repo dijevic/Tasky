@@ -86,6 +86,10 @@ body > div:nth-child(5) {
   margin-bottom: 25px;
 }
 
+.extrapadding {
+  padding: 35px;
+}
+
 .auth__box-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -118,10 +122,6 @@ body > div:nth-child(5) {
   margin: 15px 0px;
   z-index: 1;
   position: relative;
-}
-
-.auth__box-inputGroup .extrapadding {
-  padding: 35px;
 }
 
 .auth__box-inputGroup .auth__box-form-span {
