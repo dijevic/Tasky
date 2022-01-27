@@ -45,7 +45,7 @@ body > div:nth-child(5) {
 .auth__box-container {
   width: 100%;
   max-width: 500px;
-  padding: 30px;
+  padding: 20px;
   border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -57,9 +57,24 @@ body > div:nth-child(5) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: rgba(27, 6, 94, 0.4);
+  background: rgba(27, 6, 94, 0.5);
   -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
           box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.auth__box-title {
+  color: #1b065e;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 15px;
+  display: block;
+  line-height: 32px;
+  font-family: "Dancing Script";
+  margin-right: 5px;
+}
+
+.auth__box-title i {
+  font-style: italic;
 }
 
 .auth__box-message {
@@ -87,7 +102,6 @@ body > div:nth-child(5) {
   height: 50%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 40px;
-  padding-top: 35px;
 }
 
 .auth__box-inputGroup {
@@ -104,6 +118,10 @@ body > div:nth-child(5) {
   margin: 15px 0px;
   z-index: 1;
   position: relative;
+}
+
+.auth__box-inputGroup .extrapadding {
+  padding: 35px;
 }
 
 .auth__box-inputGroup .auth__box-form-span {
@@ -175,7 +193,7 @@ body > div:nth-child(5) {
   margin-top: 25px;
   color: #fff;
   font-weight: 500;
-  font-size: 22px;
+  font-size: 16px;
   line-height: 25px;
   -webkit-transition: 0.5s ease all;
   transition: 0.5s ease all;
@@ -235,6 +253,10 @@ body > div:nth-child(5) {
 }
 
 @media screen and (min-width: 768px) {
+  .auth__box-title {
+    font-size: 42px;
+    line-height: 42px;
+  }
   .auth__box-message {
     font-size: 35px;
     line-height: 42px;
@@ -284,6 +306,7 @@ body > div:nth-child(5) {
   }
   .auth__box-btnSubmit {
     padding: 10px 15px;
+    font-size: 22px;
   }
   .link {
     margin-top: 25px;

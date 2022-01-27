@@ -31,20 +31,23 @@ export const ModalTaskMode = () => {
     const label = activeTask.task_category.name
 
     const handleDelete = () => {
+        alert.info('Deleting...')
         dispatch(startDeleteTask(activeTask.uuid, alert))
         dispatch(unSetActiveTask())
         dispatch(closeModal())
     }
     const handleUpdate = () => {
+        alert.info('Updating...')
         dispatch(startUpdateTask(activeTask.uuid, { description }, alert))
         dispatch(unSetActiveTask())
         dispatch(closeModal())
     }
     const handleCompleteTask = () => {
+        alert.info('Updating...')
         if (activeTask.completed) {
+
             dispatch(startUpdateTask(activeTask.uuid, { completed: false }, alert))
         } else {
-
             dispatch(startUpdateTask(activeTask.uuid, { completed: true }, alert))
         }
 

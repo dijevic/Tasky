@@ -17,13 +17,26 @@ body > div:nth-child(5) {
 .auth__box-container {
   width: 100%;
   max-width: 500px;
-  padding: 30px;
+  padding: 20px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba($color: $dark-blue, $alpha: 0.4);
+  background: rgba($color: $dark-blue, $alpha: 0.5);
   box-shadow: 4px 4px 10px rgba($color: $black, $alpha: 0.4);
+}
+.auth__box-title {
+  color: $dark-blue;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 15px;
+  display: block;
+  line-height: 32px;
+  font-family: "Dancing Script";
+  margin-right: 5px;
+  i {
+    font-style: italic;
+  }
 }
 
 .auth__box-message {
@@ -44,7 +57,6 @@ body > div:nth-child(5) {
   height: 50%;
   border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
   padding-bottom: 40px;
-  padding-top: 35px;
 }
 
 .auth__box-inputGroup {
@@ -57,6 +69,9 @@ body > div:nth-child(5) {
   margin: 15px 0px;
   z-index: 1;
   position: relative;
+  .extrapadding {
+    padding: 35px;
+  }
   .auth__box-form-span {
     position: absolute;
     top: -30px;
@@ -111,7 +126,7 @@ body > div:nth-child(5) {
   margin-top: 25px;
   color: #fff;
   font-weight: 500;
-  font-size: 22px;
+  font-size: 16px;
   line-height: 25px;
   transition: 0.5s ease all;
 
@@ -151,6 +166,10 @@ body > div:nth-child(5) {
 }
 
 @media screen and(min-width: 768px) {
+  .auth__box-title {
+    font-size: 42px;
+    line-height: 42px;
+  }
   .auth__box-message {
     font-size: 35px;
     line-height: 42px;
@@ -198,6 +217,7 @@ body > div:nth-child(5) {
 
   .auth__box-btnSubmit {
     padding: 10px 15px;
+    font-size: 22px;
   }
 
   .link {
