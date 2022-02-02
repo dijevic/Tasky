@@ -346,9 +346,16 @@
           }
           .todos__grid-todo-description {
             color: $dark-blue;
+            .checkSpanIcon {
+              border: 1px solid $dark-blue;
+            }
             svg {
               fill: none;
             }
+          }
+
+          .todo-completed {
+            text-decoration: line-through $dark-blue;
           }
         }
       }

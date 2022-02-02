@@ -61,6 +61,8 @@ export const ModalTaskMode = () => {
 
         } else {
             await dispatch(startUpdateTask(activeTask.uuid, { completed: true }, alert))
+            ref.current.disabled = false
+
         }
 
 
