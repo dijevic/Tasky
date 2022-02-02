@@ -84,7 +84,7 @@ export const Todos = () => {
 
     return (
 
-        <div className="aaaa">
+        <>
             {
                 (modalOpen) ? <Modal mode={modalMode} /> : false
             }
@@ -272,6 +272,6 @@ export const Todos = () => {
 
             </div>
 
-        </div>
+        </>
     )
 }

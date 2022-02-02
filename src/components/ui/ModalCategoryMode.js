@@ -80,7 +80,7 @@ export const ModalCategoryMode = () => {
         alert.info('Creating...')
 
         await dispatch(startAddNewCategory({ name }, alert))
-        ref.current.click()
+        // ref.current.click()
 
     }
 

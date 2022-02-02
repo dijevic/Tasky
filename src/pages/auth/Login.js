@@ -65,7 +65,7 @@ export const Login = () => {
                         type="text"
                         className=" auth__input"
                         autoCapitalize='words'
-                        placeholder="YourEmail || User Name"
+                        placeholder="YourEmail"
                         autoComplete='off'
                         id="input"
                         name="email"

@@ -17,15 +17,15 @@ export const startAddNewCategory = (category, alert) => {
         try {
             const resp = await fetchWithToken(category, 'POST', 'v1/category/')
             const data = await resp.json()
-
             if (data.ok) {
                 const categoryFixed = { value: data.category.uuid, label: category.name }
                 dispatch(newCategory(categoryFixed))
                 alert.success(`category created !`)
 
 
-            } else {
-                alert.error('something went wrong :(')
+            }
+            else {
+                alert.error(`${data.name.msg}`)
 
             }
 
@@ -100,13 +100,14 @@ export const startUpdateCategory = (uuid, name, alert) => {
         try {
             const resp = await fetchWithToken({ name }, 'PUT', `v1/category/${uuid}`,)
             const data = await resp.json()
+
             if (data.ok) {
                 const categoryFixed = { value: data.category.uuid, label: data.category.name }
                 dispatch(updateCategory(categoryFixed))
                 alert.success(`category updated`)
 
             } else {
-                alert.error('something went wrong :(')
+                alert.error(`${data.name.msg}`)
 
             }
 

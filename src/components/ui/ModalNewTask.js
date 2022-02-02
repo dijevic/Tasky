@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useAlert } from 'react-alert'
 import validator from 'validator'
 import { useDispatch } from 'react-redux';
@@ -21,6 +21,7 @@ export const ModalNewTask = () => {
         description: ''
     }
     const [formValues, handleInputChange, resetValue] = UseForm(initialState)
+    const ref = useRef(null)
 
     const { categories } = useSelector(state => state.category)
 
@@ -55,8 +56,13 @@ export const ModalNewTask = () => {
 
     const handleCategoryChange = (e) => {
         setCategory(e)
+        console.log(ref.current.focus)
+        ref.current.click()
+
+
 
     }
+
 
     return (
         <div className="modal__task">
@@ -84,6 +90,7 @@ export const ModalNewTask = () => {
                     name="description"
                     value={description}
                     onChange={handleInputChange}
+                    ref={ref}
 
                 />
 

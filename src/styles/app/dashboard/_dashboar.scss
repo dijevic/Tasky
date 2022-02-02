@@ -11,6 +11,10 @@
     .tasks__dashboard-userName {
       font-weight: 900;
       color: $primary-color;
+      animation-name: fadeInLeft;
+      animation-iteration-count: initial;
+      animation-duration: 0.5s;
+      display: block;
     }
   }
   .cicle,
@@ -31,6 +35,9 @@
 
     .tasks__dashboard-option {
       box-shadow: 3px 3px 10px rgba($color: $black, $alpha: 0.4);
+      animation-name: fadeInUp;
+      animation-iteration-count: initial;
+      animation-duration: 0.8s;
       a {
         position: relative;
         img {

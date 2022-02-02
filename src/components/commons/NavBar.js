@@ -34,3 +34,5 @@ export const NavBar = () => {
         </header>
     )
 }
+
+

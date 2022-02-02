@@ -341,6 +341,13 @@ body > div:nth-child(5) {
 .tasks__container h2 .tasks__dashboard-userName {
   font-weight: 900;
   color: #6e6ece;
+  -webkit-animation-name: fadeInLeft;
+          animation-name: fadeInLeft;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  display: block;
 }
 
 .tasks__container .cicle,
@@ -367,6 +374,12 @@ body > div:nth-child(5) {
 .tasks__container .tasks__option-container .tasks__dashboard-option {
   -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
 }
 
 .tasks__container .tasks__option-container .tasks__dashboard-option a {
@@ -567,6 +580,12 @@ body > div:nth-child(5) {
   font-weight: 200;
   font-size: 18px;
   line-height: 18px;
+  -webkit-animation-name: fadeInLeft;
+          animation-name: fadeInLeft;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
 }
 
 .footer span a {
@@ -599,6 +618,12 @@ body > div:nth-child(5) {
   margin-bottom: 75px;
   margin-top: 50px;
   font-family: "Dancing Script";
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
 }
 
 .todos__container .todos__title .specialSentence {
@@ -625,6 +650,12 @@ body > div:nth-child(5) {
   border-radius: 10px;
   -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  -webkit-animation-duration: 0.9s;
+          animation-duration: 0.9s;
 }
 
 .todos__container .todos__createTask .todos__createTask-text {
@@ -654,6 +685,12 @@ body > div:nth-child(5) {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 20px;
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
 }
 
 .todos__container .todos__dropdown-container .todos__span-icon {
@@ -747,6 +784,12 @@ body > div:nth-child(5) {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
 }
 
 .todos__container .todos__filter-container .todos__filter-button {
@@ -828,9 +871,32 @@ body > div:nth-child(5) {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.todos__container .todos__Grid .todo__grid-todo .todos__grid-todo-description .checkbox {
+.todos__container .todos__Grid .todo__grid-todo .todos__grid-todo-description .checkSpanIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid #fff;
   margin-right: 10px;
 }
 
@@ -963,12 +1029,15 @@ body > div:nth-child(5) {
     background: -webkit-gradient(linear, left top, right top, from(#00d4ff), color-stop(35%, #6e6ece), to(#020024));
     background: linear-gradient(90deg, #00d4ff 0%, #6e6ece 35%, #020024 100%);
   }
-  .todos__container .todos__Grid .todo__grid-todo:hover .todos__grid-todo-description {
-    color: #1b065e;
-  }
   .todos__container .todos__Grid .todo__grid-todo:hover svg {
     fill: #6e6ece;
     stroke: rgba(255, 255, 255, 0.7);
+  }
+  .todos__container .todos__Grid .todo__grid-todo:hover .todos__grid-todo-description {
+    color: #1b065e;
+  }
+  .todos__container .todos__Grid .todo__grid-todo:hover .todos__grid-todo-description svg {
+    fill: none;
   }
 }
 

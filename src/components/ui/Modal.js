@@ -19,7 +19,18 @@ export const Modal = ({ mode }) => {
 
     const { modalMode } = useSelector(state => state.ui)
 
+    window.addEventListener('keyup', e => {
 
+        if (e.code === 'Escape') {
+
+            setTimeout(() => {
+                dispatch(closeModal())
+                dispatch(unSetActiveTask())
+            }, 300);
+
+        }
+
+    })
 
 
 
@@ -29,9 +40,11 @@ export const Modal = ({ mode }) => {
 
             setTimeout(() => {
                 dispatch(closeModal())
-            }, 100);
-            dispatch(unSetActiveTask())
+                dispatch(unSetActiveTask())
+            }, 300);
         }
+
+
 
 
     }

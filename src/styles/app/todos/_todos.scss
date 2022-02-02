@@ -10,6 +10,10 @@
     margin-bottom: 75px;
     margin-top: 50px;
     font-family: "Dancing Script";
+    animation-name: fadeInUp;
+    animation-iteration-count: initial;
+    animation-duration: 0.5s;
+
     .specialSentence {
       color: $primary-color;
     }
@@ -31,6 +35,9 @@
     padding: 10px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba($color: $black, $alpha: 0.3);
+    animation-name: fadeInUp;
+    animation-iteration-count: initial;
+    animation-duration: 0.9s;
     .todos__createTask-text {
       font-size: 28px;
       line-height: 32px;
@@ -52,6 +59,9 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    animation-name: fadeInUp;
+    animation-iteration-count: initial;
+    animation-duration: 1.2s;
 
     .todos__span-icon {
       padding: 5px;
@@ -119,6 +129,9 @@
     padding: 10px;
     display: flex;
     justify-content: center;
+    animation-name: fadeInUp;
+    animation-iteration-count: initial;
+    animation-duration: 1.2s;
 
     .todos__filter-button {
       padding: 8px 15px;
@@ -185,7 +198,16 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
-        .checkbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .checkSpanIcon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 100%;
+          width: fit-content;
+          border: 1px solid $white;
           margin-right: 10px;
         }
       }
@@ -318,13 +340,15 @@
             rgba(110, 110, 206, 1) 35%,
             rgba(2, 0, 36, 1) 100%
           );
-          .todos__grid-todo-description {
-            color: $dark-blue;
-          }
-
           svg {
             fill: $primary-color;
             stroke: rgba($color: $white, $alpha: 0.7);
+          }
+          .todos__grid-todo-description {
+            color: $dark-blue;
+            svg {
+              fill: none;
+            }
           }
         }
       }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import moment from 'moment'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -16,6 +16,7 @@ import { useAlert } from 'react-alert';
 
 export const ModalTaskMode = () => {
 
+    const ref = useRef(null)
     const alert = useAlert()
     const dispatch = useDispatch()
     const { activeTask } = useSelector(state => state.task)
@@ -30,31 +31,42 @@ export const ModalTaskMode = () => {
     const date = moment(activeTask.creationDate).add(10, 'days').calendar()
     const label = activeTask.task_category.name
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         alert.info('Deleting...')
-        dispatch(startDeleteTask(activeTask.uuid, alert))
-        dispatch(unSetActiveTask())
-        dispatch(closeModal())
-    }
-    const handleUpdate = () => {
-        alert.info('Updating...')
-        dispatch(startUpdateTask(activeTask.uuid, { description }, alert))
-        dispatch(unSetActiveTask())
-        dispatch(closeModal())
-    }
-    const handleCompleteTask = () => {
-        alert.info('Updating...')
-        if (activeTask.completed) {
+        ref.current.disabled = true
+        await dispatch(startDeleteTask(activeTask.uuid, alert))
+        ref.current.disabled = false
+        setTimeout(() => {
+            dispatch(closeModal())
+            dispatch(unSetActiveTask())
+        }, 300)
 
-            dispatch(startUpdateTask(activeTask.uuid, { completed: false }, alert))
+
+    }
+    const handleUpdate = async () => {
+        alert.info('Updating...')
+        ref.current.disabled = true
+        await dispatch(startUpdateTask(activeTask.uuid, { description }, alert))
+        ref.current.disabled = false
+
+
+    }
+    const handleCompleteTask = async () => {
+        alert.info('Updating...')
+        ref.current.disabled = true
+        if (activeTask.completed) {
+            await dispatch(startUpdateTask(activeTask.uuid, { completed: false }, alert))
+            ref.current.disabled = false
+
+
         } else {
-            dispatch(startUpdateTask(activeTask.uuid, { completed: true }, alert))
+            await dispatch(startUpdateTask(activeTask.uuid, { completed: true }, alert))
         }
 
-        dispatch(unSetActiveTask())
-        dispatch(closeModal())
 
     }
+
+
 
 
 
@@ -64,6 +76,7 @@ export const ModalTaskMode = () => {
     return (
         <>
             <input
+                ref={ref}
                 type="text"
                 className=" modal__input"
                 name="description"

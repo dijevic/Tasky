@@ -8,6 +8,9 @@
     font-weight: 200;
     font-size: 18px;
     line-height: 18px;
+    animation-name: fadeInLeft;
+    animation-iteration-count: initial;
+    animation-duration: 0.6s;
     a {
       color: $primary-color;
     }

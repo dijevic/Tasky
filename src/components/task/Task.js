@@ -5,6 +5,7 @@ import { setActiveTask } from '../../actions/tasksActions'
 import { openModal, setTaskMode } from '../../actions/uiActions'
 import { RockectIcon } from '../icons/RockectIcon'
 import { capitalizeWord } from '../../helpers/capitalize'
+import { Check } from '../icons/Check'
 
 
 moment().format("MMM Do YY")
@@ -22,11 +23,12 @@ export const Task = React.memo(({ description, uuid, creationDate, completed, ta
     return (
         <div
             className="todo__grid-todo"
-            onClick={handleClick}
-        >
+            onClick={handleClick}>
+
             <p className={(!completed)
                 ? "todos__grid-todo-description"
                 : "todos__grid-todo-description todo-completed"}>
+                {completed && <span className="checkSpanIcon"><Check /></span>}
                 {capitalizeDescription}
             </p>
 
