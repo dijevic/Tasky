@@ -89,9 +89,6 @@ export const startDeleteTask = (uuid, alert) => {
 
             const data = await resp.json()
 
-            console.log(data)
-            console.log(resp)
-
             if (data.ok) {
                 dispatch(deleteTask(uuid))
                 alert.success('The task has been deleted successfully')

@@ -3,17 +3,13 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { unSetActiveTask } from '../../actions/tasksActions'
-import { cleanMode, closeModal, setNewTaskMode } from '../../actions/uiActions'
+import { cleanMode, closeModal /* setNewTaskMode */ } from '../../actions/uiActions'
 import { CloseIcon } from '../icons/CloseIcon'
-import { ListIcon } from '../icons/ListIcon'
-import { Minimize } from '../icons/Minimize'
-import { Tools } from '../icons/Tools'
+
 import { ModalCategoryMode } from './ModalCategoryMode'
 import { ModalNewTask } from './ModalNewTask'
 
 import { ModalTaskMode } from './ModalTaskMode'
-import { ModalTitle } from './ModalTitle'
-
 
 export const Modal = ({ mode }) => {
     const dispatch = useDispatch()
@@ -61,9 +57,9 @@ export const Modal = ({ mode }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
     }
-    const handleGetBackTaskNewMode = () => {
-        dispatch(setNewTaskMode())
-    }
+    // const handleGetBackTaskNewMode = () => {
+    //     dispatch(setNewTaskMode())
+    // }
 
 
 
