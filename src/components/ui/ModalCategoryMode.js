@@ -4,10 +4,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useAlert } from 'react-alert'
 import { UseForm } from '../../hooks/userForm';
-import { Check } from '../icons/Check';
-import { LeftArrow } from '../icons/LeftArrow';
-import { PlusIcon } from '../icons/PlusIcon';
-import { Trash } from '../icons/Trash';
+
 import { ModalButton } from './ModalButton';
 import {
     startAddNewCategory,
@@ -47,30 +44,30 @@ export const ModalCategoryMode = () => {
 
 
 
-    const handleShowInput = (e) => {
+    const handleShowInput = () => {
 
-        if (e.target.className === 'modal-button update' || e.target.className === 'button-text') {
+        setShowInput(!showInput)
+        setCurrentCategory({
+            label: false,
+            value: false
+        })
+        reset()
 
-            if (value) {
-                setShowInput(!showInput)
-                setModeUpdate(true)
-            } else {
-                alert.error('select a category')
-            }
 
-        } else if (e.target.className === 'modal-button add') {
+    }
+
+    const handleUpdateMode = () => {
+        if (value) {
             setShowInput(!showInput)
-            setModeUpdate(false)
-
+            setModeUpdate(true)
         } else {
-            setShowInput(!showInput)
-            setCurrentCategory({
-                label: false,
-                value: false
-            })
-            reset()
+            alert.error('select a category')
         }
+    }
 
+    const handlenewCategoryMode = () => {
+        setShowInput(!showInput)
+        setModeUpdate(false)
     }
 
     const handleNewCategory = async () => {
@@ -80,7 +77,6 @@ export const ModalCategoryMode = () => {
         alert.info('Creating...')
 
         await dispatch(startAddNewCategory({ name }, alert))
-        // ref.current.click()
 
     }
 
@@ -131,19 +127,22 @@ export const ModalCategoryMode = () => {
                     <>
                         <Dropdown onChange={handleChangeCurrentCategory} options={categories} defaultValue={value} placeholder='Select the category' />
 
-                        <div className="modal-buttonsContainer ">
+                        <div className="modal-buttonsContainer centered ">
 
                             <ModalButton
-                                onClick={handleShowInput}
+                                onClick={handleUpdateMode}
                                 classes="modal-button update"
                                 text="Update"
                             />
 
 
                             <ModalButton
-                                onClick={handleShowInput}
+                                onClick={handlenewCategoryMode}
                                 classes="modal-button add"
-                                Icon={PlusIcon}
+                                text="Add"
+
+
+
 
                             />
 
@@ -151,7 +150,7 @@ export const ModalCategoryMode = () => {
                             <ModalButton
                                 onClick={handleDeleteCategory}
                                 classes="modal-button delete"
-                                Icon={Trash}
+                                text="Delete"
                             />
 
 
@@ -182,25 +181,30 @@ export const ModalCategoryMode = () => {
                                 onChange={handleInputChange}
                                 placeholder="New category name" />
 
+                            <div className="modal-buttonsContainer">
 
-                            <ModalButton
-                                onClick={(modeUpdate)
-                                    ? handleUpdateCategory
-                                    : handleNewCategory}
-                                classes="modal__button-updateCategory modal-button Complete"
-                                Icon={Check}
-                                text="Done"
+                                <ModalButton
+                                    onClick={handleShowInput}
+                                    classes=" modal-button modal__goback back "
+                                    text="Cancel"
+                                    reference={ref}
+                                    type={'button'}
 
-                            />
+                                />
+                                <ModalButton
+                                    onClick={(modeUpdate)
+                                        ? handleUpdateCategory
+                                        : handleNewCategory}
+                                    classes="modal__button-updateCategory modal-button Complete"
+                                    text="Save"
 
-                            <span
-                                onClick={handleShowInput}
-                                className="modal__goback back"
-                                ref={ref}
-                            >
-                                <LeftArrow />
-                                Go back
-                            </span>
+
+                                />
+
+                            </div>
+
+
+
                         </div>
                     </>
 

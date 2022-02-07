@@ -1,7 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const OptionCard = ({ text, imgSource, to }) => {
+
+
+
+const OptionCard = ({ text, imgSource, to }) => {
+
+
+
     return (
         <div className="tasks__dashboard-option">
             <Link className="anchor" to={to} >
@@ -12,3 +18,5 @@ export const OptionCard = ({ text, imgSource, to }) => {
         </div>
     )
 }
+
+export default OptionCard;

@@ -54,7 +54,6 @@ export const startGetTasksByUser = () => {
         try {
             const resp = await fetchWithToken(false, 'GET', 'v1/task/user')
             const data = await resp.json()
-
             if (data.ok) {
                 const dataSorted = data.tasks.sort((a, b) => (a.completed < b.completed) ? -1 : 1)
                 dispatch(getTasksByUser(dataSorted))
@@ -90,7 +89,8 @@ export const startDeleteTask = (uuid, alert) => {
 
             const data = await resp.json()
 
-
+            console.log(data)
+            console.log(resp)
 
             if (data.ok) {
                 dispatch(deleteTask(uuid))

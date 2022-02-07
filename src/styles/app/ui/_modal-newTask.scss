@@ -19,22 +19,22 @@
     width: 100%;
     max-width: 500px;
     outline: none;
-    padding: 10px;
+    padding: 10px 0px;
     font-size: 16px;
     line-height: 22px;
     margin-bottom: 10px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgba($color: $black, $alpha: 0.2);
 
     &::placeholder {
       font-size: 16px;
       line-height: 20px;
+      color: rgba($color: $black, $alpha: 0.5);
     }
     &:focus {
-      border-bottom: 2px solid $dark-blue;
+      border-bottom: 2px solid rgba($color: $black, $alpha: 0.5);
     }
   }
   .modal__task__dropdown-container {
@@ -43,12 +43,11 @@
     justify-content: space-between;
     align-items: center;
     margin: 30px 0px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     .Dropdown-root {
       width: 90%;
-      //   max-width: 350px;
+      margin-right: 5px;
       .Dropdown-control {
-        background-color: $dark-blue;
+        background-color: $primary-color;
         border-radius: 5px;
         color: $white;
         font-size: 22px;
@@ -59,30 +58,48 @@
           font-size: 18px;
           cursor: pointer;
         }
+        .Dropdown-arrow-wrapper {
+          .Dropdown-arrow {
+            border-color: $white transparent transparent;
+          }
+        }
       }
     }
     .modal__task__span-icon {
       padding: 9px;
-      background: rgba($color: $black, $alpha: 0.2);
+      background: rgba($color: $black, $alpha: 0.1);
       border-radius: 5px;
-      color: $white;
+      color: $black;
       cursor: pointer;
     }
+  }
+
+  .modal__task__button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    right: 7%;
   }
 
   .modal-button {
     padding: 10px 20px;
     color: $black;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 3px 3px 5px rgba($color: $black, $alpha: 0.5);
     font-size: 16px;
     background: rgba($color: $black, $alpha: 0.1);
     width: 100%;
-    max-width: 150px;
+    max-width: 100px;
+    text-align: center;
   }
   .add {
-    background: $dark-blue;
+    background: $primary-color;
     color: $white;
+  }
+  .cancel {
+    margin-right: 15px;
   }
 }
 
@@ -95,7 +112,7 @@
       margin-bottom: 20px;
       line-height: 28px;
       font-size: 20px;
-      padding: 15px;
+      padding: 15px 0px;
       &::placeholder {
         font-size: 20px;
         line-height: 28px;
@@ -111,7 +128,6 @@
         width: 90%;
         //   max-width: 350px;
         .Dropdown-control {
-          background-color: $dark-blue;
           border-radius: 5px;
           color: $white;
           font-size: 22px;
@@ -122,7 +138,8 @@
       }
       .modal__task__span-icon {
         padding: 9px;
-        background: rgba($color: $black, $alpha: 0.2);
+        background: rgba($color: $black, $alpha: 0.1);
+
         border-radius: 5px;
         &:hover {
           opacity: 0.9;
@@ -131,17 +148,13 @@
     }
 
     .modal-button {
-      padding: 15px 60px;
+      padding: 10px 20px;
       font-size: 18px;
       transition: 0.3s ease all;
 
       &:hover {
         opacity: 0.9;
       }
-    }
-    .add {
-      background: $dark-blue;
-      color: $white;
     }
   }
 }

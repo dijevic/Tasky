@@ -1,31 +1,66 @@
-export const getArrayLength = (arr = [], filter, activeCategory, setTaskByCategory) => {
+export const getArrayLength = (arr = [], filter, activeCategory, setTasksLength) => {
+
+    if (activeCategory) {
+
+        if (filter === 'all') {
+
+            let arrFilered = arr.filter(task => {
+                return (task.task_category.uuid === activeCategory.value)
+
+            })
+
+            setTasksLength(arrFilered.length)
+
+        } else if (filter === 'completed') {
+            let arrFilered = arr.filter(task => {
+                return (task.task_category.uuid === activeCategory.value && task.completed)
+
+            })
+
+            setTasksLength(arrFilered.length)
+
+        } else if (filter === 'todo') {
+            let arrFilered = arr.filter(task => {
+                return (task.task_category.uuid === activeCategory.value && !task.completed)
+
+            })
+
+            setTasksLength(arrFilered.length)
+
+        }
+
+    } else {
+        if (filter === 'all') {
 
 
-    if (filter === 'all' && activeCategory) {
 
-        let arrFilered = arr.filter(task => {
-            return (task.task_category.uuid === activeCategory.value)
+            setTasksLength(arr.length)
 
-        })
+        } else if (filter === 'completed') {
 
-        setTaskByCategory(arrFilered.length)
 
-    } else if (filter === 'completed' && activeCategory) {
-        let arrFilered = arr.filter(task => {
-            return (task.task_category.uuid === activeCategory.value && task.completed)
 
-        })
+            let arrFilered = arr.filter(task => {
+                return (task.completed === true)
 
-        setTaskByCategory(arrFilered.length)
+            })
 
-    } else if (filter === 'todo' && activeCategory) {
-        let arrFilered = arr.filter(task => {
-            return (task.task_category.uuid === activeCategory.value && !task.completed)
+            setTasksLength(arrFilered.length)
 
-        })
+        } else if (filter === 'todo') {
 
-        setTaskByCategory(arrFilered.length)
+            let arrFilered = arr.filter(task => {
+                return (task.completed === false)
+
+            })
+
+            setTasksLength(arrFilered.length)
+
+        }
 
     }
+
+
+
 
 }

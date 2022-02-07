@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import astronauta from '../../assets/images/Astronaut_flag.jpg'
-import { OptionCard } from '../../components/dashboard/OptionCard'
+// import { OptionCard } from '../../components/dashboard/OptionCard'
 import { useSelector } from 'react-redux'
 import { capitalizeText } from '../../helpers/capitalize'
+
+const OptionCard = React.lazy(() => import('../../components/dashboard/OptionCard'))
+
 
 
 export const DashboardGeneral = React.memo(() => {
@@ -17,8 +20,10 @@ export const DashboardGeneral = React.memo(() => {
 
                 <div className="tasks__option-container">
 
+                    <Suspense fallback={null}>
 
-                    <OptionCard text="Go to your personal dashboard" imgSource={astronauta} to="/app/personal" />
+                        <OptionCard text="Go to your personal dashboard" imgSource={astronauta} to="/app/personal" />
+                    </Suspense>
                     {/* <OptionCard text="Go to your personal dashboard" imgSource={teamImage} to="/app/team" /> */}
 
 

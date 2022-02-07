@@ -7,13 +7,18 @@ import {
 
 } from "react-router-dom"
 
-import { AuthRouter } from './AuthRouter'
+
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './publicRoute'
-import { TodosRouter } from './TodosRouter'
 import { useDispatch, useSelector } from 'react-redux'
 import { startCheckingToken } from '../actions/authActions'
 import { Spinner } from '../components/ui/Spinner'
+import { AuthRouter } from './AuthRouter'
+import { TodosRouter } from './TodosRouter'
+
+
+
+
 
 
 export const AppRouter = () => {
@@ -22,6 +27,7 @@ export const AppRouter = () => {
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [checking, setChecking] = useState(true)
+
 
 
     useEffect(() => {
@@ -49,12 +55,11 @@ export const AppRouter = () => {
                         isAuth={user}
                         path="/auth" />
 
-
-
                     <PrivateRoute
                         path="/app"
                         component={TodosRouter}
                         isAuth={user} />
+
 
                     <Redirect to="/auth" />
                 </Switch>

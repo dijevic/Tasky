@@ -56,7 +56,6 @@ export const ModalNewTask = () => {
 
     const handleCategoryChange = (e) => {
         setCategory(e)
-        console.log(ref.current.focus)
         ref.current.click()
 
 
@@ -97,7 +96,27 @@ export const ModalNewTask = () => {
 
             </div>
 
-            <ModalButton onClick={handleSubmit} classes="modal-button add" text="Add" type="submit" />
+            {/* <div className="modal__task-inputGroup">
+
+                <input
+                    type="text"
+                    className=" modal__task__input"
+                    placeholder="Add a description"
+                    autoComplete="off"
+                    name="description"
+                    value={description}
+                    onChange={handleInputChange}
+                    ref={ref}
+
+                />
+
+
+            </div> */}
+
+            <div className="modal__task__button-container">
+                <ModalButton onClick={handleSubmit} classes="modal-button cancel" text="cancel" type="click" />
+                <ModalButton onClick={handleSubmit} classes="modal-button add" text="Add" type="submit" />
+            </div>
 
 
 

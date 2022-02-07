@@ -68,7 +68,8 @@ export const startCheckingToken = (setChecking) => {
 
             } else {
                 setChecking(false)
-                Swal.fire(`Error`, 'something wrong with password or email ', 'info')
+                Swal.fire(`Error`, `${data.msg}`, 'info')
+                localStorage.clear()
             }
 
 

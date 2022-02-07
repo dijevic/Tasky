@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { unSetActiveTask } from '../../actions/tasksActions'
 import { cleanMode, closeModal, setNewTaskMode } from '../../actions/uiActions'
+import { CloseIcon } from '../icons/CloseIcon'
 import { ListIcon } from '../icons/ListIcon'
 import { Minimize } from '../icons/Minimize'
 import { Tools } from '../icons/Tools'
@@ -79,10 +80,10 @@ export const Modal = ({ mode }) => {
                     <span
                         onClick={handleClose}
                         className="closeIcon">
-                        <Minimize />
+                        <CloseIcon />
                     </span>
 
-                    {
+                    {/* {
                         (modalMode === 'category') &&
                         <span
                             onClick={handleGetBackTaskNewMode}
@@ -90,8 +91,17 @@ export const Modal = ({ mode }) => {
 
                             create task
                         </span>
-                    }
-                    <ModalTitle title={modalMode} Icon={(modalMode === 'task' || modalMode === 'new task') ? Tools : ListIcon} />
+                    } */}
+                    <h2 className="modal-title">
+                        {
+                            (modalMode === 'new task')
+                                ? 'Create New Task'
+                                : (modalMode === 'task') ? 'Your Task'
+                                    : (modalMode === 'category') ? 'Categories' : false
+
+
+                        }
+                    </h2>
                     {
                         (mode === 'task')
                             ? <ModalTaskMode />

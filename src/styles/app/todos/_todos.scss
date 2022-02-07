@@ -26,12 +26,8 @@
 
     margin: 20px auto 40px auto;
     width: fit-content;
-    background: linear-gradient(
-      90deg,
-      rgba(2, 0, 36, 1) 0%,
-      rgba(110, 110, 206, 1) 35%,
-      rgba(0, 212, 255, 1) 100%
-    );
+    background: $dark-blue;
+
     padding: 10px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba($color: $black, $alpha: 0.3);
@@ -169,7 +165,6 @@
     background-position-x: center;
     background-size: contain;
     background-repeat: no-repeat;
-
     min-height: 100vh;
     .todo__grid-todo {
       width: 100%;
@@ -179,18 +174,11 @@
       justify-content: space-between;
       align-items: center;
       margin: 10px auto;
-      padding: 5px 10px;
-      //   background: $dark-blue;
-      background: linear-gradient(
-        90deg,
-        rgba(2, 0, 36, 1) 0%,
-        rgba(110, 110, 206, 1) 35%,
-        rgba(0, 212, 255, 1) 100%
-      );
+      padding: 8px 14px;
+      background: $primary-color;
       animation-name: fadeInLeft;
       animation-duration: 0.5s;
       animation-iteration-count: initial;
-
       border-radius: 5px;
       .todos__grid-todo-description {
         font-size: 18px;
@@ -211,10 +199,13 @@
           margin-right: 10px;
         }
       }
-      svg {
-        transform: rotate(30deg);
-        fill: rgba($color: $dark-blue, $alpha: 0.5);
-        stroke: rgba($color: $dark-blue, $alpha: 1);
+      .todo__grid-todo-icon-span {
+        svg {
+          fill: rgba($color: red, $alpha: 0.5);
+          stroke: $black;
+          width: 30px;
+          height: 30px;
+        }
       }
 
       .dropDown {
@@ -277,7 +268,6 @@
         line-height: 22px;
         transition: 0.6s ease all;
         margin-bottom: 20px;
-        // border: 1px solid transparent;
         &::placeholder {
           font-size: 22px;
           line-height: 22px;
@@ -320,7 +310,7 @@
       }
     }
     .todos__Grid {
-      background-position-y: -90px;
+      //   background-position-y: -90px;
       .todo__grid-todo {
         transition: 0.6s ease all;
         margin-top: 30px;
@@ -333,29 +323,20 @@
         &:hover {
           transition: 0.3s ease all;
           opacity: 0.9;
-          cursor: pointer;
-          background: linear-gradient(
-            90deg,
-            rgba(0, 212, 255, 1) 0%,
-            rgba(110, 110, 206, 1) 35%,
-            rgba(2, 0, 36, 1) 100%
-          );
+        }
+        .todo__grid-todo-icon-span {
+          transition: 0.4s ease all;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 5px;
           svg {
-            fill: $primary-color;
-            stroke: rgba($color: $white, $alpha: 0.7);
+            width: 35px;
+            height: 35px;
           }
-          .todos__grid-todo-description {
-            color: $dark-blue;
-            .checkSpanIcon {
-              border: 1px solid $dark-blue;
-            }
-            svg {
-              fill: none;
-            }
-          }
-
-          .todo-completed {
-            text-decoration: line-through $dark-blue;
+          &:hover {
+            background: rgba($color: $black, $alpha: 0.2);
           }
         }
       }

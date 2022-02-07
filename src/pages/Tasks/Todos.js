@@ -28,7 +28,7 @@ export const Todos = () => {
 
     const { modalOpen } = useSelector(state => state.ui)
     const [filter, setFilter] = useState('all')
-    const [taskByCategory, setTaskByCategory] = useState(0)
+    const [tasksLength, setTasksLength] = useState(0)
 
     useEffect(() => {
 
@@ -43,9 +43,6 @@ export const Todos = () => {
         dispatch(openModal())
 
     }
-
-
-
 
 
 
@@ -66,9 +63,7 @@ export const Todos = () => {
     }
 
     useEffect(() => {
-
-        getArrayLength(tasks, filter, activeCategory, setTaskByCategory)
-
+        getArrayLength(tasks, filter, activeCategory, setTasksLength)
 
     }, [activeCategory, filter, tasks])
 
@@ -163,7 +158,7 @@ export const Todos = () => {
 
                 <h2
                     className="todos__category-title">
-                    {(activeCategory) ? `${activeCategory.label}(${taskByCategory})` : `Total ( ${tasks.length} )`}
+                    {(activeCategory) ? `${activeCategory.label}(${tasksLength})` : `Total ( ${tasksLength} )`}
                 </h2>
 
 

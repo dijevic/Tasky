@@ -15,8 +15,8 @@ export const Login = () => {
 
     const dispatch = useDispatch()
     const initialLoginState = {
-        email: '',
-        password: '',
+        email: 'dielmac7@gmail.com',
+        password: '123456789',
     }
     const [formLoginValues, handleInputChange] = UseForm(initialLoginState)
     const [loading, setLoading] = useState(false)
