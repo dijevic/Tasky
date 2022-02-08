@@ -118,7 +118,7 @@ export const startUpdateTask = (uuid, fills, alert) => {
         try {
             const resp = await updateTasksFetch(`v1/task/${uuid}`, { ...fills })
             const data = await resp.json()
-            console.log(data)
+
             if (data.ok) {
 
                 dispatch(updateTask(data.task))

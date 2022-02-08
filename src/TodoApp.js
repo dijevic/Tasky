@@ -6,9 +6,12 @@ import 'animate.css';
 import '../src/styles/styles.min.css'
 
 export const TodoApp = () => {
+
+
     return (
 
         <Provider store={store} >
+
             <AppRouter />
         </Provider>
 

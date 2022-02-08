@@ -1,0 +1,95 @@
+.ui__modal-container {
+  .modal__container {
+    .modal {
+      body.dark & {
+        background-color: #22223b;
+        .closeIcon,
+        .modal-title {
+          color: $white;
+        }
+
+        .modal__task-extra-info-container {
+          color: $white;
+
+          .modal__task-extra-info {
+            .modal__task-extra-info-content-wrapper {
+              border: 1px solid rgba($color: $white, $alpha: 0.2);
+            }
+          }
+        }
+
+        .modal-buttonsContainer {
+          min-width: 235px;
+
+          .complete,
+          .add {
+            background: $primary-color;
+            color: $white;
+          }
+          .add {
+            svg {
+              width: 25px;
+              height: 25px;
+            }
+          }
+          .update,
+          .add {
+            margin-right: 15px;
+          }
+
+          .delete {
+            //   background: rgba($color: red, $alpha: 0.8);
+            background: $secondary-color;
+            color: $white;
+          }
+
+          .update,
+          .back {
+            background: rgba($color: $white, $alpha: 0.8);
+          }
+        }
+      }
+    }
+  }
+}
+
+// modal-new task
+
+.modal__task {
+  .modal__task__button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    right: 7%;
+  }
+
+  .modal-button {
+    padding: 10px 20px;
+    color: $black;
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px rgba($color: $black, $alpha: 0.5);
+    font-size: 16px;
+    background: rgba($color: $black, $alpha: 0.1);
+    width: 100%;
+    max-width: 100px;
+    text-align: center;
+  }
+  .add {
+    background: $primary-color;
+    color: $white;
+  }
+  .cancel {
+    margin-right: 15px;
+  }
+
+  body.dark & {
+    .modal__task__dropdown-container {
+      .modal__task__span-icon {
+        padding: 9px;
+        background: rgba($color: $white, $alpha: 0.2);
+      }
+    }
+  }
+}

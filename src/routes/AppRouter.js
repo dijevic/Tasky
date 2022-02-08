@@ -30,6 +30,8 @@ export const AppRouter = () => {
 
 
 
+    // checking user data
+
     useEffect(() => {
 
         if (localStorage.getItem('token')) {
@@ -40,8 +42,22 @@ export const AppRouter = () => {
 
 
 
-
     }, [dispatch])
+
+    // dark-mode
+
+    useEffect(() => {
+
+        const darkMode = localStorage.getItem('dark') || false
+
+
+        if (darkMode === 'true') {
+            document.body.classList.add('dark')
+
+        }
+
+    }, [])
+
 
     if (checking) {
         return (<Spinner color="#6e6ece" />)
@@ -49,6 +65,7 @@ export const AppRouter = () => {
     return (
         <Router>
             <div>
+
                 <Switch>
                     <PublicRoute
                         component={AuthRouter}

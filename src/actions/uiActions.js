@@ -9,6 +9,9 @@ export const closeModal = () => ({
 export const setTaskMode = () => ({
     type: types.modalModeTask
 })
+export const setProfileMode = () => ({
+    type: types.modalProfileMode
+})
 export const setCategoryMode = () => ({
     type: types.modalModeCategory
 })

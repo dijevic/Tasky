@@ -1,33 +1,39 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { logOut } from '../../actions/authActions'
-import { cleaning } from '../../actions/tasksActions'
-import { LogOut } from '../icons/LogOut'
+import React, { useState } from 'react'
+
+import { CloseIcon } from '../icons/CloseIcon'
+import { HambuerguerMenu } from '../icons/HambuerguerMenu'
 import { RockectIcon } from '../icons/RockectIcon'
 import { LinkComponent } from './LinkComponent'
+import { SideMenu } from './SideMenu'
 
 export const NavBar = () => {
-    const dispatch = useDispatch()
-    const handleClick = () => {
-        dispatch(logOut())
-        dispatch(cleaning())
+
+    const [openMenu, setOpenMenu] = useState(false);
+
+
+    const handleOpenMenu = () => {
+        setOpenMenu(!openMenu)
     }
     return (
         <header className="navbar__header">
             <div className="container" >
-                <RockectIcon />
+                <span className="navbar__icon-span">
+                    <RockectIcon />
+                </span>
                 <LinkComponent to="/app/profile" clases="navbar__icon-name" text=" Tasky !" />
+
+
                 <div
-                    onClick={handleClick}
-                    className="navbar__header-logout">
-                    <LogOut />
-                    <span
-                        className="navbar__header-logout-span" >
-                        Logout
-
-                    </span>
-
+                    onClick={handleOpenMenu}
+                    className="hambuerguerMenu">
+                    {
+                        (openMenu) ? <CloseIcon /> : <HambuerguerMenu />
+                    }
                 </div>
+
+
+                <SideMenu open={openMenu} setOpen={setOpenMenu} />
+
 
 
             </div>

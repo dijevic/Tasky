@@ -14,6 +14,12 @@
 body {
   width: 100%;
   min-height: 100vh;
+  -webkit-transition: 0.6s ease all;
+  transition: 0.6s ease all;
+}
+
+body.dark {
+  background: rgba(34, 34, 59, 0.8);
 }
 
 html {
@@ -57,13 +63,13 @@ body > div:nth-child(5) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: rgba(34, 34, 59, 0.5);
+  background: rgba(34, 34, 59, 0.8);
   -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
           box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .auth__box-title {
-  color: #22223b;
+  color: #fff;
   text-align: center;
   font-size: 32px;
   margin-bottom: 15px;
@@ -189,7 +195,7 @@ body > div:nth-child(5) {
   width: 50%;
   padding: 5px 10px;
   border-radius: 5px;
-  background: rgba(34, 34, 59, 0.8);
+  background: #22223b;
   margin-top: 25px;
   color: #fff;
   font-weight: 500;
@@ -328,6 +334,7 @@ body > div:nth-child(5) {
 .tasks__container {
   width: 100%;
   height: 95vh;
+  margin-top: 100px;
 }
 
 .tasks__container h2 {
@@ -336,6 +343,8 @@ body > div:nth-child(5) {
   margin-top: 35px;
   text-align: center;
   color: #22223b;
+  position: relative;
+  top: 40px;
 }
 
 .tasks__container h2 .tasks__dashboard-userName {
@@ -357,7 +366,7 @@ body > div:nth-child(5) {
 }
 
 .tasks__container .tasks__option-container {
-  margin: 30px auto 0px auto;
+  margin: 50px auto 0px auto;
   padding: 25px;
   width: 100%;
   max-width: 1000px;
@@ -380,13 +389,16 @@ body > div:nth-child(5) {
           animation-iteration-count: initial;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
+  border-radius: 10px;
 }
 
 .tasks__container .tasks__option-container .tasks__dashboard-option a {
   position: relative;
+  border-radius: 10px;
 }
 
 .tasks__container .tasks__option-container .tasks__dashboard-option a img {
+  border-radius: 10px;
   width: 100%;
   height: 100%;
 }
@@ -438,7 +450,7 @@ body > div:nth-child(5) {
     height: 100px;
     border-radius: 100%;
     position: absolute;
-    background: #fcc8c2;
+    background: #fe5f55;
     -webkit-box-shadow: 1px 2px 5px 000;
             box-shadow: 1px 2px 5px 000;
     background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(53%, #1b065e), to(#00d4ff));
@@ -486,6 +498,10 @@ body > div:nth-child(5) {
           box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
   padding: 10px 70px;
   background: #22223b;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
 .navbar__header .container {
@@ -514,36 +530,24 @@ body > div:nth-child(5) {
   padding: 5px;
 }
 
-.navbar__header .container svg {
+.navbar__header .container .navbar__icon-span svg {
   fill: #fff;
   padding: 5px;
 }
 
-.navbar__header .container .navbar__header-logout {
+.navbar__header .container .hambuerguerMenu {
   position: absolute;
   right: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-shadow: none;
-  font-size: 20px;
-  border: 1px solid transparent;
-  color: #6e6ece;
-}
-
-.navbar__header .container .navbar__header-logout .navbar__header-logout-span {
-  font-family: "Oswald";
-  display: none;
   color: #fff;
 }
 
-.navbar__header .container .navbar__header-logout svg {
-  fill: none;
-  stroke: #6e6ece;
-  padding: 0px;
+.navbar__header .container .hambuerguerMenu svg {
+  -webkit-animation-name: flipInX;
+          animation-name: flipInX;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
 }
 
 @media screen and (min-width: 768px) {
@@ -622,9 +626,9 @@ body > div:nth-child(5) {
 .todos__container {
   width: 90%;
   max-width: 1000px;
-  margin: 0px auto;
+  margin: 40px auto;
   text-align: center;
-  margin-top: 35px;
+  margin-top: 100px;
   min-height: 100vh;
 }
 
@@ -638,6 +642,8 @@ body > div:nth-child(5) {
           animation-iteration-count: initial;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
+  position: relative;
+  top: 40px;
 }
 
 .todos__container .todos__title .specialSentence {
@@ -654,7 +660,7 @@ body > div:nth-child(5) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 20px auto 40px auto;
+  margin: 100px auto 70px auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -750,12 +756,14 @@ body > div:nth-child(5) {
   width: 100%;
   max-width: 400px;
   padding: 10px;
+  padding: 0;
 }
 
 .todos__container .Dropdown-root .Dropdown-control {
   background-color: #22223b;
   border-radius: 5px;
   color: #fff;
+  border: none;
 }
 
 .todos__container .Dropdown-root .Dropdown-control .Dropdown-placeholder {
@@ -765,6 +773,10 @@ body > div:nth-child(5) {
 .todos__container .Dropdown-root .Dropdown-control .Dropdown-placeholder .Dropdown-option {
   font-size: 18px;
   text-align: start;
+}
+
+.todos__container .Dropdown-root .Dropdown-control .Dropdown-arrow-wrapper .Dropdown-arrow {
+  border-color: #fff transparent transparent;
 }
 
 .todos__container .todos__category-title {
@@ -786,6 +798,10 @@ body > div:nth-child(5) {
   font-size: 32px;
   line-height: 35px;
   font-family: "Dancing Script";
+}
+
+body.dark .todos__container .todos__category-title {
+  color: #fff;
 }
 
 .todos__container .todos__filter-container {
@@ -844,7 +860,7 @@ body > div:nth-child(5) {
           flex-direction: column;
   margin: auto;
   max-width: 1000px;
-  background: url("/src/assets/images/Cute_Astronaut_Character_generated.jpg");
+  background: url("/src/assets/images/astronaut-background.png");
   background-position-x: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -874,7 +890,7 @@ body > div:nth-child(5) {
           animation-duration: 0.5s;
   -webkit-animation-iteration-count: initial;
           animation-iteration-count: initial;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .todos__container .todos__Grid .todo__grid-todo .todos__grid-todo-description {
@@ -913,7 +929,7 @@ body > div:nth-child(5) {
 }
 
 .todos__container .todos__Grid .todo__grid-todo .todo__grid-todo-icon-span svg {
-  fill: rgba(255, 0, 0, 0.5);
+  fill: rgba(110, 110, 206, 0.5);
   stroke: #000;
   width: 30px;
   height: 30px;
@@ -930,7 +946,7 @@ body > div:nth-child(5) {
 
 @media screen and (min-width: 768px) {
   .todos__container {
-    margin-top: 60px;
+    margin-top: 120px;
   }
   .todos__container .todos__title {
     font-size: 42px;
@@ -1181,7 +1197,6 @@ body > div:nth-child(5) {
   z-index: 200;
   max-width: 600px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
   padding: 40px;
   position: relative;
   min-width: 270px;
@@ -1256,7 +1271,7 @@ body > div:nth-child(5) {
 }
 
 .ui__modal-container .modal__container .modal .modal__input {
-  padding: 10px 0px;
+  padding: 10px 0px 10px 10px;
   width: 100%;
   margin: 20px 0px;
   outline: none;
@@ -1270,6 +1285,7 @@ body > div:nth-child(5) {
   text-overflow: ellipsis;
   overflow: hidden;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 .ui__modal-container .modal__container .modal .modal__task-extra-info-container {
@@ -1354,7 +1370,7 @@ body > div:nth-child(5) {
 }
 
 .ui__modal-container .modal__container .modal .modal-buttonsContainer .delete {
-  background: rgba(255, 0, 0, 0.8);
+  background: #fe5f55;
   color: #fff;
 }
 
@@ -1652,7 +1668,7 @@ body > div:nth-child(5) {
   width: 100%;
   max-width: 500px;
   outline: none;
-  padding: 10px 0px;
+  padding: 10px 0px 10px 10px;
   font-size: 16px;
   line-height: 22px;
   margin-bottom: 10px;
@@ -1660,6 +1676,7 @@ body > div:nth-child(5) {
   text-overflow: ellipsis;
   overflow: hidden;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 .modal__task .modal__task__input::-webkit-input-placeholder {
@@ -1778,7 +1795,7 @@ body > div:nth-child(5) {
     margin-bottom: 20px;
     line-height: 28px;
     font-size: 20px;
-    padding: 15px 0px;
+    padding: 15px 0px 15px 10px;
   }
   .modal__task .modal__task__input::-webkit-input-placeholder {
     font-size: 20px;
@@ -1837,5 +1854,280 @@ body > div:nth-child(5) {
   .modal__task .modal-button:hover {
     opacity: 0.9;
   }
+}
+
+.sideBarMenu-container {
+  top: 60px;
+  position: absolute;
+  right: 0;
+  padding: 25px 0px;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 299;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-animation-name: fadeInRight;
+          animation-name: fadeInRight;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  border-top: 2px solid #fff;
+  margin-right: -100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+body.dark .sideBarMenu-container {
+  background: #22223b;
+}
+
+.sideBarMenu-container .sideBarMenu-profileLogo {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 100%;
+  margin-bottom: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sideBarMenu-container .sideBarMenu-profileLogo img {
+  width: 150px;
+  height: 150px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 100%;
+  background: #6e6ece;
+}
+
+.sideBarMenu-container .sideBarMenu-profileLogo .sideBarMenu-profileLogo-text {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #6e6ece;
+  cursor: none;
+}
+
+.sideBarMenu-container ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 25px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sideBarMenu-container ul .sideBarMenu-option {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.sideBarMenu-container ul .sideBarMenu-option::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 8%;
+  width: 80%;
+  background: #fff;
+  height: 1px;
+}
+
+.sideBarMenu-container ul .sideBarMenu-option svg {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  -webkit-animation-name: flipInX;
+          animation-name: flipInX;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+}
+
+.open {
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .sideBarMenu-container {
+    max-width: 400px;
+  }
+  .sideBarMenu-container ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .sideBarMenu-container ul .sideBarMenu-option {
+    font-size: 22px;
+    line-height: 25px;
+  }
+  .sideBarMenu-container ul .sideBarMenu-option svg {
+    margin-right: 20px;
+    width: 35px;
+    height: 35px;
+  }
+  .sideBarMenu-container ul .sideBarMenu-option:hover {
+    -webkit-transition: 0.3s ease all;
+    transition: 0.3s ease all;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+body.dark .ui__modal-container .modal__container .modal {
+  background-color: #22223b;
+}
+
+body.dark .ui__modal-container .modal__container .modal .closeIcon,
+body.dark .ui__modal-container .modal__container .modal .modal-title {
+  color: #fff;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal__task-extra-info-container {
+  color: #fff;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal__task-extra-info-container .modal__task-extra-info .modal__task-extra-info-content-wrapper {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer {
+  min-width: 235px;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .complete,
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .add {
+  background: #6e6ece;
+  color: #fff;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .add svg {
+  width: 25px;
+  height: 25px;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .update,
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .add {
+  margin-right: 15px;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .delete {
+  background: #fe5f55;
+  color: #fff;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .update,
+body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .back {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.modal__task .modal__task__button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  bottom: 40px;
+  right: 7%;
+}
+
+.modal__task .modal-button {
+  padding: 10px 20px;
+  color: #000;
+  border-radius: 15px;
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 100px;
+  text-align: center;
+}
+
+.modal__task .add {
+  background: #6e6ece;
+  color: #fff;
+}
+
+.modal__task .cancel {
+  margin-right: 15px;
+}
+
+body.dark .modal__task .modal__task__dropdown-container .modal__task__span-icon {
+  padding: 9px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.modalProfileContainer {
+  margin-top: 40px;
+}
+
+.modalProfileContainer .modal__task-inputGroup {
+  position: relative;
+}
+
+.modalProfileContainer .modal__task-inputGroup .modal__task__input {
+  border-radius: 0px;
+  margin-top: 10px;
+}
+
+body.dark .modalProfileContainer .modal__task-inputGroup .modal__task__input {
+  border-radius: 5px;
+}
+
+.modalProfileContainer .modal__task-inputGroup .modal-inputGroup-span {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  -webkit-transition: 0.6s ease all;
+  transition: 0.6s ease all;
+}
+
+body.dark .modalProfileContainer .modal__task-inputGroup .modal-inputGroup-span {
+  color: #000;
+}
+
+.modalProfileContainer .modal__task-inputGroup:focus {
+  background-color: green;
+}
+
+.modalProfileContainer .modal-buttonsContainer {
+  margin-top: 20px !important;
+}
+
+.modalProfileContainer .modal-buttonsContainer button {
+  margin-right: 0px !important;
+}
+
+.modalProfileContainer .modal-buttonsContainer .add {
+  margin-right: 0px;
 }
 /*# sourceMappingURL=styles.min.css.map */

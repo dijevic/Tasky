@@ -58,8 +58,6 @@ export const ModalNewTask = () => {
         setCategory(e)
         ref.current.click()
 
-
-
     }
 
 
@@ -114,7 +112,6 @@ export const ModalNewTask = () => {
             </div> */}
 
             <div className="modal__task__button-container">
-                <ModalButton onClick={handleSubmit} classes="modal-button cancel" text="cancel" type="click" />
                 <ModalButton onClick={handleSubmit} classes="modal-button add" text="Add" type="submit" />
             </div>
 

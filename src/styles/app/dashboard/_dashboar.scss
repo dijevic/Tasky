@@ -1,6 +1,7 @@
 .tasks__container {
   width: 100%;
   height: 95vh;
+  margin-top: 100px;
 
   h2 {
     font-size: 28px;
@@ -8,6 +9,8 @@
     margin-top: 35px;
     text-align: center;
     color: $dark-blue;
+    position: relative;
+    top: 40px;
     .tasks__dashboard-userName {
       font-weight: 900;
       color: $primary-color;
@@ -24,7 +27,7 @@
   }
 
   .tasks__option-container {
-    margin: 30px auto 0px auto;
+    margin: 50px auto 0px auto;
     padding: 25px;
     width: 100%;
     max-width: 1000px;
@@ -38,9 +41,15 @@
       animation-name: fadeInUp;
       animation-iteration-count: initial;
       animation-duration: 0.8s;
+
+      border-radius: 10px;
       a {
         position: relative;
+        border-radius: 10px;
+
         img {
+          border-radius: 10px;
+
           width: 100%;
           height: 100%;
         }

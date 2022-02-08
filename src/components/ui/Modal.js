@@ -3,15 +3,18 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { unSetActiveTask } from '../../actions/tasksActions'
-import { cleanMode, closeModal /* setNewTaskMode */ } from '../../actions/uiActions'
+import { cleanMode, closeModal } from '../../actions/uiActions'
 import { CloseIcon } from '../icons/CloseIcon'
 
 import { ModalCategoryMode } from './ModalCategoryMode'
 import { ModalNewTask } from './ModalNewTask'
+import { ModalProfileMode } from './ModalProfileMode'
 
 import { ModalTaskMode } from './ModalTaskMode'
 
 export const Modal = ({ mode }) => {
+
+
     const dispatch = useDispatch()
 
     const { modalMode } = useSelector(state => state.ui)
@@ -57,9 +60,7 @@ export const Modal = ({ mode }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
     }
-    // const handleGetBackTaskNewMode = () => {
-    //     dispatch(setNewTaskMode())
-    // }
+
 
 
 
@@ -79,21 +80,17 @@ export const Modal = ({ mode }) => {
                         <CloseIcon />
                     </span>
 
-                    {/* {
-                        (modalMode === 'category') &&
-                        <span
-                            onClick={handleGetBackTaskNewMode}
-                            className="goback">
 
-                            create task
-                        </span>
-                    } */}
                     <h2 className="modal-title">
                         {
                             (modalMode === 'new task')
                                 ? 'Create New Task'
-                                : (modalMode === 'task') ? 'Your Task'
-                                    : (modalMode === 'category') ? 'Categories' : false
+                                : (modalMode === 'task')
+                                    ? 'Your Task'
+                                    : (modalMode === 'category')
+                                        ? 'Categories'
+                                        : (modalMode === 'profile') ? 'Profile'
+                                            : false
 
 
                         }
@@ -103,7 +100,10 @@ export const Modal = ({ mode }) => {
                             ? <ModalTaskMode />
                             : (mode === 'category')
                                 ? <ModalCategoryMode />
-                                : < ModalNewTask />
+                                : (mode === 'new task')
+                                    ? < ModalNewTask />
+                                    : (mode === 'profile')
+                                        ? < ModalProfileMode /> : false
 
 
                     }

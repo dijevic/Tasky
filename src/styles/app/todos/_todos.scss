@@ -1,11 +1,10 @@
 .todos__container {
   width: 90%;
   max-width: 1000px;
-  margin: 0px auto;
+  margin: 40px auto;
   text-align: center;
-  margin-top: 35px;
+  margin-top: 100px;
   min-height: 100vh;
-
   .todos__title {
     margin-bottom: 75px;
     margin-top: 50px;
@@ -13,6 +12,8 @@
     animation-name: fadeInUp;
     animation-iteration-count: initial;
     animation-duration: 0.5s;
+    position: relative;
+    top: 40px;
 
     .specialSentence {
       color: $primary-color;
@@ -24,7 +25,7 @@
     justify-content: center;
     align-items: center;
 
-    margin: 20px auto 40px auto;
+    margin: 100px auto 70px auto;
     width: fit-content;
     background: $dark-blue;
 
@@ -88,10 +89,12 @@
     width: 100%;
     max-width: 400px;
     padding: 10px;
+    padding: 0;
     .Dropdown-control {
       background-color: $dark-blue;
       border-radius: 5px;
       color: $white;
+      border: none;
       .Dropdown-placeholder {
         font-size: 18px;
       }
@@ -99,6 +102,11 @@
         .Dropdown-option {
           font-size: 18px;
           text-align: start;
+        }
+      }
+      .Dropdown-arrow-wrapper {
+        .Dropdown-arrow {
+          border-color: $white transparent transparent;
         }
       }
     }
@@ -118,6 +126,10 @@
       font-size: 32px;
       line-height: 35px;
       font-family: "Dancing Script";
+    }
+
+    body.dark & {
+      color: $white;
     }
   }
   .todos__filter-container {
@@ -161,7 +173,7 @@
     flex-direction: column;
     margin: auto;
     max-width: 1000px;
-    background: url("/src/assets/images/Cute_Astronaut_Character_generated.jpg");
+    background: url("/src/assets/images/astronaut-background.png");
     background-position-x: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -176,10 +188,11 @@
       margin: 10px auto;
       padding: 8px 14px;
       background: $primary-color;
+      //   background: $secondary-color;
       animation-name: fadeInLeft;
       animation-duration: 0.5s;
       animation-iteration-count: initial;
-      border-radius: 5px;
+      border-radius: 10px;
       .todos__grid-todo-description {
         font-size: 18px;
         color: $white;
@@ -201,7 +214,8 @@
       }
       .todo__grid-todo-icon-span {
         svg {
-          fill: rgba($color: red, $alpha: 0.5);
+          //   fill: rgba($color: red, $alpha: 0.5);
+          fill: rgba($color: #6e6ece, $alpha: 0.5);
           stroke: $black;
           width: 30px;
           height: 30px;
@@ -221,7 +235,7 @@
 
 @media screen and(min-width:768px) {
   .todos__container {
-    margin-top: 60px;
+    margin-top: 120px;
 
     .todos__title {
       font-size: 42px;
@@ -232,6 +246,7 @@
     .todos__createTask {
       padding: 10px;
       border-radius: 20px;
+
       &:hover {
         cursor: pointer;
       }

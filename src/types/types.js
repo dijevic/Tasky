@@ -3,7 +3,9 @@ export const types = {
     modalClose: '[ui modal] modal close',
     modalModeTask: '[ui modal] modal mode task',
     modalModeNewTask: `[ui modal] modal mode new task`,
+    modalProfileMode: `[ui modal] modal mode profile`,
     modalModeClean: '[ui modal] modal mode clean',
+
 
     modalModeCategory: '[ui modal] modal mode category',
     authLogin: `[auth] login`,
