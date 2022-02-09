@@ -9,21 +9,25 @@ import { ModalButton } from './ModalButton';
 import { useAlert } from 'react-alert';
 import { CalendarIcon } from '../icons/CalendarIcon';
 import { BookMarkedIcon } from '../icons/BookMarkedIcon';
+import { capitalizeWord } from '../../helpers/capitalize'
+
 
 
 export const ModalTaskMode = () => {
 
     const ref = useRef(null)
+    const ref2 = useRef(null)
     const alert = useAlert()
     const dispatch = useDispatch()
     const { activeTask } = useSelector(state => state.task)
 
     const initialState = {
-        description: activeTask.capitalizeDescription
+        description: activeTask.description,
+        title: activeTask.capitalizeTitle
     }
     const [formValue, handleInputChange] = UseForm(initialState)
 
-    const { description } = formValue
+    const { description, title } = formValue
 
     const date = moment(activeTask.creationDate).add(10, 'days').calendar()
     const label = activeTask.task_category.name
@@ -32,22 +36,32 @@ export const ModalTaskMode = () => {
     const handleUpdate = async () => {
         alert.info('Updating...')
         ref.current.disabled = true
-        await dispatch(startUpdateTask(activeTask.uuid, { description }, alert))
+        ref2.current.disabled = true
+        await dispatch(startUpdateTask(activeTask.uuid, { description, title }, alert))
         ref.current.disabled = false
+        ref2.current.disabled = false
+        alert.success('The task has been updated')
 
 
     }
     const handleCompleteTask = async () => {
         alert.info('Updating...')
         ref.current.disabled = true
+        ref2.current.disabled = true
         if (activeTask.completed) {
             await dispatch(startUpdateTask(activeTask.uuid, { completed: false }, alert))
             ref.current.disabled = false
+            ref2.current.disabled = false
+            alert.success('Task marked as uncompleted')
+
 
 
         } else {
             await dispatch(startUpdateTask(activeTask.uuid, { completed: true }, alert))
             ref.current.disabled = false
+            ref2.current.disabled = false
+            alert.success('Task marked as completed')
+
 
         }
 
@@ -67,21 +81,23 @@ export const ModalTaskMode = () => {
                 ref={ref}
                 type="text"
                 className=" modal__input"
-                name="description"
-                value={description}
+                name="title"
+                value={title}
+                autoComplete="off"
                 onChange={handleInputChange}
 
             />
-            {/* add decription section */}
-            {/* <input
-                ref={ref}
+            <input
+                ref={ref2}
                 type="text"
                 className=" modal__input"
                 name="description"
-                value="description"
+                placeholder={(description.length === 0) && `empty description`}
+                value={(description.length > 0) ? capitalizeWord(description) : ''}
+                autoComplete="off"
                 onChange={handleInputChange}
 
-            /> */}
+            />
 
             <div className="modal__task-extra-info-container">
 
@@ -108,8 +124,7 @@ export const ModalTaskMode = () => {
             </div>
 
 
-            {/* {(activeTask) && <span className="modal__taskcategory">{`Category :${label}`}</span>}
-            <span className="modal__date">{`Created at :${date}`}</span> */}
+
 
             <div className="modal-buttonsContainer">
                 <ModalButton

@@ -174,13 +174,14 @@ export const Todos = () => {
 
                             (filter === 'all')
                                 ?
-                                tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                tasks.map(({ uuid, description, creationDate, completed, task_category, title }) => {
                                     return <Task
                                         key={uuid}
                                         uuid={uuid}
                                         description={description}
                                         creationDate={creationDate}
                                         completed={completed}
+                                        title={title}
                                         task_category={task_category}
                                     />
                                 })
@@ -188,7 +189,7 @@ export const Todos = () => {
                                 (filter === 'todo')
                                     ?
 
-                                    tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                    tasks.map(({ uuid, description, creationDate, completed, task_category, title }) => {
                                         return (!completed) ?
                                             <Task
                                                 key={uuid}
@@ -196,13 +197,14 @@ export const Todos = () => {
                                                 description={description}
                                                 creationDate={creationDate}
                                                 completed={completed}
+                                                title={title}
                                                 task_category={task_category} />
                                             : false
                                     })
                                     :
                                     (filter === 'completed')
                                         ?
-                                        tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                        tasks.map(({ uuid, description, creationDate, completed, task_category, title }) => {
                                             return (completed) ?
                                                 <Task
                                                     key={uuid}
@@ -210,6 +212,7 @@ export const Todos = () => {
                                                     description={description}
                                                     creationDate={creationDate}
                                                     completed={completed}
+                                                    title={title}
                                                     task_category={task_category} />
                                                 : false
                                         })
@@ -219,7 +222,7 @@ export const Todos = () => {
 
                             (filter === 'all')
                                 ?
-                                tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                tasks.map(({ uuid, description, creationDate, completed, task_category, title }) => {
                                     return (task_category.uuid === activeCategory.value)
                                         ?
                                         <Task
@@ -228,6 +231,7 @@ export const Todos = () => {
                                             description={description}
                                             creationDate={creationDate}
                                             completed={completed}
+                                            title={title}
                                             task_category={task_category}
                                         /> : false
                                 })
@@ -235,7 +239,7 @@ export const Todos = () => {
                                 (filter === 'todo')
                                     ?
 
-                                    tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                    tasks.map(({ uuid, description, creationDate, completed, task_category, title }) => {
                                         return (!completed && task_category.uuid === activeCategory.value) ?
                                             <Task
                                                 key={uuid}
@@ -243,13 +247,14 @@ export const Todos = () => {
                                                 description={description}
                                                 creationDate={creationDate}
                                                 completed={completed}
+                                                title={title}
                                                 task_category={task_category} />
                                             : false
                                     })
                                     :
                                     (filter === 'completed')
                                         ?
-                                        tasks.map(({ uuid, description, creationDate, completed, task_category }) => {
+                                        tasks.map(({ uuid, description, creationDate, completed, task_category, title }) => {
                                             return (completed && task_category.uuid === activeCategory.value) ?
                                                 <Task
                                                     key={uuid}
@@ -257,6 +262,7 @@ export const Todos = () => {
                                                     description={description}
                                                     creationDate={creationDate}
                                                     completed={completed}
+                                                    title={title}
                                                     task_category={task_category} />
                                                 : false
                                         })

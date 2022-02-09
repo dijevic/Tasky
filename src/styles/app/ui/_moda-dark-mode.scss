@@ -5,7 +5,7 @@
         background-color: #22223b;
         .closeIcon,
         .modal-title {
-          color: $white;
+          color: $primary-color;
         }
 
         .modal__task-extra-info-container {
@@ -38,7 +38,6 @@
           }
 
           .delete {
-            //   background: rgba($color: red, $alpha: 0.8);
             background: $secondary-color;
             color: $white;
           }

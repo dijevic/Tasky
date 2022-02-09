@@ -123,7 +123,7 @@ export const startUpdateTask = (uuid, fills, alert) => {
 
                 dispatch(updateTask(data.task))
                 dispatch(setActiveTask(data.task))
-                alert.success('The task has been updated')
+
 
             } else {
                 alert.error(`something went wrong :(`)

@@ -1,16 +1,22 @@
 import React from 'react';
 import { useRef } from 'react';
 import { useAlert } from 'react-alert';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { startUpdatingUserData } from '../../actions/UserAction';
 import { UseForm } from '../../hooks/userForm';
 import { ModalButton } from './ModalButton';
+import astronaut from '../../assets/images/Astronaut_11_generated.jpg'
+import { capitalizeText } from '../../helpers/capitalize'
 
 export const ModalProfileMode = () => {
+
     const dispatch = useDispatch()
-    const alert = useAlert()
+    const { user } = useSelector(state => state.auth)
     const refName = useRef(null)
     const refPassword = useRef(null)
+    const alert = useAlert()
+
+    const userCapitalized = capitalizeText(user.name)
 
 
     const initialState = {
@@ -39,12 +45,16 @@ export const ModalProfileMode = () => {
     }
     return (
         <div className="modal__task modalProfileContainer">
+
+            <picture className="modalProfile-picture">
+                <img src={astronaut} alt="astronaut profile" />
+            </picture>
             <div className="modal__task-inputGroup" >
-                <span className="modal-inputGroup-span">Name</span>
+                {/* <span className="modal-inputGroup-span">Name</span> */}
                 <input
                     type="text"
                     className="modal__task__input"
-                    placeholder=""
+                    placeholder={`User Name => ${userCapitalized}`}
                     autoComplete="off"
                     name="name"
                     value={name}
@@ -57,12 +67,12 @@ export const ModalProfileMode = () => {
             </div>
 
             <div className="modal__task-inputGroup" >
-                <span className="modal-inputGroup-span">Password</span>
+                {/* <span className="modal-inputGroup-span">Password</span> */}
 
                 <input
                     type="text"
                     className="modal__task__input"
-                    placeholder=""
+                    placeholder="Password"
                     autoComplete="off"
                     name="password"
                     value={password}

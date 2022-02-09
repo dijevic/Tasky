@@ -13,6 +13,7 @@
     width: 100%;
     position: relative;
     margin-bottom: 20px;
+    background: none;
   }
 
   .modal__task__input {
@@ -27,12 +28,20 @@
     text-overflow: ellipsis;
     overflow: hidden;
     border-bottom: 2px solid rgba($color: $black, $alpha: 0.2);
-    border-radius: 5px;
+    background: none;
+
+    body.dark & {
+      border-bottom: 2px solid $white;
+      color: $white;
+    }
 
     &::placeholder {
       font-size: 16px;
       line-height: 20px;
       color: rgba($color: $black, $alpha: 0.5);
+      body.dark & {
+        color: $white;
+      }
     }
     &:focus {
       border-bottom: 2px solid rgba($color: $black, $alpha: 0.5);
@@ -43,7 +52,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 30px 0px;
+    margin: 10px 0px 20px 0px;
     .Dropdown-root {
       width: 90%;
       margin-right: 5px;
@@ -72,6 +81,9 @@
       border-radius: 5px;
       color: $black;
       cursor: pointer;
+      body.dark & {
+        color: $white;
+      }
     }
   }
 
@@ -110,7 +122,7 @@
       margin-bottom: 30px;
     }
     .modal__task__input {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       line-height: 28px;
       font-size: 20px;
       padding: 15px 0px 15px 10px;
@@ -124,7 +136,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 30px 0px;
+      margin: 10px 0px 20px 0px;
       .Dropdown-root {
         width: 90%;
         //   max-width: 350px;

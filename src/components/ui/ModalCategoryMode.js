@@ -4,13 +4,14 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useAlert } from 'react-alert'
 import { UseForm } from '../../hooks/userForm';
-
+import { capitalizeWord } from '../../helpers/capitalize'
 import { ModalButton } from './ModalButton';
 import {
     startAddNewCategory,
     startDeleteCategory,
     startUpdateCategory
 } from '../../actions/categoryActions';
+import astronaut from '../../assets/images/Alien_14_generated-PhotoRoom.png'
 import 'react-dropdown/style.css';
 
 
@@ -18,6 +19,7 @@ export const ModalCategoryMode = () => {
 
     const dispatch = useDispatch()
     const ref = useRef(null);
+    const ref2 = useRef(null);
     const alert = useAlert()
     const { categories } = useSelector(state => state.category)
 
@@ -74,9 +76,11 @@ export const ModalCategoryMode = () => {
         if (name.trim().length === 0) {
             return alert.error('a description is required')
         }
+        ref2.current.disabled = true
         alert.info('Creating...')
-
-        await dispatch(startAddNewCategory({ name }, alert))
+        const capitalizedName = capitalizeWord(name)
+        await dispatch(startAddNewCategory({ name: capitalizedName }, alert))
+        ref2.current.disabled = false
 
     }
 
@@ -85,10 +89,15 @@ export const ModalCategoryMode = () => {
         if (name.trim().length === 0) {
             return alert.error('a description is required')
         }
+
+        ref2.current.disabled = true
+
         alert.info('Updating...')
 
 
         await dispatch(startUpdateCategory(value, name, alert))
+        ref2.current.disabled = false
+
         setCurrentCategory({
             label: false,
             value: false
@@ -120,6 +129,10 @@ export const ModalCategoryMode = () => {
 
     return (
         <div className="modal__container-category">
+
+            <picture className="modal__picture">
+                <img src={astronaut} alt="astronaut working" />
+            </picture>
 
             {
                 (!showInput)
@@ -179,6 +192,7 @@ export const ModalCategoryMode = () => {
                                 name="name"
                                 value={name}
                                 onChange={handleInputChange}
+                                ref={ref2}
                                 placeholder="New category name" />
 
                             <div className="modal-buttonsContainer">

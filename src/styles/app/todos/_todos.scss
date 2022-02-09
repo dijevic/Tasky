@@ -24,11 +24,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin: 100px auto 70px auto;
     width: fit-content;
     background: $dark-blue;
-
     padding: 10px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba($color: $black, $alpha: 0.3);
@@ -72,10 +70,17 @@
       align-items: center;
       width: 100%;
       max-width: 57px;
+      body.dark & {
+        color: $white;
+      }
+
       svg {
         background: rgba($color: $black, $alpha: 0.3);
         box-shadow: 3px 3px 5px rgba($color: $black, $alpha: 0.2);
         border-radius: 100%;
+        body.dark & {
+          background: $white;
+        }
       }
     }
 

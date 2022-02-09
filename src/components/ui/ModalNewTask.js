@@ -10,6 +10,7 @@ import { SettingIcon } from '../icons/SettingIcon';
 
 import { ModalButton } from './ModalButton';
 import { startAddNewTask } from '../../actions/tasksActions';
+import astronaut from '../../assets/images/working.png'
 
 
 export const ModalNewTask = () => {
@@ -18,6 +19,7 @@ export const ModalNewTask = () => {
     const dispatch = useDispatch()
     const alert = useAlert()
     const initialState = {
+        title: '',
         description: ''
     }
     const [formValues, handleInputChange, resetValue] = UseForm(initialState)
@@ -32,16 +34,16 @@ export const ModalNewTask = () => {
 
     const { value, label } = category
 
-    const { description } = formValues
+    const { title, description } = formValues
 
 
     const handleSubmit = async () => {
         if (value) {
-            if (validator.isEmpty(description.trim())) {
-                return alert.info('Task description is required')
+            if (validator.isEmpty(title.trim())) {
+                return alert.info('Task Title is required')
             }
             alert.info('creating...')
-            await dispatch(startAddNewTask({ description, task_category: value }, alert, label))
+            await dispatch(startAddNewTask({ title, description, task_category: value }, alert, label))
             resetValue()
         } else {
             alert.error('category is required')
@@ -64,8 +66,12 @@ export const ModalNewTask = () => {
     return (
         <div className="modal__task">
 
-
+            <picture className="modal__picture">
+                <img src={astronaut} alt="astronaut working" />
+            </picture>
             <div className="modal__task__dropdown-container">
+
+
 
                 <Dropdown onChange={handleCategoryChange} options={categories} placeholder='Category' />
 
@@ -82,10 +88,10 @@ export const ModalNewTask = () => {
                 <input
                     type="text"
                     className=" modal__task__input"
-                    placeholder="Create the next tesla"
+                    placeholder="Task Title"
                     autoComplete="off"
-                    name="description"
-                    value={description}
+                    name="title"
+                    value={title}
                     onChange={handleInputChange}
                     ref={ref}
 
@@ -94,22 +100,22 @@ export const ModalNewTask = () => {
 
             </div>
 
-            {/* <div className="modal__task-inputGroup">
+            <div className="modal__task-inputGroup">
 
                 <input
                     type="text"
                     className=" modal__task__input"
-                    placeholder="Add a description"
+                    placeholder="Description"
                     autoComplete="off"
                     name="description"
                     value={description}
                     onChange={handleInputChange}
-                    ref={ref}
+
 
                 />
 
 
-            </div> */}
+            </div>
 
             <div className="modal__task__button-container">
                 <ModalButton onClick={handleSubmit} classes="modal-button add" text="Add" type="submit" />

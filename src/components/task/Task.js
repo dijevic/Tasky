@@ -13,21 +13,25 @@ import { useRef } from 'react'
 
 moment().format("MMM Do YY")
 
-export const Task = React.memo(({ description, uuid, creationDate, completed, task_category }) => {
+export const Task = React.memo(({ description, uuid, creationDate, completed, task_category, title }) => {
 
     const alert = useAlert()
-
-    const capitalizeDescription = capitalizeWord(description)
 
     const ref = useRef(null)
     const ref2 = useRef(null)
 
+
+    const capitalizeTitle = capitalizeWord(title)
+
     const dispatch = useDispatch()
+
+
+
     const handleClick = ({ target }) => {
 
 
         if (ref.current === target || ref2.current === target) {
-            dispatch(setActiveTask({ uuid, capitalizeDescription, creationDate, completed, task_category }))
+            dispatch(setActiveTask({ uuid, description, creationDate, completed, task_category, capitalizeTitle }))
             dispatch(openModal())
             dispatch(setTaskMode())
         }
@@ -54,7 +58,7 @@ export const Task = React.memo(({ description, uuid, creationDate, completed, ta
                     ? "todos__grid-todo-description"
                     : "todos__grid-todo-description todo-completed"}>
                 {completed && <span className="checkSpanIcon"><Check /></span>}
-                {capitalizeDescription}
+                {capitalizeTitle}
             </p>
 
             <span

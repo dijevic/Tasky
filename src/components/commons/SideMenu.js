@@ -43,6 +43,7 @@ export const SideMenu = ({ open, setOpen }) => {
     }, [darkMode]);
 
 
+
     const handleTheme = () => {
         document.body.classList.toggle('dark')
         setDarkMode(!darkMode)
