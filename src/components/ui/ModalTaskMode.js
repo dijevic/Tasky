@@ -87,17 +87,26 @@ export const ModalTaskMode = () => {
                 onChange={handleInputChange}
 
             />
-            <input
+            <textarea
+                maxLength={100}
+                className="modal__textArea"
+                onChange={handleInputChange}
+                name="description"
+                value={description}>
+
+
+            </textarea>
+            {/* <input
                 ref={ref2}
                 type="text"
-                className=" modal__input"
+                
                 name="description"
                 placeholder={(description.length === 0) && `empty description`}
                 value={(description.length > 0) ? capitalizeWord(description) : ''}
                 autoComplete="off"
-                onChange={handleInputChange}
+               
 
-            />
+            /> */}
 
             <div className="modal__task-extra-info-container">
 
