@@ -4,10 +4,10 @@ import astronauta from '../../assets/images/Astronaut_flag.jpg'
 // import { OptionCard } from '../../components/dashboard/OptionCard'
 import { useSelector } from 'react-redux'
 import { capitalizeText } from '../../helpers/capitalize'
-import { Modal } from '../../components/ui/Modal'
+// import { Modal } from '../../components/ui/Modal'
 
 const OptionCard = React.lazy(() => import('../../components/dashboard/OptionCard'))
-
+const Modal = React.lazy(() => import('../../components/ui/Modal'))
 
 
 export const DashboardGeneral = React.memo(() => {

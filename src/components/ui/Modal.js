@@ -12,7 +12,7 @@ import { ModalProfileMode } from './ModalProfileMode'
 
 import { ModalTaskMode } from './ModalTaskMode'
 
-export const Modal = ({ mode }) => {
+const Modal = ({ mode }) => {
 
 
     const dispatch = useDispatch()
@@ -38,6 +38,10 @@ export const Modal = ({ mode }) => {
 
         })
     }
+
+
+
+
 
 
 
@@ -126,3 +130,4 @@ export const Modal = ({ mode }) => {
         </div>
     )
 }
+export default Modal
