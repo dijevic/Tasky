@@ -86,7 +86,7 @@ export const Todos = () => {
                     <span
 
                         className="specialSentence">
-                        control your time
+                        handle your time
                     </span>
                 </h2>
 
