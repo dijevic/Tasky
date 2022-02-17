@@ -15,6 +15,7 @@ export const DashboardGeneral = React.memo(() => {
     const { modalMode } = useSelector(state => state.ui)
 
     const { modalOpen } = useSelector(state => state.ui)
+
     const capitalizedName = capitalizeText(user.name)
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useAlert } from 'react-alert'
 import validator from 'validator'
 import { useDispatch } from 'react-redux';
@@ -10,7 +10,6 @@ import { SettingIcon } from '../icons/SettingIcon';
 
 import { ModalButton } from './ModalButton';
 import { startAddNewTask } from '../../actions/tasksActions';
-import astronaut from '../../assets/images/working.png'
 
 
 export const ModalNewTask = () => {
@@ -35,6 +34,18 @@ export const ModalNewTask = () => {
     const { value, label } = category
 
     const { title, description } = formValues
+    const [descriptionLength, setDescriptionLength] = useState(0)
+    const [titleLength, setTitleLength] = useState(0)
+
+    useEffect(() => {
+        setTitleLength(title.trim().length)
+    }, [title])
+
+
+    useEffect(() => {
+        setDescriptionLength(description.trim().length)
+    }, [description])
+
 
 
     const handleSubmit = async () => {
@@ -66,15 +77,10 @@ export const ModalNewTask = () => {
     return (
         <div className="modal__task">
 
-            <picture className="modal__picture">
-                <img src={astronaut} alt="astronaut working" />
-            </picture>
+
             <div className="modal__task__dropdown-container">
 
-
-
                 <Dropdown onChange={handleCategoryChange} options={categories} placeholder='Category' />
-
 
                 <span
                     onClick={handleChangeModalMode}
@@ -92,27 +98,31 @@ export const ModalNewTask = () => {
                     autoComplete="off"
                     name="title"
                     value={title}
+                    maxLength={80}
                     onChange={handleInputChange}
                     ref={ref}
 
                 />
+                <span className="modal__input-length">
+                    {`${titleLength}/80`}
+                </span>
 
 
             </div>
 
-            <div className="modal__task-inputGroup">
+            <div className="modal__input-container ">
 
-                <input
-                    type="text"
-                    className=" modal__task__input"
+                <textarea
+                    className="modal__textArea"
                     placeholder="Description"
                     autoComplete="off"
+                    maxLength={145}
                     name="description"
                     value={description}
-                    onChange={handleInputChange}
-
-
-                />
+                    onChange={handleInputChange} />
+                <span className="modal__input-length">
+                    {`${descriptionLength}/145`}
+                </span>
 
 
             </div>

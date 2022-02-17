@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Dropdown from 'react-dropdown';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -41,7 +41,11 @@ export const ModalCategoryMode = () => {
 
     const { name } = formValue
 
+    const [nameLength, setNameLength] = useState(0)
 
+    useEffect(() => {
+        setNameLength(name.trim().length)
+    }, [name])
 
 
 
@@ -189,11 +193,16 @@ export const ModalCategoryMode = () => {
                                 type="text"
                                 className=" modal__input"
                                 autoComplete='off'
+                                maxLength={50}
                                 name="name"
                                 value={name}
                                 onChange={handleInputChange}
                                 ref={ref2}
                                 placeholder="New category name" />
+                            <span className="modal__input-length">
+                                {`${nameLength}/50`}
+
+                            </span>
 
                             <div className="modal-buttonsContainer">
 

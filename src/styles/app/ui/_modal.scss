@@ -26,6 +26,7 @@
       background: $white;
       margin-top: 50px;
       min-height: 75vh;
+      max-height: 88vh;
 
       .closeIcon {
         position: absolute;
@@ -95,40 +96,46 @@
         margin: 20px 0px;
       }
       .modal__input-container {
-        .modal__textArea {
-          width: 100%;
-          height: 100px;
-          outline: none;
-          padding: 10px;
-          resize: none;
-          border: none;
-          font-size: 16px;
-          line-height: 22px;
-          font-weight: 400;
-
-          color: rgba($color: $black, $alpha: 0.5);
-          position: relative;
-          margin-top: 15px;
-          border-bottom: 2px solid rgba($color: $black, $alpha: 0.2);
-          transition: 0.3s ease all;
-          body.dark & {
-            border: 2px solid $primary-color;
-            background: rgba($color: $black, $alpha: 0.5);
-            // background: rgba($color: $dark-blue, $alpha: 0.8);
-            color: $white;
-          }
-        }
         .modal__input {
           margin: 0px;
         }
         .title {
           padding-left: 10px;
+          margin-top: 10px;
         }
         body.dark & {
           .title {
             color: rgba($color: $white, $alpha: 0.5);
           }
         }
+      }
+      .modal__textArea {
+        width: 100%;
+        height: 100px;
+        outline: none;
+        padding: 10px;
+        resize: none;
+        border: none;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+
+        color: rgba($color: $black, $alpha: 0.5);
+        position: relative;
+        border-bottom: 2px solid rgba($color: $black, $alpha: 0.2);
+        transition: 0.3s ease all;
+        margin-bottom: 5px;
+        body.dark & {
+          border: 2px solid $primary-color;
+          background: rgba($color: $black, $alpha: 0.5);
+          border-radius: 5px;
+          color: $white;
+        }
+      }
+
+      .modal__input-length {
+        text-align: right;
+        display: block;
       }
 
       .modal__task-extra-info-container {
@@ -175,7 +182,7 @@
         display: flex;
         justify-content: right;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 30px;
         min-width: 235px;
         .modal-button {
           padding: 10px 15px;
@@ -301,6 +308,7 @@
       }
       // dark-mode
     }
+
     .modal__picture {
       display: flex;
       justify-content: center;
@@ -409,7 +417,7 @@
         }
 
         .modal-buttonsContainer {
-          margin-top: 60px;
+          margin-top: 40px;
 
           .modal-button {
             padding: 10px 25px;

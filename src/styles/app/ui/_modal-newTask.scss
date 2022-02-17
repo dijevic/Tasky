@@ -6,14 +6,30 @@
   width: 100%;
   max-width: 500px;
   margin: 0px auto 40px auto;
+
   .modal__task-inputGroup {
     width: 100%;
-    display: flex;
     justify-content: center;
     width: 100%;
     position: relative;
     margin-bottom: 20px;
     background: none;
+    position: relative;
+  }
+  .modal__input-container {
+    width: 100%;
+    .modal__input {
+      margin: 0px;
+    }
+    .title {
+      padding-left: 10px;
+      margin-top: 10px;
+    }
+    body.dark & {
+      .title {
+        color: rgba($color: $white, $alpha: 0.5);
+      }
+    }
   }
 
   .modal__task__input {
@@ -24,6 +40,7 @@
     font-size: 16px;
     line-height: 22px;
     margin-bottom: 10px;
+    margin-top: 30px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -38,10 +55,7 @@
     &::placeholder {
       font-size: 16px;
       line-height: 20px;
-      color: rgba($color: $black, $alpha: 0.5);
-      body.dark & {
-        color: $white;
-      }
+      color: $black rgba($color: $black, $alpha: 0.1);
     }
     &:focus {
       border-bottom: 2px solid rgba($color: $black, $alpha: 0.5);
@@ -52,7 +66,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0px 20px 0px;
+    margin: 40px 0px 20px 0px;
     .Dropdown-root {
       width: 90%;
       margin-right: 5px;
@@ -91,9 +105,8 @@
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    position: absolute;
-    bottom: 40px;
-    right: 7%;
+    position: static !important;
+    margin-top: 30px;
   }
 
   .modal-button {
@@ -118,6 +131,7 @@
 
 @media screen and(min-width: 768px) {
   .modal__task {
+    margin-top: 40px;
     .modal__task-inputGroup {
       margin-bottom: 30px;
     }

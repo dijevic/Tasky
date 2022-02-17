@@ -1222,6 +1222,7 @@ body.dark .todos__container .todos__category-title {
   background: #fff;
   margin-top: 50px;
   min-height: 75vh;
+  max-height: 88vh;
 }
 
 .ui__modal-container .modal__container .modal .closeIcon {
@@ -1313,7 +1314,20 @@ body.dark .ui__modal-container .modal__container .modal .modal__input::placehold
   margin: 20px 0px;
 }
 
-.ui__modal-container .modal__container .modal .modal__input-container .modal__textArea {
+.ui__modal-container .modal__container .modal .modal__input-container .modal__input {
+  margin: 0px;
+}
+
+.ui__modal-container .modal__container .modal .modal__input-container .title {
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal__input-container .title {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ui__modal-container .modal__container .modal .modal__textArea {
   width: 100%;
   height: 100px;
   outline: none;
@@ -1325,28 +1339,22 @@ body.dark .ui__modal-container .modal__container .modal .modal__input::placehold
   font-weight: 400;
   color: rgba(0, 0, 0, 0.5);
   position: relative;
-  margin-top: 15px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   -webkit-transition: 0.3s ease all;
   transition: 0.3s ease all;
+  margin-bottom: 5px;
 }
 
-body.dark .ui__modal-container .modal__container .modal .modal__input-container .modal__textArea {
+body.dark .ui__modal-container .modal__container .modal .modal__textArea {
   border: 2px solid #6e6ece;
   background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
   color: #fff;
 }
 
-.ui__modal-container .modal__container .modal .modal__input-container .modal__input {
-  margin: 0px;
-}
-
-.ui__modal-container .modal__container .modal .modal__input-container .title {
-  padding-left: 10px;
-}
-
-body.dark .ui__modal-container .modal__container .modal .modal__input-container .title {
-  color: rgba(255, 255, 255, 0.5);
+.ui__modal-container .modal__container .modal .modal__input-length {
+  text-align: right;
+  display: block;
 }
 
 .ui__modal-container .modal__container .modal .modal__task-extra-info-container {
@@ -1410,7 +1418,7 @@ body.dark .ui__modal-container .modal__container .modal .modal__task-extra-info-
       -ms-flex-pack: right;
           justify-content: right;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
   min-width: 235px;
 }
 
@@ -1679,7 +1687,7 @@ body.dark .ui__modal-container .modal__container .modal .modal__container-catego
     font-weight: 900;
   }
   .ui__modal-container .modal__container .modal .modal-buttonsContainer {
-    margin-top: 60px;
+    margin-top: 40px;
   }
   .ui__modal-container .modal__container .modal .modal-buttonsContainer .modal-button {
     padding: 10px 25px;
@@ -1772,9 +1780,6 @@ body.dark .ui__modal-container .modal__container .modal .modal__container-catego
 
 .modal__task .modal__task-inputGroup {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1782,6 +1787,24 @@ body.dark .ui__modal-container .modal__container .modal .modal__container-catego
   position: relative;
   margin-bottom: 20px;
   background: none;
+  position: relative;
+}
+
+.modal__task .modal__input-container {
+  width: 100%;
+}
+
+.modal__task .modal__input-container .modal__input {
+  margin: 0px;
+}
+
+.modal__task .modal__input-container .title {
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+body.dark .modal__task .modal__input-container .title {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .modal__task .modal__task__input {
@@ -1792,6 +1815,7 @@ body.dark .ui__modal-container .modal__container .modal .modal__container-catego
   font-size: 16px;
   line-height: 22px;
   margin-bottom: 10px;
+  margin-top: 30px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -1807,41 +1831,25 @@ body.dark .modal__task .modal__task__input {
 .modal__task .modal__task__input::-webkit-input-placeholder {
   font-size: 16px;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.5);
+  color: #000 rgba(0, 0, 0, 0.1);
 }
 
 .modal__task .modal__task__input:-ms-input-placeholder {
   font-size: 16px;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.5);
+  color: #000 rgba(0, 0, 0, 0.1);
 }
 
 .modal__task .modal__task__input::-ms-input-placeholder {
   font-size: 16px;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.5);
+  color: #000 rgba(0, 0, 0, 0.1);
 }
 
 .modal__task .modal__task__input::placeholder {
   font-size: 16px;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-body.dark .modal__task .modal__task__input::-webkit-input-placeholder {
-  color: #fff;
-}
-
-body.dark .modal__task .modal__task__input:-ms-input-placeholder {
-  color: #fff;
-}
-
-body.dark .modal__task .modal__task__input::-ms-input-placeholder {
-  color: #fff;
-}
-
-body.dark .modal__task .modal__task__input::placeholder {
-  color: #fff;
+  color: #000 rgba(0, 0, 0, 0.1);
 }
 
 .modal__task .modal__task__input:focus {
@@ -1859,7 +1867,7 @@ body.dark .modal__task .modal__task__input::placeholder {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 10px 0px 20px 0px;
+  margin: 40px 0px 20px 0px;
 }
 
 .modal__task .modal__task__dropdown-container .Dropdown-root {
@@ -1905,9 +1913,8 @@ body.dark .modal__task .modal__task__dropdown-container .modal__task__span-icon 
       -ms-flex-pack: end;
           justify-content: flex-end;
   width: 100%;
-  position: absolute;
-  bottom: 40px;
-  right: 7%;
+  position: static !important;
+  margin-top: 30px;
 }
 
 .modal__task .modal-button {
@@ -1933,6 +1940,9 @@ body.dark .modal__task .modal__task__dropdown-container .modal__task__span-icon 
 }
 
 @media screen and (min-width: 768px) {
+  .modal__task {
+    margin-top: 40px;
+  }
   .modal__task .modal__task-inputGroup {
     margin-bottom: 30px;
   }

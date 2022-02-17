@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import moment from 'moment'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -39,6 +39,17 @@ export const ModalTaskMode = () => {
 
     const label = activeTask.task_category.name
 
+    const [titleLength, setTitleLength] = useState(0)
+    const [descriptionLength, setDescriptionLength] = useState(0)
+
+    useEffect(() => {
+        setTitleLength(title.trim().length)
+    }, [title])
+    useEffect(() => {
+        setDescriptionLength(description.trim().length)
+
+    }, [description])
+
 
     const handleUpdate = async () => {
         alert.info('Updating...')
@@ -78,10 +89,6 @@ export const ModalTaskMode = () => {
 
 
 
-
-
-
-
     return (
         <>
 
@@ -95,21 +102,32 @@ export const ModalTaskMode = () => {
                     name="title"
                     value={title}
                     autoComplete="off"
+                    maxLength={80}
+
                     onChange={handleInputChange}
 
                 />
+                <span className="modal__input-length">
+                    {`${titleLength}/80`}
+
+                </span>
             </div>
 
             <div className="modal__input-container">
                 <span className="title">Description</span>
 
                 <textarea
-                    maxLength={100}
+                    maxLength={145}
                     className="modal__textArea"
                     onChange={handleInputChange}
+                    placeholder="Empty field"
                     name="description"
                     value={description}
                     ref={ref2} />
+
+                <span className="modal__input-length">
+                    {`${descriptionLength}/145`}
+                </span>
 
             </div>
 
