@@ -25,7 +25,7 @@ export const startLogin = (email, password, setChecking) => {
         try {
             const resp = await fetchWithNotToken({ email, password }, 'POST', 'v1/auth/login')
             const data = await resp.json()
-            console.log(data)
+
 
             if (data.ok) {
                 localStorage.setItem('token', data.token)
@@ -66,6 +66,12 @@ export const startCheckingToken = (setChecking) => {
                     name: data.name
                 }
                 dispatch(login(user))
+
+                setTimeout(() => {
+                    dispatch(logOut())
+                    Swal.fire(`Error`, `session expired`, 'info')
+                    console.log('111111')
+                }, 7200000)
 
             } else {
                 setChecking(false)

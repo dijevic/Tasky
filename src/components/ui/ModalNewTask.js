@@ -89,11 +89,11 @@ export const ModalNewTask = () => {
                 </span>
             </div>
 
-            <div className="modal__task-inputGroup">
-
+            <div className="modal__input-container">
+                <span className="title">title</span>
                 <input
                     type="text"
-                    className=" modal__task__input"
+                    className=" modal__input"
                     placeholder="Task Title"
                     autoComplete="off"
                     name="title"
@@ -111,6 +111,7 @@ export const ModalNewTask = () => {
             </div>
 
             <div className="modal__input-container ">
+                <span className="title">description</span>
 
                 <textarea
                     className="modal__textArea"

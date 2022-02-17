@@ -4,7 +4,6 @@ import {
     Redirect,
     Switch
 
-
 } from "react-router-dom"
 
 
@@ -19,8 +18,6 @@ import { TodosRouter } from './TodosRouter'
 
 
 
-
-
 export const AppRouter = () => {
 
 
@@ -28,9 +25,6 @@ export const AppRouter = () => {
     const dispatch = useDispatch()
     const [checking, setChecking] = useState(true)
 
-
-
-    // checking user data
 
     useEffect(() => {
 

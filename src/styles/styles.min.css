@@ -1792,6 +1792,7 @@ body.dark .ui__modal-container .modal__container .modal .modal__container-catego
 
 .modal__task .modal__input-container {
   width: 100%;
+  margin-top: 0px;
 }
 
 .modal__task .modal__input-container .modal__input {

@@ -41,10 +41,7 @@ export const uiReducer = (state = initialState, action) => {
                 modalMode: 'profile'
             }
         case types.modalModeClean:
-            return {
-                ...state,
-                modalMode: false
-            }
+            return initialState
 
 
 
