@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Dropdown from 'react-dropdown';
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,7 +10,7 @@ import { openModal, setNewTaskMode } from '../../actions/uiActions';
 import { TurnIcon } from '../../components/icons/TurnIcon';
 import { getArrayLength } from '../../helpers/getArryLength'
 import 'react-dropdown/style.css';
-const Modal = React.lazy(() => import('../../components/ui/Modal'))
+
 
 
 
@@ -24,9 +24,7 @@ export const Todos = () => {
     const dispatch = useDispatch()
     const { tasks } = useSelector(state => state.task)
     const { categories, activeCategory } = useSelector(state => state.category)
-    const { modalMode } = useSelector(state => state.ui)
 
-    const { modalOpen } = useSelector(state => state.ui)
     const [filter, setFilter] = useState('all')
     const [tasksLength, setTasksLength] = useState(0)
 
@@ -80,14 +78,6 @@ export const Todos = () => {
     return (
 
         <>
-            {
-                (modalOpen) ? <Suspense fallback={null}>
-                    <Modal mode={modalMode} />
-
-                </Suspense>
-                    : false
-
-            }
 
             <div className="todos__container">
                 <h2

@@ -183,7 +183,7 @@ export const ModalCategoryMode = () => {
                         {
                             (modeUpdate) &&
                             <h2 className="modal__form-category-name">
-                                Category selected :
+                                Category to be updated :
                                 <span className="modal__category-nameSelected">{label}</span>
                             </h2>
                         }

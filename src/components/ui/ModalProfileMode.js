@@ -18,7 +18,6 @@ export const ModalProfileMode = () => {
 
     const userCapitalized = capitalizeText(user.name)
 
-
     const initialState = {
         name: '',
         password: ''
@@ -28,16 +27,7 @@ export const ModalProfileMode = () => {
 
     const { name, password } = formValues
 
-    const handleClick = ({ target }) => {
 
-        if (target === refName.current) {
-
-            refName.current.parentElement.firstElementChild.style.top = '-10px'
-
-        } else {
-            refPassword.current.parentElement.firstElementChild.style.top = '-10px'
-        }
-    }
 
 
     const handleSubmit = () => {
@@ -59,7 +49,6 @@ export const ModalProfileMode = () => {
                     name="name"
                     value={name}
                     onChange={handleInputChange}
-                    onClick={handleClick}
                     ref={refName}
 
 
@@ -77,7 +66,6 @@ export const ModalProfileMode = () => {
                     name="password"
                     value={password}
                     onChange={handleInputChange}
-                    onClick={handleClick}
                     ref={refPassword}
 
 

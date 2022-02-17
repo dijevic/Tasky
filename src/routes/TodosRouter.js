@@ -1,28 +1,38 @@
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
+import { Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
+import { useSelector } from 'react-redux'
 import { DashboardGeneral } from '../pages/Tasks/DashboardGeneral'
 import { NavBar } from '../components/commons/NavBar'
 import { Footer } from '../components/commons/Footer'
 import { Todos } from '../pages/Tasks/Todos'
+import { options } from '../helpers/useAlertOptions'
 import '../styles/styles.min.css'
-import { transitions, positions, Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
-const options = {
-    // you can also just use 'bottom center'
-    position: positions.BOTTOM_CENTER,
-    timeout: 2000,
-    offset: '30px',
-    // you can also just use 'scale'
-    transition: transitions.SCALE
-}
+
+
+
+const Modal = React.lazy(() => import('../components/ui/Modal'))
 
 export const TodosRouter = () => {
+
+    const { modalMode, modalOpen } = useSelector(state => state.ui)
 
 
     return (
 
         <AlertProvider template={AlertTemplate} {...options}>
+
+
+            {
+                (modalOpen) ? <Suspense fallback={null}>
+                    <Modal mode={modalMode} />
+
+                </Suspense>
+                    : false
+
+            }
             <NavBar />
             <Switch>
                 <Route path="/app/dashboard" component={DashboardGeneral} />
