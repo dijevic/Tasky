@@ -6,13 +6,21 @@ import { RockectIcon } from '../icons/RockectIcon'
 import { LinkComponent } from './LinkComponent'
 import { SideMenu } from './SideMenu'
 
-export const NavBar = () => {
+export const NavBar = React.memo(() => {
 
     const [openMenu, setOpenMenu] = useState(false);
 
 
+
     const handleOpenMenu = () => {
         setOpenMenu(!openMenu)
+    }
+
+
+    const handleCloseSideBarOutSide = ({ target }) => {
+
+        setOpenMenu(false)
+
     }
     return (
         <header className="navbar__header">
@@ -34,11 +42,18 @@ export const NavBar = () => {
 
                 <SideMenu open={openMenu} setOpen={setOpenMenu} />
 
+                {
+                    (openMenu) && <div
+                        className="centinell"
+                        onClick={handleCloseSideBarOutSide} />
+                }
+
+
 
 
             </div>
         </header>
     )
-}
+})
 
 

@@ -27,9 +27,16 @@ export const ModalTaskMode = () => {
     }
     const [formValue, handleInputChange] = UseForm(initialState)
 
-    const { description, title } = formValue
+    let { description, title } = formValue
 
-    const date = moment(activeTask.creationDate).add(10, 'days').calendar()
+
+    if (description.trim().length > 0) {
+        description = capitalizeWord(description)
+    }
+
+
+    const date = moment(activeTask.creationDate).format("MMM Do YY")
+
     const label = activeTask.task_category.name
 
 
@@ -77,36 +84,36 @@ export const ModalTaskMode = () => {
 
     return (
         <>
-            <input
-                ref={ref}
-                type="text"
-                className=" modal__input"
-                name="title"
-                value={title}
-                autoComplete="off"
-                onChange={handleInputChange}
 
-            />
-            <textarea
-                maxLength={100}
-                className="modal__textArea"
-                onChange={handleInputChange}
-                name="description"
-                value={description}>
+            <div className="modal__input-container margin">
+                <span className="title">Title</span>
+
+                <input
+                    ref={ref}
+                    type="text"
+                    className=" modal__input "
+                    name="title"
+                    value={title}
+                    autoComplete="off"
+                    onChange={handleInputChange}
+
+                />
+            </div>
+
+            <div className="modal__input-container">
+                <span className="title">Description</span>
+
+                <textarea
+                    maxLength={100}
+                    className="modal__textArea"
+                    onChange={handleInputChange}
+                    name="description"
+                    value={description}
+                    ref={ref2} />
+
+            </div>
 
 
-            </textarea>
-            {/* <input
-                ref={ref2}
-                type="text"
-                
-                name="description"
-                placeholder={(description.length === 0) && `empty description`}
-                value={(description.length > 0) ? capitalizeWord(description) : ''}
-                autoComplete="off"
-               
-
-            /> */}
 
             <div className="modal__task-extra-info-container">
 

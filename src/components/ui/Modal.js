@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { unSetActiveTask } from '../../actions/tasksActions'
@@ -19,24 +19,33 @@ export const Modal = ({ mode }) => {
 
     const { modalMode } = useSelector(state => state.ui)
 
-    window.addEventListener('keyup', e => {
+    const ref1 = useRef(null)
+    if (modalMode) {
+        window.addEventListener('keyup', e => {
 
-        if (e.code === 'Escape') {
+            if (e.code === 'Escape') {
+                if (ref1.current) {
 
-            setTimeout(() => {
-                dispatch(closeModal())
-                dispatch(unSetActiveTask())
-            }, 300);
+                    ref1.current.style.animationName = "fadeOutUp"
+                }
 
-        }
+                setTimeout(() => {
+                    dispatch(closeModal())
+                    dispatch(unSetActiveTask())
+                }, 300);
 
-    })
+            }
+
+        })
+    }
+
 
 
 
     const handleCloseOutSite = ({ target }) => {
 
         if (target.className === 'modal__container' || target.className === 'ui__modal-container') {
+            ref1.current.style.animationName = "fadeOutUp"
 
             setTimeout(() => {
                 dispatch(closeModal())
@@ -45,15 +54,15 @@ export const Modal = ({ mode }) => {
         }
 
 
-
-
     }
     const handleClose = () => {
+
+        ref1.current.style.animationName = "fadeOutUp"
         setTimeout(() => {
             dispatch(closeModal())
             dispatch(cleanMode())
             dispatch(unSetActiveTask())
-        }, 100);
+        }, 300);
 
     }
 
@@ -72,7 +81,7 @@ export const Modal = ({ mode }) => {
 
                 <form
                     onSubmit={handleSubmit}
-
+                    ref={ref1}
                     className="modal openModal">
                     <span
                         onClick={handleClose}

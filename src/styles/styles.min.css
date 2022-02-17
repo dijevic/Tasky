@@ -550,6 +550,13 @@ body > div:nth-child(5) {
           animation-iteration-count: initial;
 }
 
+.centinell {
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 60px;
+}
+
 @media screen and (min-width: 768px) {
   .navbar__header {
     padding: 10px 0px;
@@ -916,6 +923,8 @@ body.dark .todos__container .todos__category-title {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-bottom: 7px;
+  padding-top: 7px;
 }
 
 .todos__container .todos__Grid .todo__grid-todo .todos__grid-todo-description .checkSpanIcon {
@@ -1255,7 +1264,6 @@ body.dark .todos__container .todos__category-title {
 }
 
 .ui__modal-container .modal__container .modal .modal-title {
-  font-weight: 700;
   font-size: 25px;
   margin-bottom: 25px;
   z-index: 100;
@@ -1267,6 +1275,7 @@ body.dark .todos__container .todos__category-title {
   margin: 20px 0px;
   outline: none;
   max-width: 500px;
+  position: relative;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.5);
   font-size: 16px;
@@ -1281,7 +1290,7 @@ body.dark .todos__container .todos__category-title {
 
 body.dark .ui__modal-container .modal__container .modal .modal__input {
   color: #fff;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #6e6ece;
 }
 
 body.dark .ui__modal-container .modal__container .modal .modal__input::-webkit-input-placeholder {
@@ -1300,18 +1309,44 @@ body.dark .ui__modal-container .modal__container .modal .modal__input::placehold
   color: #fff;
 }
 
-.ui__modal-container .modal__container .modal .modal__textArea {
+.ui__modal-container .modal__container .modal .margin {
+  margin: 20px 0px;
+}
+
+.ui__modal-container .modal__container .modal .modal__input-container .modal__textArea {
   width: 100%;
-  height: 100%;
-  max-height: 100px;
+  height: 100px;
   outline: none;
   padding: 10px;
   resize: none;
   border: none;
   font-size: 16px;
   line-height: 22px;
-  font-weight: 700;
-  border-radius: 5px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
+  position: relative;
+  margin-top: 15px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal__input-container .modal__textArea {
+  border: 2px solid #6e6ece;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.ui__modal-container .modal__container .modal .modal__input-container .modal__input {
+  margin: 0px;
+}
+
+.ui__modal-container .modal__container .modal .modal__input-container .title {
+  padding-left: 10px;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal__input-container .title {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .ui__modal-container .modal__container .modal .modal__task-extra-info-container {
@@ -1345,11 +1380,17 @@ body.dark .ui__modal-container .modal__container .modal .modal__input::placehold
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
-  max-width: 140px;
-  padding: 10px 10px 10px 5px;
+  max-width: 200px;
+  padding: 10px 10px 10px 10px;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 100%;
+  min-width: 92px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+body.dark .ui__modal-container .modal__container .modal .modal__task-extra-info-container .modal__task-extra-info .modal__task-extra-info-content-wrapper {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 body.dark .ui__modal-container .modal__container .modal .modal__task-extra-info-container .modal__task-extra-info .modal__task-extra-info-content-wrapper .modal__task-extra-info-content-icon {
@@ -1552,6 +1593,15 @@ body.dark .ui__modal-container .modal__container .modal .modal__container-catego
           animation-duration: 0.5s;
 }
 
+.closeModal {
+  -webkit-animation-name: bounceOut;
+          animation-name: bounceOut;
+  -webkit-animation-iteration-count: initial;
+          animation-iteration-count: initial;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
 @media screen and (min-width: 768px) {
   .ui__modal-container .modal__container .modal {
     padding: 40px;
@@ -1613,7 +1663,7 @@ body.dark .ui__modal-container .modal__container .modal .modal__container-catego
   .ui__modal-container .modal__container .modal .modal__input {
     padding: 13px;
     margin-bottom: 10px;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 28px;
     margin-top: 45px;
     cursor: pointer;
@@ -1750,7 +1800,7 @@ body.dark .ui__modal-container .modal__container .modal .modal__container-catego
 }
 
 body.dark .modal__task .modal__task__input {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #6e6ece;
   color: #fff;
 }
 
@@ -1960,6 +2010,7 @@ body.dark .modal__task .modal__task__dropdown-container .modal__task__span-icon 
   min-height: 100vh;
   z-index: 299;
   background: rgba(0, 0, 0, 0.7);
+  background: rgba(34, 34, 59, 0.7);
   -webkit-animation-name: fadeInRight;
           animation-name: fadeInRight;
   -webkit-animation-duration: 0.6s;
@@ -2119,16 +2170,6 @@ body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer 
 body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .add {
   background: #6e6ece;
   color: #fff;
-}
-
-body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .add svg {
-  width: 25px;
-  height: 25px;
-}
-
-body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .update,
-body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .add {
-  margin-right: 15px;
 }
 
 body.dark .ui__modal-container .modal__container .modal .modal-buttonsContainer .delete {

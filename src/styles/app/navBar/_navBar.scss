@@ -69,7 +69,12 @@
     // }
   }
 }
-
+.centinell {
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 60px;
+}
 @media screen and (min-width: 768px) {
   .navbar__header {
     padding: 10px 0px;

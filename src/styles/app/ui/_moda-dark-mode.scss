@@ -26,16 +26,6 @@
             background: $primary-color;
             color: $white;
           }
-          .add {
-            svg {
-              width: 25px;
-              height: 25px;
-            }
-          }
-          .update,
-          .add {
-            margin-right: 15px;
-          }
 
           .delete {
             background: $secondary-color;
