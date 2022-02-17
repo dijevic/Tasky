@@ -8,7 +8,6 @@ export const forgotPasswordVerification = async (email, password, setLoading) =>
         const data = await resp.json()
 
         if (data.ok) {
-            console.log(data.link)
             Swal.fire(`Great`, 'an email has been send to your email', 'info')
             setLoading(false)
 
