@@ -1,4 +1,4 @@
-<h1 align="center"> This is my Tasky  App 📚📱📗📘📙🔎 </h1>
+<h1 align="center"> This is my Tasky  App ! 📚📱📗📘📙🔎 </h1>
 <h3 color="red" align="center">A React app to organize my daily activities (well you can name it as a TODO list if you like it) </h3>
 
 
